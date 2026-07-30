@@ -19,8 +19,15 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemy(int level)
     {
         Enemy enemy = Instantiate(enemyPrefab);
-        enemy.SetGameManager(gameManager);
-        enemy.InitializeHealth(level);
+        // enemy prefab not in the scene before instantiate
+        enemy.Initialize(gameManager, level, "Enemy");
+        playerCombat.SetTarget(enemy);
+    }
+
+    public void SpawnBoss(int level)
+    {
+        Enemy enemy = Instantiate(enemyPrefab);
+        enemy.Initialize(gameManager, level, "Boss");
         playerCombat.SetTarget(enemy);
     }
 }

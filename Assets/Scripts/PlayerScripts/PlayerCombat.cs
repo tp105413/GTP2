@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public int attackDamage;
-    public float attackInterval;
-    public Enemy attackTarget;
+    public PlayerStats playerStats;
 
-    private float timer = 1f;
+    private Enemy attackTarget;
+    private float timer = 0f;
 
     void Start()
     {
@@ -17,7 +16,7 @@ public class PlayerCombat : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= attackInterval && attackTarget != null)
+        if(timer >= playerStats.attackInterval && attackTarget != null)
         {
             Attack();
             timer = 0f;
@@ -31,6 +30,6 @@ public class PlayerCombat : MonoBehaviour
 
     public void Attack()
     {
-        attackTarget.TakeDamage(attackDamage);
+        attackTarget.TakeDamage(playerStats.attackDamage, playerStats);
     }
 }

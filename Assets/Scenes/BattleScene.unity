@@ -358,6 +358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1382823810}
   - component: {fileID: 1382823809}
+  - component: {fileID: 1382823811}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -377,9 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e916c44bfcfea4bb5bf2aea0426878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  attackDamage: 10
-  attackInterval: 1
-  attackTarget: {fileID: 0}
+  playerStats: {fileID: 1382823811}
 --- !u!4 &1382823810
 Transform:
   m_ObjectHideFlags: 0
@@ -395,6 +394,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1382823811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382823808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30bc3cfa157f5f47bceaa58a91d1225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  playerLevel: 1
+  attackDamage: 10
+  attackInterval: 1
+  gold: 0
+  souls: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
