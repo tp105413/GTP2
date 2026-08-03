@@ -16,7 +16,7 @@ public class PlayerCombat : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= playerStats.attackInterval && attackTarget != null)
+        if(timer >= playerStats.AttackInterval && attackTarget != null)
         {
             Attack();
             timer = 0f;
@@ -30,6 +30,6 @@ public class PlayerCombat : MonoBehaviour
 
     public void Attack()
     {
-        attackTarget.TakeDamage(playerStats.attackDamage, playerStats);
+        attackTarget.TakeDamage(playerStats.AttackDamage, playerStats);
     }
 }

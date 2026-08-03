@@ -10,16 +10,6 @@ public class Enemy : MonoBehaviour
     private int goldDrop = 0;
     private int soulsDrop = 0;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-
-    }
-
     public void Initialize(GameManager gm, int level, string type)
     {
         gameManager = gm;
