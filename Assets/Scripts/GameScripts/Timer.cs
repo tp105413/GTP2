@@ -25,8 +25,7 @@ public class CountdownTimer : MonoBehaviour
     private void StartTimer() 
     {
         isTimerRunning = true;
-        totalDurationInSeconds = 0;
-        OnTimerStart.Invoke();
+        OnTimerStart?.Invoke();
         UpdateTimerDisplay();
     }
 
@@ -63,7 +62,11 @@ public class CountdownTimer : MonoBehaviour
         Debug.Log("Countdown complete!");
         OnTimerFinished?.Invoke(); 
     }
-
+    private void StopTimer()
+    {
+        isTimerRunning = false;
+        OnTimerFinished?.Invoke();
+    }
     public void OnSliderValueChanged(float value)
     {   
         SliderTicks = value;
@@ -73,5 +76,10 @@ public class CountdownTimer : MonoBehaviour
     public void OnStartButtonClick()
     {   
         StartTimer();      
+    }
+
+    public void OnStopButtonClick()
+    {
+        StopTimer();
     }
 }
