@@ -13,6 +13,7 @@ public class CountdownTimer : MonoBehaviour
 
     private TimeSpan timeRemaining;
     private bool isTimerRunning = false;
+    private bool isTimerPaused = false;
 
     public event Action OnTimerStart;
     public event Action OnTimerFinished;
@@ -25,6 +26,7 @@ public class CountdownTimer : MonoBehaviour
     private void StartTimer() 
     {
         isTimerRunning = true;
+        isTimerPaused = false;
         OnTimerStart?.Invoke();
         UpdateTimerDisplay();
     }
@@ -37,14 +39,15 @@ public class CountdownTimer : MonoBehaviour
             UpdateTimerDisplay();
         }
 
-        if (timeRemaining.TotalSeconds > 0)
-        {
+        if (timeRemaining.TotalSeconds > 0 && !isTimerPaused)
+        {  
             timeRemaining = timeRemaining.Subtract(TimeSpan.FromSeconds(Time.deltaTime));
-            UpdateTimerDisplay();
+            UpdateTimerDisplay();      
         }
-        else
+        else if (timeRemaining.TotalSeconds <= 0)
         {
             timeRemaining = TimeSpan.Zero;
+            isTimerPaused = true;
             UpdateTimerDisplay();
             TimerFinished();
         }
@@ -81,5 +84,19 @@ public class CountdownTimer : MonoBehaviour
     public void OnStopButtonClick()
     {
         StopTimer();
+    }
+
+    public void OnPauseButtonClick()
+    {
+        if (!isTimerPaused) 
+        {
+            isTimerPaused = true;
+            Debug.Log("Timer paused!");
+        }
+        else if (isTimerPaused)
+        {
+            isTimerPaused = false;
+            Debug.Log("Timer resumed!");
+        }
     }
 }
