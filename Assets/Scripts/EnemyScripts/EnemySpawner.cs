@@ -2,19 +2,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Enemy enemyPrefab;
-    public PlayerCombat playerCombat;
-    public GameManager gameManager;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private PlayerCombat playerCombat;
+    [SerializeField] private GameManager gameManager;
 
     public void SpawnEnemy(int level)
     {

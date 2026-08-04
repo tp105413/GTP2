@@ -1,3 +1,5 @@
+using System;
+using System.Threading;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,21 +8,23 @@ public class GameManager : MonoBehaviour
     private int remainingEnemyCount = 3;
     private bool bossSpawned = false;
 
-    public EnemySpawner enemySpawner;
+    [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private CountdownTimer countdownTimer;
 
-    void Start()
+    public void OnStartButtonClick()
     {
-        StartTimer();
-    }
-
-    void Update()
-    {
-        
-    }
-
-    private void StartTimer()
-    {
+        countdownTimer.StartTimer();
         enemySpawner.SpawnEnemy(gameLevel);
+    }
+
+    public void OnStopButtonClick()
+    {
+        countdownTimer.StopTimer();
+    }
+
+    public void OnPauseButtonClick()
+    {
+        countdownTimer.PauseTimer();
     }
 
     public void GameLevelUp()

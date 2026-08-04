@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public GameManager gameManager;
-    public PlayerStats playerStats;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private PlayerStats playerStats;
 
     private int maxHealth;
     private int currentHealth;

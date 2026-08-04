@@ -1,12 +1,8 @@
 using System;
 using UnityEngine;
-using TMPro;
 
 public class CountdownTimer : MonoBehaviour
 {
-    [Header("UI Reference")]
-    [SerializeField] private TextMeshProUGUI timerText;
-
     [Header("Settings")]
     [SerializeField] public float SliderTicks;
     [SerializeField] private float totalDurationInSeconds;
@@ -15,15 +11,13 @@ public class CountdownTimer : MonoBehaviour
     private bool isTimerRunning = false;
     private bool isTimerPaused = false;
 
+    // read only
+    public TimeSpan TimeRemaining => timeRemaining;
+
     public event Action OnTimerStart;
     public event Action OnTimerFinished;
 
-    void Start()
-    {
-
-    }
-
-    private void StartTimer() 
+    public void StartTimer()
     {
         isTimerRunning = true;
         isTimerPaused = false;
@@ -53,40 +47,25 @@ public class CountdownTimer : MonoBehaviour
         }
     }
 
-    private void UpdateTimerDisplay()
+    public void UpdateTimerDisplay()
     {
-        if (timerText == null) return;
-        timerText.text = timeRemaining.ToString(@"hh\:mm\:ss");
+
     }
 
-    private void TimerFinished()
+    public void TimerFinished()
     {
         isTimerRunning = false;
         Debug.Log("Countdown complete!");
         OnTimerFinished?.Invoke(); 
     }
-    private void StopTimer()
+
+    public void StopTimer()
     {
         isTimerRunning = false;
         OnTimerFinished?.Invoke();
     }
-    public void OnSliderValueChanged(float value)
-    {   
-        SliderTicks = value;
-        Debug.Log("The slider value is now: " + value);      
-    }
 
-    public void OnStartButtonClick()
-    {   
-        StartTimer();      
-    }
-
-    public void OnStopButtonClick()
-    {
-        StopTimer();
-    }
-
-    public void OnPauseButtonClick()
+    public void PauseTimer()
     {
         if (!isTimerPaused) 
         {

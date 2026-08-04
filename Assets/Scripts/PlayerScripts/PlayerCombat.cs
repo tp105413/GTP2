@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public PlayerStats playerStats;
+    [SerializeField] private PlayerStats playerStats;
 
     private Enemy attackTarget;
-    private float timer = 0f;
+    private float attackTimer = 0f;
 
     void Start()
     {
@@ -14,12 +14,12 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
+        attackTimer += Time.deltaTime;
 
-        if(timer >= playerStats.AttackInterval && attackTarget != null)
+        if(attackTimer >= playerStats.AttackInterval && attackTarget != null)
         {
             Attack();
-            timer = 0f;
+            attackTimer = 0f;
         }
     }
 
