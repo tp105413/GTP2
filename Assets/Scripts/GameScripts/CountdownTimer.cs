@@ -4,7 +4,7 @@ using UnityEngine;
 public class CountdownTimer : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] public float SliderTicks;
+    [SerializeField] public float sliderTicks;
     [SerializeField] private float totalDurationInSeconds;
 
     private TimeSpan timeRemaining;
@@ -14,55 +14,44 @@ public class CountdownTimer : MonoBehaviour
     // read only
     public TimeSpan TimeRemaining => timeRemaining;
 
-    public event Action OnTimerStart;
-    public event Action OnTimerFinished;
+    //public event Action OnTimerStart;
+    //public event Action OnTimerFinished;
 
     public void StartTimer()
     {
+        if(timeRemaining == TimeSpan.Zero)
+        {
+            SetDuration(sliderTicks);
+        }
+
         isTimerRunning = true;
         isTimerPaused = false;
-        OnTimerStart?.Invoke();
-        UpdateTimerDisplay();
     }
 
     void Update()
     {
-        if (!isTimerRunning) {
-            totalDurationInSeconds = 1800 * SliderTicks + 1;
-            timeRemaining = TimeSpan.FromSeconds(totalDurationInSeconds);
-            UpdateTimerDisplay();
+        if (!isTimerRunning || isTimerPaused) return;
+        
+        if(timeRemaining > TimeSpan.Zero)
+        {
+            timeRemaining -= TimeSpan.FromSeconds(Time.deltaTime);
         }
-
-        if (timeRemaining.TotalSeconds > 0 && !isTimerPaused)
-        {  
-            timeRemaining = timeRemaining.Subtract(TimeSpan.FromSeconds(Time.deltaTime));
-            UpdateTimerDisplay();      
-        }
-        else if (timeRemaining.TotalSeconds <= 0)
+        else
         {
             timeRemaining = TimeSpan.Zero;
-            isTimerPaused = true;
-            UpdateTimerDisplay();
             TimerFinished();
         }
-    }
-
-    public void UpdateTimerDisplay()
-    {
-
     }
 
     public void TimerFinished()
     {
         isTimerRunning = false;
         Debug.Log("Countdown complete!");
-        OnTimerFinished?.Invoke(); 
     }
 
     public void StopTimer()
     {
         isTimerRunning = false;
-        OnTimerFinished?.Invoke();
     }
 
     public void PauseTimer()
@@ -77,5 +66,14 @@ public class CountdownTimer : MonoBehaviour
             isTimerPaused = false;
             Debug.Log("Timer resumed!");
         }
+    }
+
+    public void SetDuration(float ticks)
+    {
+        if (isTimerRunning) return;
+
+        sliderTicks = ticks;
+        totalDurationInSeconds = 1800f * ticks;
+        timeRemaining = TimeSpan.FromSeconds(totalDurationInSeconds);
     }
 }

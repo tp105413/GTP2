@@ -533,7 +533,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &126145026
 Canvas:
   m_ObjectHideFlags: 0
@@ -588,12 +588,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 126145023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c0697c05510c64c98645557ddd7cd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f35ac49bdb7028429686a4d8a9807b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
-  isRunning: 0
-  timerText: {fileID: 0}
-  remainingTime: 10
 --- !u!1 &144374956
 GameObject:
   m_ObjectHideFlags: 0
@@ -6409,7 +6406,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1767921670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7919f02bf41c774479dd91f71ad04092, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f35ac49bdb7028429686a4d8a9807b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScollingAnimation
 --- !u!1 &1814808006

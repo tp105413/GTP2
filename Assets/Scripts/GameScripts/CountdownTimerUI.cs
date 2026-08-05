@@ -16,7 +16,7 @@ public class CountdownTimerUI : MonoBehaviour
 
     public void OnSliderValueChanged(float value)
     {
-        countdownTimer.SliderTicks = value;
+        countdownTimer.SetDuration(value);
         Debug.Log("The slider value is now: " + value);
     }
 }
