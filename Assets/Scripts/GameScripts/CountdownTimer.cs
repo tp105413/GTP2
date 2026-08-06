@@ -52,6 +52,7 @@ public class CountdownTimer : MonoBehaviour
     public void StopTimer()
     {
         isTimerRunning = false;
+        SetDuration(sliderTicks);
     }
 
     public void PauseTimer()
