@@ -1,0 +1,33 @@
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+	public static GameManager Instance;
+
+	public bool IsFighting = false;
+
+	[Header("世界移动速度")]
+	public float worldMoveSpeed = 2f;
+
+	private void Awake()
+	{
+		if (Instance == null)
+		{
+			Instance = this;
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	public void StartFight()
+	{
+		IsFighting = true;
+	}
+
+	public void EndFight()
+	{
+		IsFighting = false;
+	}
+}
