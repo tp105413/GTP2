@@ -6,8 +6,7 @@ public class BackgroundMove : MonoBehaviour
 
 	void Update()
 	{
-		if (GameManager.Instance.IsFighting)
-			return;
+		if (GameManager.Instance.isAttacking) return;
 
 		transform.position += Vector3.left * moveSpeed * Time.deltaTime;
 	}

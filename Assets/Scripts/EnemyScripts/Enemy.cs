@@ -2,22 +2,43 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
     [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private PlayerCombat playerCombat;
+
+    [SerializeField] private float stopAtPositionX = -1f;
+    private bool hasReachedPlayer = false;
 
     private int maxHealth;
     private int currentHealth;
     private int goldDrop = 0;
     private int soulsDrop = 0;
 
-    public void Initialize(GameManager gm, int level, string type)
+    public void Initialize(PlayerCombat combat, int level, string type)
     {
-        gameManager = gm;
+        playerCombat = combat;
 
         CalculateHealth(level, type);
         CalculateGoldDrop(level, type);
         CalcualateSoulsDrop(level, type);
         Debug.Log(type + " Health: " + currentHealth);
+    }
+
+    void Update()
+    {
+        if (hasReachedPlayer) return;
+
+        if(transform.position.x > stopAtPositionX)
+        {
+            transform.position += Vector3.left * GameManager.Instance.worldMoveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            transform.position = new Vector3(stopAtPositionX, transform.position.y, transform.position.z);
+            hasReachedPlayer = true;
+
+            GameManager.Instance.StartAttack();
+            playerCombat.SetTarget(this);
+        }
     }
 
     private void CalculateHealth(int level, string type)
@@ -82,8 +103,9 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Enemy dead!");
         DropReward();
+        GameManager.Instance.EndAttack();
         Destroy(gameObject);
-        gameManager.EnemyDefeated();
+        GameManager.Instance.EnemyDefeated();
     }
 
     public void DropReward()

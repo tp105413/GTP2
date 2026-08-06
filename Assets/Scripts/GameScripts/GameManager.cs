@@ -4,12 +4,29 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    public bool isAttacking = false;
+    public float worldMoveSpeed = 2f;
+
     private int gameLevel = 1;
     private int remainingEnemyCount = 3;
     private bool bossSpawned = false;
 
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private CountdownTimer countdownTimer;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void OnStartButtonClick()
     {
@@ -54,5 +71,15 @@ public class GameManager : MonoBehaviour
             bossSpawned = false;
             enemySpawner.SpawnEnemy(gameLevel);
         }
+    }
+
+    public void StartAttack()
+    {
+        isAttacking = true;
+    }
+
+    public void EndAttack()
+    {
+        isAttacking = false;
     }
 }

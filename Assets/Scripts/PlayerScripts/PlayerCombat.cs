@@ -7,11 +7,6 @@ public class PlayerCombat : MonoBehaviour
     private Enemy attackTarget;
     private float attackTimer = 0f;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         attackTimer += Time.deltaTime;

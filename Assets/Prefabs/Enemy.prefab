@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3a419b14562d7429e10ebea31729e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  health: 50
+  playerStats: {fileID: 0}
+  playerCombat: {fileID: 0}
+  stopAtPositionX: 532
