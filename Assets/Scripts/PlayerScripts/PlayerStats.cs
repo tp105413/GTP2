@@ -2,24 +2,25 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    private int gold = 0;
-    private int souls = 0;
+    [SerializeField] private int gold = 0;
+    [SerializeField] private int souls = 0;
 
     // read only
     public int Gold => gold;
-    public int Soul => souls;
+    public int Souls => souls;
     
-    private int attackDamage = 10;
-    private float attackInterval = 1f;
+    private int attackDamage = 25;
+    private float attackInterval = 2f;
     private float attackSpeed = 1f;
-    private float criticalChance = 0f;
-    private float criticalDamage = 0f;
+    private int criticalChance = 0;
+    private int criticalDamage = 0;
 
+    // read only
     public int AttackDamage => attackDamage;
     public float AttackInterval => attackInterval;
     public float AttackSpeed => attackSpeed;
-    public float CriticalChance => criticalChance;
-    public float CriticalDamage => criticalDamage;
+    public int CriticalChance => criticalChance;
+    public int CriticalDamage => criticalDamage;
 
     private int playerLevel = 1;
     private int attackDamageLevel = 1;
@@ -43,5 +44,61 @@ public class PlayerStats : MonoBehaviour
     public void AddSouls(int amount)
     {
         souls += amount;
+    }
+
+    public void SpendGold(int amount)
+    {
+        gold -= amount;
+    }
+
+    public void SpendSouls(int amount)
+    {
+        souls -= amount;
+    }
+
+    public void PlayerLevelUp()
+    {
+        playerLevel++;
+        Debug.Log("Player Level Up");
+    }
+
+    public void UpgradeAttackDamage(int amount)
+    {
+        attackDamage += amount;
+        attackDamageLevel++;
+        Debug.Log("AttackDamageLevelUp");
+    }
+
+    public void UpgradeAttackInterval(float amount)
+    {
+        attackInterval -= amount;
+        attackIntervalLevel++;
+    }
+
+    public void UpgradeAttackSpeed(float amount)
+    {
+        attackSpeed += amount;
+        attackSpeedLevel++;
+    }
+
+    public void UpgradeCriticalChance(int amount)
+    {
+        criticalChance += amount;
+        criticalChanceLevel++;
+    }
+
+    public void UpgradeCriticalDamage(int amount)
+    {
+        criticalDamage += amount;
+        criticalDamageLevel++;
+    }
+
+    public bool CanLevelUp()
+    {
+        return attackDamageLevel == playerLevel &&
+            attackIntervalLevel == playerLevel &&
+            attackSpeedLevel == playerLevel &&
+            criticalChanceLevel == playerLevel &&
+            criticalDamageLevel == playerLevel;
     }
 }

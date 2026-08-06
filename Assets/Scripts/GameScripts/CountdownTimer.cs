@@ -46,7 +46,6 @@ public class CountdownTimer : MonoBehaviour
     public void TimerFinished()
     {
         isTimerRunning = false;
-        Debug.Log("Countdown complete!");
     }
 
     public void StopTimer()
@@ -60,12 +59,10 @@ public class CountdownTimer : MonoBehaviour
         if (!isTimerPaused) 
         {
             isTimerPaused = true;
-            Debug.Log("Timer paused!");
         }
         else if (isTimerPaused)
         {
             isTimerPaused = false;
-            Debug.Log("Timer resumed!");
         }
     }
 
