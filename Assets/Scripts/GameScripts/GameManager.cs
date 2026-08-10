@@ -7,10 +7,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public bool isAttacking = false;
-    public float worldMoveSpeed = 2f;
+    public float worldMoveSpeed = 0f;
 
     private int gameLevel = 1;
-    private int remainingEnemyCount = 3;
+    private int remainingEnemyCount = 5;
     private bool bossSpawned = false;
 
     [SerializeField] private EnemySpawner enemySpawner;
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public void OnStopButtonClick()
     {
         countdownTimer.StopTimer();
+        RemainingEnemyCountReset();
     }
 
     public void OnPauseButtonClick()
@@ -65,9 +66,9 @@ public class GameManager : MonoBehaviour
         }
         else if(bossSpawned)
         {
-            // increase enemy count base on level here
             GameLevelUp();
-            remainingEnemyCount = 3;
+            // every 5 level + 1 enemy
+            RemainingEnemyCountReset();
             bossSpawned = false;
             enemySpawner.SpawnEnemy(gameLevel);
         }
@@ -76,10 +77,17 @@ public class GameManager : MonoBehaviour
     public void StartAttack()
     {
         isAttacking = true;
+        // attack animation call playerUI here
     }
 
     public void EndAttack()
     {
         isAttacking = false;
+    }
+
+    public void RemainingEnemyCountReset()
+    {
+        Debug.Log("Remaining reset: " + remainingEnemyCount);
+        remainingEnemyCount = 5 + (gameLevel - 1) / 5;
     }
 }

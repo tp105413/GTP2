@@ -6,14 +6,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] private PlayerCombat playerCombat;
     [SerializeField] private EnemyUI enemyUI;
 
+    private CountdownTimer countdownTimer;
+
     private int maxHealth;
     private int currentHealth;
     private int goldDrop = 0;
     private int soulsDrop = 0;
 
-    public void Initialize(PlayerCombat combat, int level, string type)
+    public void Initialize(PlayerCombat combat, CountdownTimer timer, int level, string type)
     {
         playerCombat = combat;
+        countdownTimer = timer;
+        countdownTimer.OnTimerStop += HandleTimerStop;
 
         CalculateHealth(level, type);
         CalculateGoldDrop(level, type);
@@ -34,10 +38,8 @@ public class Enemy : MonoBehaviour
     // unsubscribe automatically
     private void OnDestroy()
     {
-        if(enemyUI != null)
-        {
-            enemyUI.OnReachedPlayer -= HandleReachedPlayer;
-        }
+        if (enemyUI != null) enemyUI.OnReachedPlayer -= HandleReachedPlayer;
+        if(countdownTimer != null) countdownTimer.OnTimerStop -= HandleTimerStop;
     }
 
     private void CalculateHealth(int level, string type)
@@ -107,6 +109,13 @@ public class Enemy : MonoBehaviour
         GameManager.Instance.EnemyDefeated();
     }
 
+    public void RunAway()
+    {
+        Debug.Log("Enemy run away!");
+        GameManager.Instance.EndAttack();
+        Destroy(gameObject);
+    }
+
     public void DropReward()
     {
         playerStats.AddGold(goldDrop);
@@ -117,5 +126,10 @@ public class Enemy : MonoBehaviour
     {
         GameManager.Instance.StartAttack();
         playerCombat.SetTarget(this);
+    }
+
+    private void HandleTimerStop()
+    {
+        RunAway();
     }
 }

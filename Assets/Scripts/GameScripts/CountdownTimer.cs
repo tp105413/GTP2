@@ -14,8 +14,7 @@ public class CountdownTimer : MonoBehaviour
     // read only
     public TimeSpan TimeRemaining => timeRemaining;
 
-    //public event Action OnTimerStart;
-    //public event Action OnTimerFinished;
+    public event Action OnTimerStop;
 
     public void StartTimer()
     {
@@ -52,6 +51,7 @@ public class CountdownTimer : MonoBehaviour
     {
         isTimerRunning = false;
         SetDuration(sliderTicks);
+        OnTimerStop?.Invoke();
     }
 
     public void PauseTimer()
