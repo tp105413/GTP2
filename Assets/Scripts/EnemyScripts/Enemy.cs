@@ -4,9 +4,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private PlayerCombat playerCombat;
-
-    [SerializeField] private float stopAtPositionX = -1f;
-    private bool hasReachedPlayer = false;
+    [SerializeField] private EnemyUI enemyUI;
 
     private int maxHealth;
     private int currentHealth;
@@ -23,21 +21,22 @@ public class Enemy : MonoBehaviour
         Debug.Log(type + " Health: " + currentHealth);
     }
 
-    void Update()
+    void Awake()
     {
-        if (hasReachedPlayer) return;
-
-        if(transform.position.x > stopAtPositionX)
+        if(enemyUI == null)
         {
-            transform.position += Vector3.left * GameManager.Instance.worldMoveSpeed * Time.deltaTime;
+            enemyUI = GetComponent<EnemyUI>();
+            // subscribe function to action, when action is invoked will run the function
+            enemyUI.OnReachedPlayer += HandleReachedPlayer;
         }
-        else
-        {
-            transform.position = new Vector3(stopAtPositionX, transform.position.y, transform.position.z);
-            hasReachedPlayer = true;
+    }
 
-            GameManager.Instance.StartAttack();
-            playerCombat.SetTarget(this);
+    // unsubscribe automatically
+    private void OnDestroy()
+    {
+        if(enemyUI != null)
+        {
+            enemyUI.OnReachedPlayer -= HandleReachedPlayer;
         }
     }
 
@@ -112,5 +111,11 @@ public class Enemy : MonoBehaviour
     {
         playerStats.AddGold(goldDrop);
         playerStats.AddSouls(soulsDrop);
+    }
+
+    private void HandleReachedPlayer()
+    {
+        GameManager.Instance.StartAttack();
+        playerCombat.SetTarget(this);
     }
 }
