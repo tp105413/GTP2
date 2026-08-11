@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 //using static UnityEngine.Analytics.IAnalytic;
 
-public class ScollingAnimation : MonoBehaviour
+public class ScrollingAnimation : MonoBehaviour
 {
     //public ScrollRect scrollRect;
     private Animation scrollAnimation;

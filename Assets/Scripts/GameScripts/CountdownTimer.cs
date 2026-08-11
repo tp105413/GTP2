@@ -13,6 +13,8 @@ public class CountdownTimer : MonoBehaviour
 
     // read only
     public TimeSpan TimeRemaining => timeRemaining;
+    public bool IsTimerRunning => isTimerRunning;
+    public bool IsTimerPaused => isTimerPaused;
 
     public event Action OnTimerStop;
 
@@ -59,6 +61,7 @@ public class CountdownTimer : MonoBehaviour
         if (!isTimerPaused) 
         {
             isTimerPaused = true;
+            OnTimerStop?.Invoke();
         }
         else if (isTimerPaused)
         {

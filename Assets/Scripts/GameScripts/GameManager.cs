@@ -1,10 +1,14 @@
 using System;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    // control whole game function!
+    public bool isGameRunning = false;
 
     public bool isAttacking = false;
     public float worldMoveSpeed = 0f;
@@ -15,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private CountdownTimer countdownTimer;
+    [SerializeField] private ScrollingAnimation scrollingAnimation;
 
     private void Awake()
     {
@@ -42,7 +47,15 @@ public class GameManager : MonoBehaviour
 
     public void OnPauseButtonClick()
     {
-        countdownTimer.PauseTimer();
+        if (!countdownTimer.IsTimerPaused)
+        {
+            countdownTimer.PauseTimer();
+        }
+        else
+        {
+            countdownTimer.PauseTimer();
+            enemySpawner.SpawnEnemy(gameLevel);
+        }
     }
 
     public void GameLevelUp()
