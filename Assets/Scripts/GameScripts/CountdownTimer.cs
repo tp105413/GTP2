@@ -61,11 +61,13 @@ public class CountdownTimer : MonoBehaviour
         if (!isTimerPaused) 
         {
             isTimerPaused = true;
+            isTimerRunning = false;
             OnTimerStop?.Invoke();
         }
         else if (isTimerPaused)
         {
             isTimerPaused = false;
+            isTimerRunning = true;
         }
     }
 

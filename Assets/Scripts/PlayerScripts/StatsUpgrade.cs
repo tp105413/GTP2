@@ -21,8 +21,6 @@ public class StatsUpgrade : MonoBehaviour
 
     public void UpgradeAttackDamage()
     {
-        Debug.Log("Button clicked!");
-
         int level = playerStats.AttackDamageLevel;
         // implement upgrade cost increment base on level
         int upgradeCost = level * baseLevelStatsGoldCost;

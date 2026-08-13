@@ -76,24 +76,28 @@ public class PlayerStats : MonoBehaviour
     {
         attackInterval -= amount;
         attackIntervalLevel++;
+        Debug.Log("AttackIntervalLevelUp");
     }
 
     public void UpgradeAttackSpeed(float amount)
     {
         attackSpeed += amount;
         attackSpeedLevel++;
+        Debug.Log("AttackSpeedLevelUp");
     }
 
     public void UpgradeCriticalChance(int amount)
     {
         criticalChance += amount;
         criticalChanceLevel++;
+        Debug.Log("CriticalChanceLevelUp");
     }
 
     public void UpgradeCriticalDamage(int amount)
     {
         criticalDamage += amount;
         criticalDamageLevel++;
+        Debug.Log("CriticalDamageLevelUp");
     }
 
     public bool CanLevelUp()
