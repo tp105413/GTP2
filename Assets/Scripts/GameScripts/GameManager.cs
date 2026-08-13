@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,9 +36,23 @@ public class GameManager : MonoBehaviour
 
     public void OnStartButtonClick()
     {
+        // will change
+        if (countdownTimer.TimeRemaining == TimeSpan.Zero) return;
+
+        // coroutine
+        StartCoroutine(WaitForScrollCompleted());
+
+        //countdownTimer.StartTimer();
+        //enemySpawner.SpawnEnemy(gameLevel);
+    }
+
+    IEnumerator WaitForScrollCompleted()
+    {
+        // need to be modify
+        yield return new WaitForSeconds(1.5f);
         countdownTimer.StartTimer();
         enemySpawner.SpawnEnemy(gameLevel);
-    }
+    } 
 
     public void OnStopButtonClick()
     {

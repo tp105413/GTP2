@@ -4082,6 +4082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f35ac49bdb7028429686a4d8a9807b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
+  countdownTimer: {fileID: 0}
 --- !u!114 &825141350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6150,6 +6151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f35ac49bdb7028429686a4d8a9807b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScollingAnimation
+  countdownTimer: {fileID: 1316339995}
 --- !u!111 &1319848127
 Animation:
   m_ObjectHideFlags: 0

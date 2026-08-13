@@ -3,7 +3,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScrollingAnimation : MonoBehaviour
-{
+{ 
+    [SerializeField] private CountdownTimer countdownTimer;
+
+
     private Animation scrollAnimation;
 
     public Animator playerAnimator;
@@ -26,6 +29,8 @@ public class ScrollingAnimation : MonoBehaviour
 
         if (!isAttack)
         {
+            if (countdownTimer.TimeRemaining == TimeSpan.Zero) return;
+
             scrollAnimation.Play("UI_ScrollDown");
             isAttack = true;
             Debug.Log("IdleToAttack");
