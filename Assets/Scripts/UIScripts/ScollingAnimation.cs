@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-//using static UnityEngine.Analytics.IAnalytic;
 
 public class ScrollingAnimation : MonoBehaviour
 {
-    //public ScrollRect scrollRect;
     private Animation scrollAnimation;
+
+    public Animator playerAnimator;
 
     private bool isAttack = false;
 
@@ -23,17 +23,26 @@ public class ScrollingAnimation : MonoBehaviour
             return;
         }
 
+
         if (!isAttack)
         {
             scrollAnimation.Play("UI_ScrollDown");
             isAttack = true;
-            Debug.Log("IdletoAttack");
+            Debug.Log("IdleToAttack");
+
+            playerAnimator.SetLayerWeight(1, 1f);
+            playerAnimator.Play("walking", 1, 0f);
+            playerAnimator.SetTrigger("ToAttack");
         }
         else
         {
             scrollAnimation.Play("UI_ScrollUp");
-            isAttack = false; 
+            isAttack = false;
             Debug.Log("AttackToIdle");
+
+            playerAnimator.SetLayerWeight(1, 0f);
+            playerAnimator.Play("sitting down from idle 0", 0, 0f); 
+            playerAnimator.SetTrigger("ToIdle");
         }
     }
 }

@@ -1,121 +1,94 @@
 fileFormatVersion: 2
-guid: b9ff8ee245fff4443b0f0ef5c678205a
+guid: 0a1a02149b77d884db21a10b2f3d301d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2487064822652312305
-    second: pomoHero_0
+      213: 1685055187455241375
+    second: pomoHero2_0
   - first:
-      213: 6764352204646972734
-    second: pomoHero_1
+      213: 4550920756017057072
+    second: pomoHero2_1
   - first:
-      213: -1221917887434986472
-    second: pomoHero_2
+      213: -7466902095228584562
+    second: pomoHero2_2
   - first:
-      213: -2595438654931770606
-    second: pomoHero_3
+      213: 3270311422090922884
+    second: pomoHero2_3
   - first:
-      213: -8578640180006082515
-    second: pomoHero_4
+      213: 7057786559539705070
+    second: pomoHero2_4
   - first:
-      213: 4394281888937613557
-    second: pomoHero_5
+      213: -7409362791727710299
+    second: pomoHero2_5
   - first:
-      213: 5592571789433534854
-    second: pomoHero_6
+      213: 2774894698765751182
+    second: pomoHero2_6
   - first:
-      213: -8737324362937165840
-    second: pomoHero_7
+      213: 3250216019211426659
+    second: pomoHero2_7
   - first:
-      213: -5749148910460575354
-    second: pomoHero_8
+      213: 503210147942453512
+    second: pomoHero2_8
   - first:
-      213: 4559616280254388442
-    second: pomoHero_9
+      213: -625434405023270883
+    second: pomoHero2_9
   - first:
-      213: 6375805985349075136
-    second: pomoHero_10
+      213: -4031211191151380917
+    second: pomoHero2_10
   - first:
-      213: 1013158695521986836
-    second: pomoHero_11
+      213: 3727176335599441227
+    second: pomoHero2_11
   - first:
-      213: 6323377685705650762
-    second: pomoHero_12
+      213: 7125907905840750773
+    second: pomoHero2_12
   - first:
-      213: 2698173857439652476
-    second: pomoHero_13
+      213: 57097122866017158
+    second: pomoHero2_13
   - first:
-      213: -8349944907545955745
-    second: pomoHero_14
+      213: -9112085084304765584
+    second: pomoHero2_14
   - first:
-      213: 3603407336012708904
-    second: pomoHero_15
+      213: -8092056770032094853
+    second: pomoHero2_15
   - first:
-      213: 3949803793262194839
-    second: pomoHero_16
+      213: 5525839236813742086
+    second: pomoHero2_16
   - first:
-      213: 661498771999452398
-    second: pomoHero_17
+      213: -4842587551143793109
+    second: pomoHero2_17
   - first:
-      213: -7507202743970399869
-    second: pomoHero_18
+      213: 5560258751853386766
+    second: pomoHero2_18
   - first:
-      213: -8269337366141047072
-    second: pomoHero_19
+      213: -1883207341624030261
+    second: pomoHero2_19
   - first:
-      213: -1818561698099925781
-    second: pomoHero_20
+      213: -2081308137957667202
+    second: pomoHero2_20
   - first:
-      213: -8710346211971748274
-    second: pomoHero_21
+      213: -804707830106903358
+    second: pomoHero2_21
   - first:
-      213: 1057595094496739721
-    second: pomoHero_22
+      213: 4887946360700785461
+    second: pomoHero2_22
   - first:
-      213: -8497538563625528828
-    second: pomoHero_23
+      213: 5442500171698863531
+    second: pomoHero2_23
   - first:
-      213: 5668352826842120545
-    second: pomoHero_24
+      213: 1951872196401155568
+    second: pomoHero2_24
   - first:
-      213: -8362731315813642811
-    second: pomoHero_25
+      213: 2484025145924211615
+    second: pomoHero2_25
   - first:
-      213: -2899387663516029314
-    second: pomoHero_26
+      213: -4929677656645568940
+    second: pomoHero2_26
   - first:
-      213: -2525512337001780660
-    second: pomoHero_27
+      213: 2705879511975634135
+    second: pomoHero2_27
   - first:
-      213: 9194674583043104580
-    second: pomoHero_28
-  - first:
-      213: -5397546866516929965
-    second: pomoHero_29
-  - first:
-      213: -1305817221073634799
-    second: pomoHero_30
-  - first:
-      213: 1691344423965775231
-    second: pomoHero_31
-  - first:
-      213: -544769913463513038
-    second: pomoHero_32
-  - first:
-      213: 5994383909464498835
-    second: pomoHero_33
-  - first:
-      213: 3956640276919705020
-    second: pomoHero_34
-  - first:
-      213: 8264358311156820968
-    second: pomoHero_35
-  - first:
-      213: -5496569281749640788
-    second: pomoHero_36
-  - first:
-      213: -8787748541700671460
-    second: pomoHero_37
+      213: -8267500211280104414
+    second: pomoHero2_28
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -148,7 +121,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -158,7 +131,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -186,7 +159,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -224,727 +197,727 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pomoHero_0
+      name: pomoHero2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 3200
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1fa9f877744d38220800000000000000
-      internalID: 2487064822652312305
+      spriteID: f9ce233e3c4826710800000000000000
+      internalID: 1685055187455241375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_1
+      name: pomoHero2_1
       rect:
         serializedVersion: 2
-        x: 640
-        y: 3200
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 32
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e3dfc95bd7ecfdd50800000000000000
-      internalID: 6764352204646972734
+      spriteID: 03d4957d05e182f30800000000000000
+      internalID: 4550920756017057072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_2
+      name: pomoHero2_2
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 3200
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 64
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 81cedb6c720ea0fe0800000000000000
-      internalID: -1221917887434986472
+      spriteID: e8db7411b1c306890800000000000000
+      internalID: -7466902095228584562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_3
+      name: pomoHero2_3
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 3200
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 21369786b462bfbd0800000000000000
-      internalID: -2595438654931770606
+      spriteID: 48bc1aa59ea726d20800000000000000
+      internalID: 3270311422090922884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_4
+      name: pomoHero2_4
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 3200
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 128
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d2828d6353c82f880800000000000000
-      internalID: -8578640180006082515
+      spriteID: ee4f3ed6b7b42f160800000000000000
+      internalID: 7057786559539705070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_5
+      name: pomoHero2_5
       rect:
         serializedVersion: 2
-        x: 3199
-        y: 3199
-        width: 641
-        height: 641
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5f81f099810abfc30800000000000000
-      internalID: 4394281888937613557
+      spriteID: 5afb2132cc7ac2990800000000000000
+      internalID: -7409362791727710299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_6
+      name: pomoHero2_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 2560
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6897e0a696ecc9d40800000000000000
-      internalID: 5592571789433534854
+      spriteID: e831c09c608628620800000000000000
+      internalID: 2774894698765751182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_7
+      name: pomoHero2_7
       rect:
         serializedVersion: 2
-        x: 640
-        y: 2560
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0f793c3c8c9ceb680800000000000000
-      internalID: -8737324362937165840
+      spriteID: 36b9164cf361b1d20800000000000000
+      internalID: 3250216019211426659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_8
+      name: pomoHero2_8
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 2560
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6816c27b68be630b0800000000000000
-      internalID: -5749148910460575354
+      spriteID: 8015b73a6f2cbf600800000000000000
+      internalID: 503210147942453512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_9
+      name: pomoHero2_9
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 2560
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ad896a859d2074f30800000000000000
-      internalID: 4559616280254388442
+      spriteID: d18b74ae8b20257f0800000000000000
+      internalID: -625434405023270883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_10
+      name: pomoHero2_10
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 2560
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c08a8163c96b7850800000000000000
-      internalID: 6375805985349075136
+      spriteID: b46b7d8a7c24e08c0800000000000000
+      internalID: -4031211191151380917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_11
+      name: pomoHero2_11
       rect:
         serializedVersion: 2
-        x: 3200
-        y: 2560
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 160
+        y: 128
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 419afa337767f0e00800000000000000
-      internalID: 1013158695521986836
+      spriteID: b4595aa312799b330800000000000000
+      internalID: 3727176335599441227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_12
+      name: pomoHero2_12
       rect:
         serializedVersion: 2
         x: 0
-        y: 1920
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a42fd11a08621c750800000000000000
-      internalID: 6323377685705650762
+      spriteID: 5b029c55c7f44e260800000000000000
+      internalID: 7125907905840750773
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_13
+      name: pomoHero2_13
       rect:
         serializedVersion: 2
-        x: 640
-        y: 1920
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7a9feae3d6d17520800000000000000
-      internalID: 2698173857439652476
+      spriteID: 683302ed789dac000800000000000000
+      internalID: 57097122866017158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_14
+      name: pomoHero2_14
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 1920
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f5234a3b8590f1c80800000000000000
-      internalID: -8349944907545955745
+      spriteID: 07d01eac4ee5b8180800000000000000
+      internalID: -9112085084304765584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_15
+      name: pomoHero2_15
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 1920
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82cf21461efd10230800000000000000
-      internalID: 3603407336012708904
+      spriteID: b7131ffbd3d33bf80800000000000000
+      internalID: -8092056770032094853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_16
+      name: pomoHero2_16
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 1920
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 79032ed7f9580d630800000000000000
-      internalID: 3949803793262194839
+      spriteID: 600e23c3289bfac40800000000000000
+      internalID: 5525839236813742086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_17
+      name: pomoHero2_17
       rect:
         serializedVersion: 2
-        x: 3200
-        y: 1920
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 160
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eec626cd0ad1e2900800000000000000
-      internalID: 661498771999452398
+      spriteID: b2e6854874cabccb0800000000000000
+      internalID: -4842587551143793109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_18
+      name: pomoHero2_18
       rect:
         serializedVersion: 2
         x: 0
-        y: 1280
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3897ec411ee01d790800000000000000
-      internalID: -7507202743970399869
+      spriteID: e0c5a7310e10a2d40800000000000000
+      internalID: 5560258751853386766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_19
+      name: pomoHero2_19
       rect:
         serializedVersion: 2
-        x: 640
-        y: 1280
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ee6c437a796d3d80800000000000000
-      internalID: -8269337366141047072
+      spriteID: bcb871486e08dd5e0800000000000000
+      internalID: -1883207341624030261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_20
+      name: pomoHero2_20
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 1280
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bec6f9e45cb23c6e0800000000000000
-      internalID: -1818561698099925781
+      spriteID: e7e47e89645bd13e0800000000000000
+      internalID: -2081308137957667202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_21
+      name: pomoHero2_21
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 1280
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4e21c40542ae1780800000000000000
-      internalID: -8710346211971748274
+      spriteID: 2cca086fd7a15d4f0800000000000000
+      internalID: -804707830106903358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_22
+      name: pomoHero2_22
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 1280
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9818ca392255dae00800000000000000
-      internalID: 1057595094496739721
+      spriteID: 533dbbe415975d340800000000000000
+      internalID: 4887946360700785461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_23
+      name: pomoHero2_23
       rect:
         serializedVersion: 2
-        x: 3200
-        y: 1280
-        width: 640
-        height: 640
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 402dae1c2bda21a80800000000000000
-      internalID: -8497538563625528828
+      spriteID: badfc101215a78b40800000000000000
+      internalID: 5442500171698863531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_24
+      name: pomoHero2_24
       rect:
         serializedVersion: 2
         x: 0
-        y: 640
-        width: 640
-        height: 640
+        y: 32
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: -4.9375, y: -0.5694445}
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 16181812dd80aae40800000000000000
-      internalID: 5668352826842120545
+      spriteID: 0fdc371db61761b10800000000000000
+      internalID: 1951872196401155568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_25
+      name: pomoHero2_25
       rect:
         serializedVersion: 2
-        x: 640
-        y: 640
-        width: 640
-        height: 640
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: -4.9375, y: -0.5694445}
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5cd84e80d2c91fb80800000000000000
-      internalID: -8362731315813642811
+      spriteID: f9353f395b7097220800000000000000
+      internalID: 2484025145924211615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_26
+      name: pomoHero2_26
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 640
-        width: 640
-        height: 640
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: -4.9375, y: -0.5694445}
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e7e2af9184e43c7d0800000000000000
-      internalID: -2899387663516029314
+      spriteID: 456f5723a44469bb0800000000000000
+      internalID: -4929677656645568940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_27
+      name: pomoHero2_27
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 640
-        width: 640
-        height: 640
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: -4.9375, y: -0.5694445}
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c4a642509e393fcd0800000000000000
-      internalID: -2525512337001780660
+      spriteID: 7d4a05c64173d8520800000000000000
+      internalID: 2705879511975634135
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_28
+      name: pomoHero2_28
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 640
-        width: 640
-        height: 640
+        x: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: -4.9375, y: -0.5694445}
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 44fd89b51db0a9f70800000000000000
-      internalID: 9194674583043104580
+      spriteID: 224be266c50f34d80800000000000000
+      internalID: -8267500211280104414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_29
+      name: pomoHero2_29
       rect:
         serializedVersion: 2
-        x: 3200
-        y: 640
-        width: 640
-        height: 640
+        x: 160
+        y: 32
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: -4.9375, y: -0.5694445}
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3525cbae8bf0815b0800000000000000
-      internalID: -5397546866516929965
+      spriteID: 5b781c1d155cf204aab80b784cb3c077
+      internalID: -2121262970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_30
+      name: pomoHero2_30
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 640
-        height: 640
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: -4.9375, y: -0.5694445}
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 11a715ce72ec0ede0800000000000000
-      internalID: -1305817221073634799
+      spriteID: ad46d3dba5464524b8a220df2443f47e
+      internalID: -980825851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_31
+      name: pomoHero2_31
       rect:
         serializedVersion: 2
-        x: 640
+        x: 32
         y: 0
-        width: 640
-        height: 640
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: -4.9375, y: -0.5694445}
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f75515fdaccd87710800000000000000
-      internalID: 1691344423965775231
+      spriteID: 1e27c6a0f8da4184b8173aa990651d8b
+      internalID: -1584542668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pomoHero_32
+      name: pomoHero2_32
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 64
         y: 0
-        width: 640
-        height: 640
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: -4.9375, y: -0.5694445}
+      pivot: {x: 0.506127, y: 0.5061276}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 230efa766a69078f0800000000000000
-      internalID: -544769913463513038
+      spriteID: 5c2a4a67aae8b18468255dd0d7f7c4f1
+      internalID: 1347109864
       vertices: []
       indices: 
       edges: []
@@ -953,7 +926,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ec7ddae3050a22f49a7b31f41aad10a5
+    spriteID: e7bf355d78504a641bc379744836f51e
     internalID: 0
     vertices: []
     indices: 
@@ -963,44 +936,39 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pomoHero_0: 2487064822652312305
-      pomoHero_1: 6764352204646972734
-      pomoHero_10: 6375805985349075136
-      pomoHero_11: 1013158695521986836
-      pomoHero_12: 6323377685705650762
-      pomoHero_13: 2698173857439652476
-      pomoHero_14: -8349944907545955745
-      pomoHero_15: 3603407336012708904
-      pomoHero_16: 3949803793262194839
-      pomoHero_17: 661498771999452398
-      pomoHero_18: -7507202743970399869
-      pomoHero_19: -8269337366141047072
-      pomoHero_2: -1221917887434986472
-      pomoHero_20: -1818561698099925781
-      pomoHero_21: -8710346211971748274
-      pomoHero_22: 1057595094496739721
-      pomoHero_23: -8497538563625528828
-      pomoHero_24: 5668352826842120545
-      pomoHero_25: -8362731315813642811
-      pomoHero_26: -2899387663516029314
-      pomoHero_27: -2525512337001780660
-      pomoHero_28: 9194674583043104580
-      pomoHero_29: -5397546866516929965
-      pomoHero_3: -2595438654931770606
-      pomoHero_30: -1305817221073634799
-      pomoHero_31: 1691344423965775231
-      pomoHero_32: -544769913463513038
-      pomoHero_33: 5994383909464498835
-      pomoHero_34: 3956640276919705020
-      pomoHero_35: 8264358311156820968
-      pomoHero_36: -5496569281749640788
-      pomoHero_37: -8787748541700671460
-      pomoHero_4: -8578640180006082515
-      pomoHero_5: 4394281888937613557
-      pomoHero_6: 5592571789433534854
-      pomoHero_7: -8737324362937165840
-      pomoHero_8: -5749148910460575354
-      pomoHero_9: 4559616280254388442
+      pomoHero2_0: 1685055187455241375
+      pomoHero2_1: 4550920756017057072
+      pomoHero2_10: -4031211191151380917
+      pomoHero2_11: 3727176335599441227
+      pomoHero2_12: 7125907905840750773
+      pomoHero2_13: 57097122866017158
+      pomoHero2_14: -9112085084304765584
+      pomoHero2_15: -8092056770032094853
+      pomoHero2_16: 5525839236813742086
+      pomoHero2_17: -4842587551143793109
+      pomoHero2_18: 5560258751853386766
+      pomoHero2_19: -1883207341624030261
+      pomoHero2_2: -7466902095228584562
+      pomoHero2_20: -2081308137957667202
+      pomoHero2_21: -804707830106903358
+      pomoHero2_22: 4887946360700785461
+      pomoHero2_23: 5442500171698863531
+      pomoHero2_24: 1951872196401155568
+      pomoHero2_25: 2484025145924211615
+      pomoHero2_26: -4929677656645568940
+      pomoHero2_27: 2705879511975634135
+      pomoHero2_28: -8267500211280104414
+      pomoHero2_29: -2121262970
+      pomoHero2_3: 3270311422090922884
+      pomoHero2_30: -980825851
+      pomoHero2_31: -1584542668
+      pomoHero2_32: 1347109864
+      pomoHero2_4: 7057786559539705070
+      pomoHero2_5: -7409362791727710299
+      pomoHero2_6: 2774894698765751182
+      pomoHero2_7: 3250216019211426659
+      pomoHero2_8: 503210147942453512
+      pomoHero2_9: -625434405023270883
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

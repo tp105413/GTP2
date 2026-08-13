@@ -26,5 +26,6 @@ public class PlayerCombat : MonoBehaviour
     public void Attack()
     {
         attackTarget.TakeDamage(playerStats.AttackDamage, playerStats);
+        GetComponent<Animator>().SetTrigger("AttackTrigger");
     }
 }
