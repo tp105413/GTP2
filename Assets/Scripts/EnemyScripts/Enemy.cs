@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private PlayerCombat playerCombat;
     [SerializeField] private EnemyUI enemyUI;
+    [SerializeField] private GameObject DamagePopUpPrefab;
+    [SerializeField] private Transform canvasTransform;
+    [SerializeField] private Image Healthbar;
+    [SerializeField] private float HealthAmount;
 
     private CountdownTimer countdownTimer;
 
@@ -92,6 +97,7 @@ public class Enemy : MonoBehaviour
 
         Debug.Log("Enemy is taking " + damage + " damage!");
         currentHealth -= damage;
+        Healthbar.fillAmount = HealthAmount / 100f; // health component
 
         if (currentHealth <= 0)
         {
@@ -131,5 +137,51 @@ public class Enemy : MonoBehaviour
     private void HandleTimerStop()
     {
         RunAway();
+    }
+
+    private void DamageUI(int damageToShow)
+    {
+        if (canvasTransform == null)
+        {
+            GameObject mainCanvas = GameObject.Find("Canvas");
+            if (mainCanvas != null)
+            {
+                canvasTransform = mainCanvas.transform;
+            }
+        }
+
+        if (DamagePopUpPrefab == null || canvasTransform == null) return;
+
+
+        GameObject PopUp = Instantiate(DamagePopUpPrefab, canvasTransform);
+
+
+        Camera uiCamera = Camera.main;
+        if (uiCamera != null)
+        {
+            Vector3 screenPos = uiCamera.WorldToScreenPoint(transform.position + Vector3.up * 2f);
+            RectTransform canvasRect = canvasTransform.GetComponent<RectTransform>();
+            RectTransform popupRect = PopUp.GetComponent<RectTransform>();
+
+            if (canvasRect != null && popupRect != null)
+            {
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                    canvasRect,
+                    screenPos,
+                    uiCamera,
+                    out Vector2 localPoint
+                );
+                popupRect.anchoredPosition = localPoint;
+            }
+        }
+
+
+        DamagePopup popup = PopUp.GetComponent<DamagePopup>();
+
+        if (popup != null)
+        {
+            popup.Setup(damageToShow);
+        }
+
     }
 }

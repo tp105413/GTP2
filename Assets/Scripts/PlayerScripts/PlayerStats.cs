@@ -39,11 +39,14 @@ public class PlayerStats : MonoBehaviour
     public void AddGold(int amount)
     {
         gold += amount;
+        ResourceManager.Instance.UpdateGold(gold);
     }
 
     public void AddSouls(int amount)
     {
         souls += amount;
+        ResourceManager.Instance.UpdateSoul(souls);
+
     }
 
     public void SpendGold(int amount)

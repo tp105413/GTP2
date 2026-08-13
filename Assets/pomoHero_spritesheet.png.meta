@@ -149,10 +149,10 @@ TextureImporter:
       name: pomoHero_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 79
-        y: 1399
-        width: 302
-        height: 342
+        x: 0
+        y: 1280
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +171,10 @@ TextureImporter:
       name: pomoHero_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 699
-        y: 1404
-        width: 322
-        height: 322
+        x: 640
+        y: 1280
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,10 +193,10 @@ TextureImporter:
       name: pomoHero_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 1339
-        y: 1399
-        width: 322
-        height: 302
+        x: 1280
+        y: 1280
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,10 +215,10 @@ TextureImporter:
       name: pomoHero_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 1979
-        y: 1399
-        width: 322
-        height: 322
+        x: 1920
+        y: 1280
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,10 +259,10 @@ TextureImporter:
       name: pomoHero_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 119
-        y: 759
-        width: 522
-        height: 422
+        x: 0
+        y: 640
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,10 +281,10 @@ TextureImporter:
       name: pomoHero_spritesheet_6
       rect:
         serializedVersion: 2
-        x: 799
-        y: 759
-        width: 462
-        height: 462
+        x: 640
+        y: 640
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,10 +303,10 @@ TextureImporter:
       name: pomoHero_spritesheet_7
       rect:
         serializedVersion: 2
-        x: 1439
-        y: 759
-        width: 402
-        height: 482
+        x: 1280
+        y: 640
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,10 +325,10 @@ TextureImporter:
       name: pomoHero_spritesheet_8
       rect:
         serializedVersion: 2
-        x: 1919
-        y: 759
-        width: 641
-        height: 262
+        x: 1920
+        y: 640
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -348,9 +348,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 119
-        width: 421
-        height: 282
+        y: 0
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -369,10 +369,10 @@ TextureImporter:
       name: pomoHero_spritesheet_10
       rect:
         serializedVersion: 2
-        x: 419
-        y: 179
-        width: 202
-        height: 162
+        x: 640
+        y: 0
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,28 +383,6 @@ TextureImporter:
       bones: []
       spriteID: 8e9868835c9c17b70800000000000000
       internalID: 8895112587927521768
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pomoHero_spritesheet_11
-      rect:
-        serializedVersion: 2
-        x: 659
-        y: 119
-        width: 382
-        height: 322
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c74aba86238bae200800000000000000
-      internalID: 210182859270104188
       vertices: []
       indices: 
       edges: []
