@@ -74,7 +74,7 @@ public class CountdownTimer : MonoBehaviour
         if (isTimerRunning) return;
 
         sliderTicks = ticks;
-        totalDurationInSeconds = 1800f * ticks;
+        totalDurationInSeconds = 600f * ticks;
         timeRemaining = TimeSpan.FromSeconds(totalDurationInSeconds);
     }
 }

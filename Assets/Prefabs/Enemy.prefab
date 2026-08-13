@@ -128,6 +128,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   playerCombat: {fileID: 0}
   enemyUI: {fileID: 0}
+  DamagePopUpPrefab: {fileID: 0}
+  canvasTransform: {fileID: 0}
+  Healthbar: {fileID: 0}
+  HealthAmount: 0
 --- !u!114 &6843666053488868530
 MonoBehaviour:
   m_ObjectHideFlags: 0

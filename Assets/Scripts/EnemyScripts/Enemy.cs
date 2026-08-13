@@ -97,7 +97,7 @@ public class Enemy : MonoBehaviour
 
         Debug.Log("Enemy is taking " + damage + " damage!");
         currentHealth -= damage;
-        Healthbar.fillAmount = HealthAmount / 100f; // health component
+        //Healthbar.fillAmount = HealthAmount / 100f; // health component
 
         if (currentHealth <= 0)
         {
