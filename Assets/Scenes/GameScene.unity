@@ -4083,6 +4083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   countdownTimer: {fileID: 0}
+  playerAnimator: {fileID: 0}
 --- !u!114 &825141350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4159,6 +4160,8 @@ GameObject:
   - component: {fileID: 866018545}
   - component: {fileID: 866018546}
   - component: {fileID: 866018549}
+  - component: {fileID: 866018551}
+  - component: {fileID: 866018550}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4202,14 +4205,14 @@ RectTransform:
   m_GameObject: {fileID: 866018544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1691400741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -98, y: -119}
+  m_AnchoredPosition: {x: -176, y: -126}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &866018549
@@ -4220,6 +4223,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866018544}
   m_CullTransparentMesh: 1
+--- !u!95 &866018550
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866018544}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd002bf8523c44a45b6b32d21155717e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &866018551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866018544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 4550920756017057072, guid: 0a1a02149b77d884db21a10b2f3d301d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &883168108
 GameObject:
   m_ObjectHideFlags: 0
@@ -6152,6 +6207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScollingAnimation
   countdownTimer: {fileID: 1316339995}
+  playerAnimator: {fileID: 866018550}
 --- !u!111 &1319848127
 Animation:
   m_ObjectHideFlags: 0
@@ -6165,12 +6221,6 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: c9e30e07fb1858a478ea67a7cfdefcf1, type: 2}
   - {fileID: 7400000, guid: 8eaeed5741978c044b09ae85d8a47918, type: 2}
-  - {fileID: 7400000, guid: 451c9c626e0419448bb44bd665c860b9, type: 2}
-  - {fileID: 7400000, guid: b0c8e92d8420dbf449b565f9ac0bc58b, type: 2}
-  - {fileID: 7400000, guid: b2ed16eb6872e9f40800a06d8aa421ea, type: 2}
-  - {fileID: 7400000, guid: cd65e0e3afb542d4ab6bb1bf04a378bd, type: 2}
-  - {fileID: 7400000, guid: ae50ba29f492a5f41b7a880f2d5202c2, type: 2}
-  - {fileID: 7400000, guid: 7b3447022c3566a4eb0b1676b1f73bfa, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
