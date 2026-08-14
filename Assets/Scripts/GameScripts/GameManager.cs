@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private int gameLevel = 1;
     private int remainingEnemyCount = 5;
     private bool bossSpawned = false;
+    private Animator playerAnimator;
 
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private CountdownTimer countdownTimer;
@@ -52,6 +53,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         countdownTimer.StartTimer();
         enemySpawner.SpawnEnemy(gameLevel);
+
+        //playerAnimator.Play("walking", 1, 0f); // Animator
+        //playerAnimator.SetTrigger("ToAttack");  //Animator
     } 
 
     public void OnStopButtonClick()
