@@ -46,7 +46,7 @@ public class ScrollingAnimation : MonoBehaviour
             Debug.Log("AttackToIdle");
 
             playerAnimator.SetLayerWeight(1, 0f);
-            playerAnimator.Play("sitting down from idle 0", 0, 0f); 
+            playerAnimator.Play("sitting down from idle", 0, 0f); 
             playerAnimator.SetTrigger("ToIdle");
         }
     }
