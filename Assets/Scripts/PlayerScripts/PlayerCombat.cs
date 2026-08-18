@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private PlayerUI playerUI;
 
     private Enemy attackTarget;
     private float attackTimer = 0f;
@@ -26,6 +27,6 @@ public class PlayerCombat : MonoBehaviour
     public void Attack()
     {
         attackTarget.TakeDamage(playerStats.AttackDamage, playerStats);
-        GetComponent<Animator>().SetTrigger("AttackTrigger");
+        playerUI.PlayAttackTrigger();
     }
 }

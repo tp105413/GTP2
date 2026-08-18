@@ -5,13 +5,12 @@ using UnityEngine.UI;
 public class ScrollingAnimation : MonoBehaviour
 { 
     [SerializeField] private CountdownTimer countdownTimer;
+    [SerializeField] private PlayerUI playerUI;
 
 
     private Animation scrollAnimation;
 
-    public Animator playerAnimator;
-
-    private bool isAttack = false;
+    private bool isTimerStarted = false;
 
     void Start()
     {
@@ -22,32 +21,23 @@ public class ScrollingAnimation : MonoBehaviour
     {
         if (scrollAnimation == null)
         {
-            Debug.LogError("Animation File Lose");
             return;
         }
 
 
-        if (!isAttack)
+        if (!isTimerStarted)
         {
             if (countdownTimer.TimeRemaining == TimeSpan.Zero) return;
 
             scrollAnimation.Play("UI_ScrollDown");
-            isAttack = true;
-            Debug.Log("IdleToAttack");
-
-            playerAnimator.SetLayerWeight(1, 1f);
-            playerAnimator.Play("walking", 1, 0f);
-            playerAnimator.SetTrigger("ToAttack");
+            isTimerStarted = true;
+            playerUI.PlayerIdleToAttack();
         }
         else
         {
             scrollAnimation.Play("UI_ScrollUp");
-            isAttack = false;
-            Debug.Log("AttackToIdle");
-
-            playerAnimator.SetLayerWeight(1, 0f);
-            playerAnimator.Play("sitting down from idle", 0, 0f); 
-            playerAnimator.SetTrigger("ToIdle");
+            isTimerStarted = false;
+            playerUI.PlayerAttackToIdle();
         }
     }
 }

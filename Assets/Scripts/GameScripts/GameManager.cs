@@ -1,6 +1,4 @@
 using System;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
 
@@ -8,16 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    // control whole game function!
-    public bool isGameRunning = false;
-
     public bool isAttacking = false;
     public float worldMoveSpeed = 0f;
 
     private int gameLevel = 1;
     private int remainingEnemyCount = 5;
     private bool bossSpawned = false;
-    private Animator playerAnimator;
 
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private CountdownTimer countdownTimer;
@@ -25,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        // Only 1 Game Manager exist, if found another delete it
         if(Instance == null)
         {
             Instance = this;
@@ -42,9 +37,6 @@ public class GameManager : MonoBehaviour
 
         // coroutine
         StartCoroutine(WaitForScrollCompleted());
-
-        //countdownTimer.StartTimer();
-        //enemySpawner.SpawnEnemy(gameLevel);
     }
 
     IEnumerator WaitForScrollCompleted()
@@ -53,9 +45,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         countdownTimer.StartTimer();
         enemySpawner.SpawnEnemy(gameLevel);
-
-        //playerAnimator.Play("walking", 1, 0f); // Animator
-        //playerAnimator.SetTrigger("ToAttack");  //Animator
     } 
 
     public void OnStopButtonClick()

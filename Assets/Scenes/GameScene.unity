@@ -4083,7 +4083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   countdownTimer: {fileID: 0}
-  playerAnimator: {fileID: 0}
+  playerUI: {fileID: 0}
 --- !u!114 &825141350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4162,6 +4162,7 @@ GameObject:
   - component: {fileID: 866018549}
   - component: {fileID: 866018551}
   - component: {fileID: 866018550}
+  - component: {fileID: 866018552}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4182,6 +4183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   playerStats: {fileID: 866018546}
+  playerUI: {fileID: 866018552}
 --- !u!114 &866018546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4275,6 +4277,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &866018552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866018544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a95a36509be3254ab41e22b6b9cede8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUI
+  playerAnimator: {fileID: 866018550}
 --- !u!1 &883168108
 GameObject:
   m_ObjectHideFlags: 0
@@ -6166,7 +6181,7 @@ GameObject:
   - component: {fileID: 1319848126}
   - component: {fileID: 1319848130}
   m_Layer: 5
-  m_Name: 1
+  m_Name: ViewPort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6207,7 +6222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScollingAnimation
   countdownTimer: {fileID: 1316339995}
-  playerAnimator: {fileID: 866018550}
+  playerUI: {fileID: 866018552}
 --- !u!111 &1319848127
 Animation:
   m_ObjectHideFlags: 0
@@ -7181,7 +7196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d8d0c3d29bb6b4e8dfa84d37f5beb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  isGameRunning: 0
   isAttacking: 0
   worldMoveSpeed: 200
   enemySpawner: {fileID: 1228558511}
