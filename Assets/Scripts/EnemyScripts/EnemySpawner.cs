@@ -5,7 +5,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private PlayerCombat playerCombat;
     [SerializeField] private CountdownTimer countdownTimer;
-
     [SerializeField] private RectTransform containerParent;
     [SerializeField] private Vector2 spawnPosition = new Vector2(0f, 0f);
 

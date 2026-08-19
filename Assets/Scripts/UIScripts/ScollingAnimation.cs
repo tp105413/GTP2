@@ -19,11 +19,7 @@ public class ScrollingAnimation : MonoBehaviour
 
     public void ToggleScrollPosition()
     {
-        if (scrollAnimation == null)
-        {
-            return;
-        }
-
+        if (scrollAnimation == null) return;
 
         if (!isTimerStarted)
         {

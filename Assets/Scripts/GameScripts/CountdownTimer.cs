@@ -11,28 +11,20 @@ public class CountdownTimer : MonoBehaviour
     private bool isTimerRunning = false;
     private bool isTimerPaused = false;
 
-    // read only
+    // Read only
     public TimeSpan TimeRemaining => timeRemaining;
     public bool IsTimerRunning => isTimerRunning;
     public bool IsTimerPaused => isTimerPaused;
 
     public event Action OnTimerStop;
 
-    public void StartTimer()
-    {
-        if(timeRemaining == TimeSpan.Zero)
-        {
-            SetDuration(sliderTicks);
-        }
-
-        isTimerRunning = true;
-        isTimerPaused = false;
-    }
 
     void Update()
     {
+        // Stop update while the timer is stopped or paused
         if (!isTimerRunning || isTimerPaused) return;
         
+        // Decrease the remaining time until the timer reaches 0
         if(timeRemaining > TimeSpan.Zero)
         {
             timeRemaining -= TimeSpan.FromSeconds(Time.deltaTime);
@@ -44,11 +36,19 @@ public class CountdownTimer : MonoBehaviour
         }
     }
 
+    public void StartTimer()
+    {
+        isTimerRunning = true;
+        isTimerPaused = false;
+    }
+
+    // Stop the timer when the countdown reaches 0
     public void TimerFinished()
     {
         isTimerRunning = false;
     }
 
+    // Stop and reset the timer
     public void StopTimer()
     {
         isTimerRunning = false;
@@ -56,6 +56,7 @@ public class CountdownTimer : MonoBehaviour
         OnTimerStop?.Invoke();
     }
 
+    // Toggle the timer between paused and running states
     public void PauseTimer()
     {
         if (!isTimerPaused) 
@@ -71,6 +72,7 @@ public class CountdownTimer : MonoBehaviour
         }
     }
 
+    // Set the timer duration if it is not running
     public void SetDuration(float ticks)
     {
         if (isTimerRunning) return;

@@ -27,7 +27,6 @@ public class Enemy : MonoBehaviour
         CalculateHealth(level, type);
         CalculateGoldDrop(level, type);
         CalcualateSoulsDrop(level, type);
-        Debug.Log(type + " Health: " + currentHealth);
     }
 
     void Awake()

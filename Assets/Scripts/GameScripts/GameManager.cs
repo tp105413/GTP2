@@ -15,11 +15,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private CountdownTimer countdownTimer;
-    [SerializeField] private ScrollingAnimation scrollingAnimation;
+
 
     private void Awake()
     {
-        // Only 1 Game Manager exist, if found another delete it
+        // Check only 1 Game Manager instance exists and destroy duplicates
         if(Instance == null)
         {
             Instance = this;
@@ -32,67 +32,89 @@ public class GameManager : MonoBehaviour
 
     public void OnStartButtonClick()
     {
-        // will change
+        // Exit when timer is set to 0
         if (countdownTimer.TimeRemaining == TimeSpan.Zero) return;
 
-        // coroutine
         StartCoroutine(WaitForScrollCompleted());
     }
 
+    // Start the game after the scroll animation is completed
     IEnumerator WaitForScrollCompleted()
     {
-        // need to be modify
         yield return new WaitForSeconds(1.5f);
-        countdownTimer.StartTimer();
-        enemySpawner.SpawnEnemy(gameLevel);
+        StartGame();
     } 
 
     public void OnStopButtonClick()
     {
-        countdownTimer.StopTimer();
-        RemainingEnemyCountReset();
+        StopGame();
     }
 
     public void OnPauseButtonClick()
     {
-        if (!countdownTimer.IsTimerPaused)
-        {
-            countdownTimer.PauseTimer();
-        }
-        else
-        {
-            countdownTimer.PauseTimer();
-            enemySpawner.SpawnEnemy(gameLevel);
-        }
+        PauseGame();
     }
 
     public void GameLevelUp()
     {
         gameLevel++;
-        Debug.Log("Game Level: " + gameLevel);
     }
 
+    // Handle enemy defeat and spawn the next enemy, boss or level
     public void EnemyDefeated()
     {
         remainingEnemyCount--;
 
+        // Spawn the next enemy if enemies remain
         if(remainingEnemyCount > 0)
         {
             enemySpawner.SpawnEnemy(gameLevel);
         }
+        // Spawn boss when all enemies are defeated
         else if (!bossSpawned)
         {
             enemySpawner.SpawnBoss(gameLevel);
             bossSpawned = true;
         }
+        // Level up and start the next wave after boss is defeated
         else if(bossSpawned)
         {
             GameLevelUp();
-            // every 5 level + 1 enemy
             RemainingEnemyCountReset();
             bossSpawned = false;
             enemySpawner.SpawnEnemy(gameLevel);
         }
+    }
+
+    public void StartGame()
+    {
+        countdownTimer.StartTimer();
+        enemySpawner.SpawnEnemy(gameLevel);
+    }
+
+    public void StopGame()
+    {
+        countdownTimer.StopTimer();
+        RemainingEnemyCountReset();
+    }
+
+    public void PauseGame()
+    {
+        if (!countdownTimer.IsTimerPaused)
+        {
+            countdownTimer.PauseTimer(); // Pause the timer
+        }
+        else
+        {
+            countdownTimer.PauseTimer();
+            enemySpawner.SpawnEnemy(gameLevel); // Resume the timer
+        }
+    }
+
+    // Reset and increase enemy count by 1 every 5 levels
+    public void RemainingEnemyCountReset()
+    {
+        remainingEnemyCount = 5 + (gameLevel - 1) / 5;
     }
 
     public void StartAttack()
@@ -104,11 +126,5 @@ public class GameManager : MonoBehaviour
     public void EndAttack()
     {
         isAttacking = false;
-    }
-
-    public void RemainingEnemyCountReset()
-    {
-        Debug.Log("Remaining reset: " + remainingEnemyCount);
-        remainingEnemyCount = 5 + (gameLevel - 1) / 5;
     }
 }
