@@ -5,7 +5,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private int gold = 0;
     [SerializeField] private int souls = 0;
 
-    // read only
+    // Read-only from other classes
     public int Gold => gold;
     public int Souls => souls;
     
@@ -15,7 +15,7 @@ public class PlayerStats : MonoBehaviour
     private int criticalChance = 0;
     private int criticalDamage = 0;
 
-    // read only
+    // Read-only from other classes
     public int AttackDamage => attackDamage;
     public float AttackInterval => attackInterval;
     public float AttackSpeed => attackSpeed;
@@ -29,6 +29,7 @@ public class PlayerStats : MonoBehaviour
     private int criticalChanceLevel = 1;
     private int criticalDamageLevel = 1;
 
+    // Read-only from other classes
     public int PlayerLevel => playerLevel;
     public int AttackDamageLevel => attackDamageLevel;
     public int AttackIntervalLevel => attackIntervalLevel;

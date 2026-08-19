@@ -10,6 +10,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
+        // Track attack cooldown based on frame time
         attackTimer += Time.deltaTime;
 
         if(attackTimer >= playerStats.AttackInterval && attackTarget != null)
@@ -19,11 +20,13 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    // Set enemy target for player
     public void SetTarget(Enemy enemy)
     {
         attackTarget = enemy;
     }
 
+    // Deal damage and trigger attack animation
     public void Attack()
     {
         attackTarget.TakeDamage(playerStats.AttackDamage, playerStats);

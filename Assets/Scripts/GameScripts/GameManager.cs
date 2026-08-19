@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public bool isGameRunning = false;
     public bool isAttacking = false;
     public float worldMoveSpeed = 0f;
 
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private CountdownTimer countdownTimer;
+    [SerializeField] private PlayerUI playerUI;
 
 
     private void Awake()
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void OnStartButtonClick()
     {
-        // Exit when timer is set to 0
+        // Exit when Timer is set to 0
         if (countdownTimer.TimeRemaining == TimeSpan.Zero) return;
 
         StartCoroutine(WaitForScrollCompleted());
@@ -86,28 +88,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Start and initialize the game
     public void StartGame()
     {
+        isGameRunning = true;
         countdownTimer.StartTimer();
         enemySpawner.SpawnEnemy(gameLevel);
+        playerUI.StartRunningAnimation();
     }
 
+    // Stop the game and reset its state
     public void StopGame()
     {
+        isGameRunning = false;
         countdownTimer.StopTimer();
         RemainingEnemyCountReset();
+        playerUI.StopRunningAnimation();
     }
 
+    // Pause the game and preserve its current state
     public void PauseGame()
     {
-        if (!countdownTimer.IsTimerPaused)
+        if (isGameRunning)
         {
+            isGameRunning = false;
             countdownTimer.PauseTimer(); // Pause the timer
+            playerUI.StopRunningAnimation();
         }
         else
         {
-            countdownTimer.PauseTimer();
-            enemySpawner.SpawnEnemy(gameLevel); // Resume the timer
+            isGameRunning = true;
+            countdownTimer.PauseTimer(); // Resume the timer
+            enemySpawner.SpawnEnemy(gameLevel);
+            playerUI.StartRunningAnimation();
         }
     }
 
@@ -117,14 +130,17 @@ public class GameManager : MonoBehaviour
         remainingEnemyCount = 5 + (gameLevel - 1) / 5;
     }
 
+    // Set the player attack state to active
     public void StartAttack()
     {
         isAttacking = true;
-        // attack animation call playerUI here
+        playerUI.StartAttackAnimation();
     }
 
+    // Set the player attack state to inactive
     public void EndAttack()
     {
         isAttacking = false;
+        playerUI.StopAttackAnimation();
     }
 }

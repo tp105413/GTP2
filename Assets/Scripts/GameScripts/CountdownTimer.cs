@@ -11,11 +11,12 @@ public class CountdownTimer : MonoBehaviour
     private bool isTimerRunning = false;
     private bool isTimerPaused = false;
 
-    // Read only
+    // Read-only from other classes
     public TimeSpan TimeRemaining => timeRemaining;
     public bool IsTimerRunning => isTimerRunning;
     public bool IsTimerPaused => isTimerPaused;
 
+    // Invoke when timer stops
     public event Action OnTimerStop;
 
 

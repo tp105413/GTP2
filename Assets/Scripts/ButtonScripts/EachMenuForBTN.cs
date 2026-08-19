@@ -6,6 +6,7 @@ public class EachMenuForBTN : MonoBehaviour
 
     public int MenuNumber;
 
+    // Close all menus and open the selected menu
     public void OpenMenu()
     {
         for (int i = 0; i < PopMenu.Length; i++)

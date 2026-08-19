@@ -4,22 +4,33 @@ public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private Animator playerAnimator;
 
-    public void PlayerIdleToAttack()
+    // Start the running animation
+    public void StartRunningAnimation()
     {
-        playerAnimator.SetLayerWeight(1, 1f);
-        playerAnimator.Play("walking", 1, 0f);
-        playerAnimator.SetTrigger("ToAttack");
+        playerAnimator.SetBool("IsRunning", true);
     }
 
-    public void PlayerAttackToIdle()
+    // Stop the running animation
+    public void StopRunningAnimation()
     {
-        playerAnimator.SetLayerWeight(1, 0f);
-        playerAnimator.Play("sitting down from idle", 0, 0f);
-        playerAnimator.SetTrigger("ToIdle");
+        playerAnimator.SetBool("IsRunning", false);
     }
 
+    // Trigger the attack animation once
     public void PlayAttackTrigger()
     {
-        playerAnimator.SetTrigger("AttackTrigger");
+        playerAnimator.SetTrigger("Attack");
+    }
+
+    // Set player to attack state, switching between attack and idle animation
+    public void StartAttackAnimation()
+    {
+        playerAnimator.SetBool("HasTarget", true);
+    }
+
+    // Set player back to running state
+    public void StopAttackAnimation()
+    {
+        playerAnimator.SetBool("HasTarget", false);
     }
 }

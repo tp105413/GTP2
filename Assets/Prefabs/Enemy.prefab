@@ -144,4 +144,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089c6f5fb8855f3438074d4c5721f803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUI
-  stopAtPositionX: -91
+  stopAtPositionX: 0

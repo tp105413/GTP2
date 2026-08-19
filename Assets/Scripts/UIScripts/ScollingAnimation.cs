@@ -1,12 +1,9 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ScrollingAnimation : MonoBehaviour
 { 
     [SerializeField] private CountdownTimer countdownTimer;
-    [SerializeField] private PlayerUI playerUI;
-
 
     private Animation scrollAnimation;
 
@@ -14,26 +11,29 @@ public class ScrollingAnimation : MonoBehaviour
 
     void Start()
     {
+        // Get the Animation component attached to the same Game Object
         scrollAnimation = GetComponent<Animation>();
     }
 
     public void ToggleScrollPosition()
     {
+        // Exit if Animation component is not found
         if (scrollAnimation == null) return;
 
         if (!isTimerStarted)
         {
+            // Exit when Timer is set to 0
             if (countdownTimer.TimeRemaining == TimeSpan.Zero) return;
 
+            // Play scroll down animation and mark the timer as started
             scrollAnimation.Play("UI_ScrollDown");
             isTimerStarted = true;
-            playerUI.PlayerIdleToAttack();
         }
         else
         {
+            // Play scroll up animation and mark the timer as stopped
             scrollAnimation.Play("UI_ScrollUp");
             isTimerStarted = false;
-            playerUI.PlayerAttackToIdle();
         }
     }
 }
