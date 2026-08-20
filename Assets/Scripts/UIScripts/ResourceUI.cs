@@ -11,6 +11,7 @@ public class ResourceUI : MonoBehaviour
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI soulText;
 
+
     private void OnEnable()
     {
         // OnEnable() is running before ResourceManager to awake

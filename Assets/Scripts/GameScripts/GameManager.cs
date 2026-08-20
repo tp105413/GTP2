@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // Check only 1 Game Manager instance exists and destroy duplicates
+        // Check only 1 GameManager instance exists and destroy duplicates
         if(Instance == null)
         {
             Instance = this;

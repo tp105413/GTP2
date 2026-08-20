@@ -8,10 +8,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private RectTransform containerParent;
     [SerializeField] private Vector2 spawnPosition = new Vector2(0f, 0f);
 
+
     public void SpawnEnemy(int level) => Spawn(level, "Enemy");
 
     public void SpawnBoss(int level) => Spawn(level, "Boss");
-
+    
+    // Spawn and initialize the enemy
     private void Spawn(int level, string type)
     {
         Enemy enemy = Instantiate(enemyPrefab, containerParent);

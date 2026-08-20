@@ -8,17 +8,22 @@ public class EnemyUI : MonoBehaviour
     private RectTransform rectTransform;
     private bool hasReachedPlayer = false;
 
+    // Invoked when the player is reached
     public event Action OnReachedPlayer;
+
 
     void Awake()
     {
+        // Get the RectTransform component attached to the same GameObject
         rectTransform = GetComponent<RectTransform>();
     }
 
     void Update()
     {
+        // Stop updating once player is reached
         if (hasReachedPlayer) return;
 
+        // Move left until the stop position is reached
         if(rectTransform.anchoredPosition.x > stopAtPositionX)
         {
             rectTransform.anchoredPosition += Vector2.left * GameManager.Instance.worldMoveSpeed * Time.deltaTime;
@@ -35,6 +40,7 @@ public class EnemyUI : MonoBehaviour
         }
     }
 
+    // Set starting position of the object
     public void SetSpawnPosition(Vector2 position)
     {
         rectTransform.anchoredPosition = position;

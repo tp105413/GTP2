@@ -12,7 +12,7 @@ public class ScrollingAnimation : MonoBehaviour
 
     void Start()
     {
-        // Get the Animation component attached to the same Game Object
+        // Get the Animation component attached to the same GameObject
         scrollAnimation = GetComponent<Animation>();
     }
 

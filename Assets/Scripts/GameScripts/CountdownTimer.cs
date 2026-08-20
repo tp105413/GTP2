@@ -16,7 +16,7 @@ public class CountdownTimer : MonoBehaviour
     public bool IsTimerRunning => isTimerRunning;
     public bool IsTimerPaused => isTimerPaused;
 
-    // Invoke when timer stops
+    // Invoked when timer stops
     public event Action OnTimerStop;
 
 

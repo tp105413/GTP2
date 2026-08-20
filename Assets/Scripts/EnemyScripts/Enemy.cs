@@ -1,15 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private PlayerCombat playerCombat;
     [SerializeField] private EnemyUI enemyUI;
-    [SerializeField] private GameObject DamagePopUpPrefab;
-    [SerializeField] private Transform canvasTransform;
-    [SerializeField] private Image Healthbar;
-    [SerializeField] private float HealthAmount;
 
     private CountdownTimer countdownTimer;
 
@@ -18,6 +13,25 @@ public class Enemy : MonoBehaviour
     private int goldDrop = 0;
     private int soulsDrop = 0;
 
+
+    void Awake()
+    {
+        if (enemyUI == null)
+        {
+            // Get enemyUI component and subscribe to OnReachedPlayer event
+            enemyUI = GetComponent<EnemyUI>();
+            enemyUI.OnReachedPlayer += HandleReachedPlayer;
+        }
+    }
+
+    // Unsubscribe from events before the object is destroyed
+    private void OnDestroy()
+    {
+        if (enemyUI != null) enemyUI.OnReachedPlayer -= HandleReachedPlayer;
+        if (countdownTimer != null) countdownTimer.OnTimerStop -= HandleTimerStop;
+    }
+
+    // Initialize the enemy prefab and calculates its stats and rewards
     public void Initialize(PlayerCombat combat, CountdownTimer timer, int level, string type)
     {
         playerCombat = combat;
@@ -29,23 +43,7 @@ public class Enemy : MonoBehaviour
         CalcualateSoulsDrop(level, type);
     }
 
-    void Awake()
-    {
-        if(enemyUI == null)
-        {
-            enemyUI = GetComponent<EnemyUI>();
-            // subscribe function to action, when action is invoked will run the function
-            enemyUI.OnReachedPlayer += HandleReachedPlayer;
-        }
-    }
-
-    // unsubscribe automatically
-    private void OnDestroy()
-    {
-        if (enemyUI != null) enemyUI.OnReachedPlayer -= HandleReachedPlayer;
-        if(countdownTimer != null) countdownTimer.OnTimerStop -= HandleTimerStop;
-    }
-
+    // Calculate enemy/boss health based on level
     private void CalculateHealth(int level, string type)
     {
         // will add in formula, current just for testing
@@ -61,6 +59,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Calculate enemy/boss gold drop based on level
     private int CalculateGoldDrop(int level, string type)
     {
         // temporary formula will be changed in future
@@ -75,6 +74,7 @@ public class Enemy : MonoBehaviour
         return goldDrop;
     }
 
+    // Calculate enemy/boss souls drop based on level
     private int CalcualateSoulsDrop(int level, string type)
     {
         // temporary formula will be changed in future
@@ -89,14 +89,12 @@ public class Enemy : MonoBehaviour
         return soulsDrop;
     }
 
-    // need clarify code logic
+    // Reduce health and if health reaches 0, it dies
     public void TakeDamage(int damage, PlayerStats stats)
     {
         playerStats = stats;
 
-        Debug.Log("Enemy is taking " + damage + " damage!");
         currentHealth -= damage;
-        //Healthbar.fillAmount = HealthAmount / 100f; // health component
 
         if (currentHealth <= 0)
         {
@@ -105,82 +103,39 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Give rewards, end attack and destroy the object
     public void Die()
     {
-        Debug.Log("Enemy dead!");
         DropReward();
         GameManager.Instance.EndAttack();
         Destroy(gameObject);
         GameManager.Instance.EnemyDefeated();
     }
 
+    // End attack and destroy the object without giving rewards
     public void RunAway()
     {
-        Debug.Log("Enemy run away!");
         GameManager.Instance.EndAttack();
         Destroy(gameObject);
     }
 
+    // Add rewards to the temporary resource holder
     public void DropReward()
     {
         ResourceManager.Instance.AddTempGold(goldDrop);
         ResourceManager.Instance.AddTempSouls(soulsDrop);
     }
 
+    // Start attack when enemy reaches player
     private void HandleReachedPlayer()
     {
         GameManager.Instance.StartAttack();
         playerCombat.SetTarget(this);
     }
 
+    // Enemy run away when timer stop
     private void HandleTimerStop()
     {
         RunAway();
-    }
-
-    private void DamageUI(int damageToShow)
-    {
-        if (canvasTransform == null)
-        {
-            GameObject mainCanvas = GameObject.Find("Canvas");
-            if (mainCanvas != null)
-            {
-                canvasTransform = mainCanvas.transform;
-            }
-        }
-
-        if (DamagePopUpPrefab == null || canvasTransform == null) return;
-
-
-        GameObject PopUp = Instantiate(DamagePopUpPrefab, canvasTransform);
-
-
-        Camera uiCamera = Camera.main;
-        if (uiCamera != null)
-        {
-            Vector3 screenPos = uiCamera.WorldToScreenPoint(transform.position + Vector3.up * 2f);
-            RectTransform canvasRect = canvasTransform.GetComponent<RectTransform>();
-            RectTransform popupRect = PopUp.GetComponent<RectTransform>();
-
-            if (canvasRect != null && popupRect != null)
-            {
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                    canvasRect,
-                    screenPos,
-                    uiCamera,
-                    out Vector2 localPoint
-                );
-                popupRect.anchoredPosition = localPoint;
-            }
-        }
-
-
-        DamagePopup popup = PopUp.GetComponent<DamagePopup>();
-
-        if (popup != null)
-        {
-            popup.Setup(damageToShow);
-        }
-
     }
 }

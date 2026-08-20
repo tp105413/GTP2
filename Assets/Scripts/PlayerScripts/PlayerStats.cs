@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
     public int CriticalChanceLevel => criticalChanceLevel;
     public int CriticalDamageLevel => criticalDamageLevel;
 
-    // Event triggered when player gold/souls change
+    // Invoked when player gold/souls change
     public event Action<int> OnGoldChanged;
     public event Action<int> OnSoulsChanged;
 

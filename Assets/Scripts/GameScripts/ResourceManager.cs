@@ -11,13 +11,14 @@ public class ResourceManager : MonoBehaviour
     private int tempGold = 0;
     private int tempSouls = 0;
 
-    // Event triggered when temporary gold/souls change
+    // Invoked when temporary gold/souls change
     public event Action<int> OnTempGoldChanged;
     public event Action<int> OnTempSoulsChanged;
 
+
     void Awake()
     {
-        // Check only 1 Resource Manager instance exists and destroy duplicates
+        // Check only 1 ResourceManager instance exists and destroy duplicates
         if (Instance == null)
         {
             Instance = this;
