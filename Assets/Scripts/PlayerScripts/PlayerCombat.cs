@@ -8,6 +8,7 @@ public class PlayerCombat : MonoBehaviour
     private Enemy attackTarget;
     private float attackTimer = 0f;
 
+
     void Update()
     {
         // Track attack cooldown based on frame time

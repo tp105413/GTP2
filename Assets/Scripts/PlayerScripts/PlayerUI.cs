@@ -4,6 +4,7 @@ public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private Animator playerAnimator;
 
+
     // Start the running animation
     public void StartRunningAnimation()
     {

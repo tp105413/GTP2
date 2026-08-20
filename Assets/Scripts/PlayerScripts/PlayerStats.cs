@@ -1,13 +1,14 @@
+using System;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private int gold = 0;
-    [SerializeField] private int souls = 0;
+    [SerializeField] private int playerGold = 0;
+    [SerializeField] private int playerSouls = 0;
 
     // Read-only from other classes
-    public int Gold => gold;
-    public int Souls => souls;
+    public int PlayerGold => playerGold;
+    public int PlayerSouls => playerSouls;
     
     private int attackDamage = 25;
     private float attackInterval = 2f;
@@ -37,76 +38,69 @@ public class PlayerStats : MonoBehaviour
     public int CriticalChanceLevel => criticalChanceLevel;
     public int CriticalDamageLevel => criticalDamageLevel;
 
-    public void AddGold(int amount)
+    // Event triggered when player gold/souls change
+    public event Action<int> OnGoldChanged;
+    public event Action<int> OnSoulsChanged;
+
+
+    // Add gold and souls from calculated rewards
+    public void TransferCalculatedReward (int goldAmount, int soulsAmount)
     {
-        gold += amount;
-        ResourceManager.Instance.UpdateGold(gold);
+        playerGold += goldAmount;
+        OnGoldChanged?.Invoke(playerGold);
+        playerSouls += soulsAmount;
+        OnSoulsChanged?.Invoke(playerSouls);
     }
 
-    public void AddSouls(int amount)
+    public void SpendPlayerGold(int amount)
     {
-        souls += amount;
-        ResourceManager.Instance.UpdateSoul(souls);
-
+        playerGold -= amount;
+        OnGoldChanged?.Invoke(playerGold);
     }
 
-    public void SpendGold(int amount)
+    public void SpendPlayerSouls(int amount)
     {
-        gold -= amount;
-    }
-
-    public void SpendSouls(int amount)
-    {
-        souls -= amount;
+        playerSouls -= amount;
+        OnSoulsChanged?.Invoke(playerSouls);
     }
 
     public void PlayerLevelUp()
     {
         playerLevel++;
-        Debug.Log("Player Level Up");
     }
 
+    // Increase attack damage
     public void UpgradeAttackDamage(int amount)
     {
         attackDamage += amount;
         attackDamageLevel++;
-        Debug.Log("AttackDamageLevelUp");
     }
 
+    // Reduce attack interval
     public void UpgradeAttackInterval(float amount)
     {
         attackInterval -= amount;
         attackIntervalLevel++;
-        Debug.Log("AttackIntervalLevelUp");
     }
 
+    // Increase attack speed
     public void UpgradeAttackSpeed(float amount)
     {
         attackSpeed += amount;
         attackSpeedLevel++;
-        Debug.Log("AttackSpeedLevelUp");
     }
 
+    // Increase critical chance
     public void UpgradeCriticalChance(int amount)
     {
         criticalChance += amount;
         criticalChanceLevel++;
-        Debug.Log("CriticalChanceLevelUp");
     }
 
+    // Increase critical damage
     public void UpgradeCriticalDamage(int amount)
     {
         criticalDamage += amount;
         criticalDamageLevel++;
-        Debug.Log("CriticalDamageLevelUp");
-    }
-
-    public bool CanLevelUp()
-    {
-        return attackDamageLevel == playerLevel &&
-            attackIntervalLevel == playerLevel &&
-            attackSpeedLevel == playerLevel &&
-            criticalChanceLevel == playerLevel &&
-            criticalDamageLevel == playerLevel;
     }
 }

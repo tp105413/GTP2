@@ -8,6 +8,7 @@ public class Background : MonoBehaviour
 	private RectTransform rectTransform;
 	private Vector2 startPosition;
 
+
 	// Initialize the RectTransform and store its starting position
     void Start()
     {

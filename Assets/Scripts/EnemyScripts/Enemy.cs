@@ -123,8 +123,8 @@ public class Enemy : MonoBehaviour
 
     public void DropReward()
     {
-        playerStats.AddGold(goldDrop);
-        playerStats.AddSouls(soulsDrop);
+        ResourceManager.Instance.AddTempGold(goldDrop);
+        ResourceManager.Instance.AddTempSouls(soulsDrop);
     }
 
     private void HandleReachedPlayer()

@@ -9,6 +9,7 @@ public class ScrollingAnimation : MonoBehaviour
 
     private bool isTimerStarted = false;
 
+
     void Start()
     {
         // Get the Animation component attached to the same Game Object

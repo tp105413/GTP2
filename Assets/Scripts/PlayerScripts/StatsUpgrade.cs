@@ -12,9 +12,9 @@ public class StatsUpgrade : MonoBehaviour
         // maybe need to balance
         int upgradeCost = basePlayerLevelSoulsCost * playerStats.PlayerLevel;
 
-        if(playerStats.Souls >= upgradeCost && playerStats.CanLevelUp())
+        if(playerStats.PlayerSouls >= upgradeCost)
         {
-            playerStats.SpendSouls(upgradeCost);
+            playerStats.SpendPlayerSouls(upgradeCost);
             playerStats.PlayerLevelUp();
         }
     }
@@ -25,9 +25,9 @@ public class StatsUpgrade : MonoBehaviour
         // implement upgrade cost increment base on level
         int upgradeCost = level * baseLevelStatsGoldCost;
 
-        if (playerStats.Gold >= upgradeCost && level < playerStats.PlayerLevel)
+        if (playerStats.PlayerGold >= upgradeCost && level < playerStats.PlayerLevel)
         {
-            playerStats.SpendGold(upgradeCost);
+            playerStats.SpendPlayerGold(upgradeCost);
 
             // need balance
             playerStats.UpgradeAttackDamage(5*level);
@@ -40,9 +40,9 @@ public class StatsUpgrade : MonoBehaviour
         // implement upgrade cost increment base on level
         int upgradeCost = level * baseLevelStatsGoldCost;
 
-        if (playerStats.Gold >= upgradeCost && level < playerStats.PlayerLevel)
+        if (playerStats.PlayerGold >= upgradeCost && level < playerStats.PlayerLevel)
         {
-            playerStats.SpendGold(upgradeCost);
+            playerStats.SpendPlayerGold(upgradeCost);
 
             // upgrade formula need balance (maybe)
             playerStats.UpgradeAttackInterval(0.1f);
@@ -55,9 +55,9 @@ public class StatsUpgrade : MonoBehaviour
         // implement upgrade cost increment base on level
         int upgradeCost = level * baseLevelStatsGoldCost;
 
-        if (playerStats.Gold >= upgradeCost && level < playerStats.PlayerLevel)
+        if (playerStats.PlayerGold >= upgradeCost && level < playerStats.PlayerLevel)
         {
-            playerStats.SpendGold(upgradeCost);
+            playerStats.SpendPlayerGold(upgradeCost);
 
             // upgrade formula need balance
             playerStats.UpgradeAttackSpeed(0.1f);
@@ -70,9 +70,9 @@ public class StatsUpgrade : MonoBehaviour
         // implement upgrade cost increment base on level
         int upgradeCost = level * baseLevelStatsGoldCost;
 
-        if (playerStats.Gold >= upgradeCost && level < playerStats.PlayerLevel)
+        if (playerStats.PlayerGold >= upgradeCost && level < playerStats.PlayerLevel)
         {
-            playerStats.SpendGold(upgradeCost);
+            playerStats.SpendPlayerGold(upgradeCost);
 
             // upgrade formula need balance
             playerStats.UpgradeCriticalChance(5);
@@ -85,9 +85,9 @@ public class StatsUpgrade : MonoBehaviour
         // implement upgrade cost increment base on level
         int upgradeCost = level * baseLevelStatsGoldCost;
 
-        if (playerStats.Gold >= upgradeCost && level < playerStats.PlayerLevel)
+        if (playerStats.PlayerGold >= upgradeCost && level < playerStats.PlayerLevel)
         {
-            playerStats.SpendGold(upgradeCost);
+            playerStats.SpendPlayerGold(upgradeCost);
 
             // upgrade formula need balance
             playerStats.UpgradeCriticalDamage(10);
