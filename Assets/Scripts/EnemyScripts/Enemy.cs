@@ -39,38 +39,31 @@ public class Enemy : MonoBehaviour
         countdownTimer.OnTimerStop += HandleTimerStop;
 
         CalculateHealth(level, type);
-        CalculateGoldDrop(level, type);
+        CalculateGoldDrop();
         CalcualateSoulsDrop(level, type);
     }
 
     // Calculate enemy/boss health based on level
     private void CalculateHealth(int level, string type)
     {
-        // will add in formula, current just for testing
         if (type == "Enemy")
         {
-            maxHealth = 50 + (level - 1) * 10;
+            // Calculate enemy health with 5% increase per level
+            maxHealth = Mathf.RoundToInt(500 * Mathf.Pow(1.05f, level - 1));
             currentHealth = maxHealth;
         }
         else if(type == "Boss")
         {
-            maxHealth = 100 + (level - 1) * 10;
+            // Calculate boss health with 8% increase per level
+            maxHealth = Mathf.RoundToInt(1000 * Mathf.Pow(1.08f, level - 1));
             currentHealth = maxHealth;
         }
     }
 
     // Calculate enemy/boss gold drop based on level
-    private int CalculateGoldDrop(int level, string type)
+    private int CalculateGoldDrop()
     {
-        // temporary formula will be changed in future
-        if (type == "Enemy")
-        {
-            goldDrop = 10 * level;
-        }
-        else if (type == "Boss")
-        {
-            goldDrop = 30 * level;
-        }
+        goldDrop = Random.Range((maxHealth / 20) - 3, (maxHealth / 20) + 3);
         return goldDrop;
     }
 
@@ -84,7 +77,8 @@ public class Enemy : MonoBehaviour
         }
         else if (type == "Boss")
         {
-            soulsDrop = 1 * level;
+            // Increase souls drop by 1 every 5 levels
+            soulsDrop = 1 + ((level - 1) / 5);
         }
         return soulsDrop;
     }

@@ -7,6 +7,7 @@ public class PlayerCombat : MonoBehaviour
 
     private Enemy attackTarget;
     private float attackTimer = 0f;
+    private bool isCritical = false;
 
 
     void Update()
@@ -30,7 +31,27 @@ public class PlayerCombat : MonoBehaviour
     // Deal damage and trigger attack animation
     public void Attack()
     {
-        attackTarget.TakeDamage(playerStats.AttackDamage, playerStats);
+        int damage = CalculateDamage();
+        attackTarget.TakeDamage(damage, playerStats);
         playerUI.PlayAttackTrigger();
+
+        // ======critical damage ui apply here======
+    }
+
+    // Calculate final damage dealt by the player
+    public int CalculateDamage()
+    {
+        float finalDamage = playerStats.AttackDamage;
+
+        // Reset critical state
+        isCritical = false;
+
+        if (Random.value <= (playerStats.CriticalChance) / 100f)
+        {
+            isCritical = true;
+            finalDamage *= 2 + (playerStats.CriticalDamage / 100f);
+        }
+
+        return Mathf.RoundToInt(finalDamage);
     }
 }

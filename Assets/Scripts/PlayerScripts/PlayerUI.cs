@@ -34,4 +34,10 @@ public class PlayerUI : MonoBehaviour
     {
         playerAnimator.SetBool("HasTarget", false);
     }
+    
+    // Set attack animation speed based on the player attack speed
+    public void SetAttackSpeed(float amount)
+    {
+        playerAnimator.SetFloat("AtkSpeed", amount);
+    }
 }

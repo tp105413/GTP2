@@ -4,47 +4,37 @@ public class StatsUpgrade : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
 
-    private int basePlayerLevelSoulsCost = 1;
-    private int baseLevelStatsGoldCost = 5;
+    private int baseLevelStatsGoldCost = 100;
 
-    public void PlayerLevelUp()
-    {
-        // maybe need to balance
-        int upgradeCost = basePlayerLevelSoulsCost * playerStats.PlayerLevel;
-
-        if(playerStats.PlayerSouls >= upgradeCost)
-        {
-            playerStats.SpendPlayerSouls(upgradeCost);
-            playerStats.PlayerLevelUp();
-        }
-    }
 
     public void UpgradeAttackDamage()
     {
         int level = playerStats.AttackDamageLevel;
-        // implement upgrade cost increment base on level
+        int value = playerStats.AttackDamage;
         int upgradeCost = level * baseLevelStatsGoldCost;
 
-        if (playerStats.PlayerGold >= upgradeCost && level < playerStats.PlayerLevel)
+        // Check if player has enough gold
+        if (playerStats.PlayerGold >= upgradeCost)
         {
             playerStats.SpendPlayerGold(upgradeCost);
 
-            // need balance
-            playerStats.UpgradeAttackDamage(5*level);
+            // Increase attack damage by 15% per level
+            int upgradeAmount = Mathf.RoundToInt(value * 1.15f);
+            playerStats.UpgradeAttackDamage(upgradeAmount);
         }
     }
 
     public void UpgradeAttackInterval()
     {
         int level = playerStats.AttackIntervalLevel;
-        // implement upgrade cost increment base on level
         int upgradeCost = level * baseLevelStatsGoldCost;
 
-        if (playerStats.PlayerGold >= upgradeCost && level < playerStats.PlayerLevel)
+        // Check if player has enough gold
+        if (playerStats.PlayerGold >= upgradeCost)
         {
             playerStats.SpendPlayerGold(upgradeCost);
 
-            // upgrade formula need balance (maybe)
+            // Reduce attack cooldown by 0.1 seconds per level
             playerStats.UpgradeAttackInterval(0.1f);
         }
     }
@@ -52,29 +42,29 @@ public class StatsUpgrade : MonoBehaviour
     public void UpgradeAttackSpeed()
     {
         int level = playerStats.AttackSpeedLevel;
-        // implement upgrade cost increment base on level
         int upgradeCost = level * baseLevelStatsGoldCost;
 
-        if (playerStats.PlayerGold >= upgradeCost && level < playerStats.PlayerLevel)
+        // Check if player has enough gold
+        if (playerStats.PlayerGold >= upgradeCost)
         {
             playerStats.SpendPlayerGold(upgradeCost);
 
-            // upgrade formula need balance
-            playerStats.UpgradeAttackSpeed(0.1f);
+            // Increase attack speed by 0.05 seconds per level
+            playerStats.UpgradeAttackSpeed(0.05f);
         }
     }
 
     public void UpgradeCriticalChance()
     {
         int level = playerStats.CriticalChanceLevel;
-        // implement upgrade cost increment base on level
         int upgradeCost = level * baseLevelStatsGoldCost;
 
-        if (playerStats.PlayerGold >= upgradeCost && level < playerStats.PlayerLevel)
+        // Check if player has enough gold
+        if (playerStats.PlayerGold >= upgradeCost)
         {
             playerStats.SpendPlayerGold(upgradeCost);
 
-            // upgrade formula need balance
+            // Increase critical chance by 5% per level
             playerStats.UpgradeCriticalChance(5);
         }
     }
@@ -82,14 +72,14 @@ public class StatsUpgrade : MonoBehaviour
     public void UpgradeCriticalDamage()
     {
         int level = playerStats.CriticalDamageLevel;
-        // implement upgrade cost increment base on level
         int upgradeCost = level * baseLevelStatsGoldCost;
 
-        if (playerStats.PlayerGold >= upgradeCost && level < playerStats.PlayerLevel)
+        // Check if player has enough gold
+        if (playerStats.PlayerGold >= upgradeCost)
         {
             playerStats.SpendPlayerGold(upgradeCost);
 
-            // upgrade formula need balance
+            // Increase critical damage by 10% per level
             playerStats.UpgradeCriticalDamage(10);
         }
     }

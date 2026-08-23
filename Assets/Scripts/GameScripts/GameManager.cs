@@ -129,10 +129,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Reset and increase enemy count by 1 every 5 levels
+    // Reset and increase enemy count by 1 every 3 levels
     public void RemainingEnemyCountReset()
     {
-        remainingEnemyCount = 5 + (gameLevel - 1) / 5;
+        remainingEnemyCount = 5 + (gameLevel - 1) / 3;
     }
 
     // Set the player attack state to active

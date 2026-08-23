@@ -3,38 +3,38 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField] private PlayerUI playerUI;
+
     [SerializeField] private int playerGold = 0;
     [SerializeField] private int playerSouls = 0;
 
     // Read-only from other classes
     public int PlayerGold => playerGold;
     public int PlayerSouls => playerSouls;
-    
-    private int attackDamage = 25;
-    private float attackInterval = 2f;
-    private float attackSpeed = 1f;
-    private int criticalChance = 0;
-    private int criticalDamage = 0;
+
+    [SerializeField] private int attackDamage = 100;
+    [SerializeField] private float attackSpeed = 1.0f;
+    [SerializeField] private float attackInterval = 2.5f;
+    [SerializeField] private int criticalChance = 0;
+    [SerializeField] private int criticalDamage = 0;
 
     // Read-only from other classes
     public int AttackDamage => attackDamage;
-    public float AttackInterval => attackInterval;
     public float AttackSpeed => attackSpeed;
+    public float AttackInterval => attackInterval;
     public int CriticalChance => criticalChance;
     public int CriticalDamage => criticalDamage;
 
-    private int playerLevel = 1;
     private int attackDamageLevel = 1;
-    private int attackIntervalLevel = 1;
     private int attackSpeedLevel = 1;
+    private int attackIntervalLevel = 1;
     private int criticalChanceLevel = 1;
     private int criticalDamageLevel = 1;
 
     // Read-only from other classes
-    public int PlayerLevel => playerLevel;
     public int AttackDamageLevel => attackDamageLevel;
-    public int AttackIntervalLevel => attackIntervalLevel;
     public int AttackSpeedLevel => attackSpeedLevel;
+    public int AttackIntervalLevel => attackIntervalLevel;
     public int CriticalChanceLevel => criticalChanceLevel;
     public int CriticalDamageLevel => criticalDamageLevel;
 
@@ -64,23 +64,11 @@ public class PlayerStats : MonoBehaviour
         OnSoulsChanged?.Invoke(playerSouls);
     }
 
-    public void PlayerLevelUp()
-    {
-        playerLevel++;
-    }
-
     // Increase attack damage
     public void UpgradeAttackDamage(int amount)
     {
-        attackDamage += amount;
+        attackDamage = amount;
         attackDamageLevel++;
-    }
-
-    // Reduce attack interval
-    public void UpgradeAttackInterval(float amount)
-    {
-        attackInterval -= amount;
-        attackIntervalLevel++;
     }
 
     // Increase attack speed
@@ -88,6 +76,14 @@ public class PlayerStats : MonoBehaviour
     {
         attackSpeed += amount;
         attackSpeedLevel++;
+        playerUI.SetAttackSpeed(attackSpeed);
+    }
+
+    // Reduce attack interval
+    public void UpgradeAttackInterval(float amount)
+    {
+        attackInterval -= amount;
+        attackIntervalLevel++;
     }
 
     // Increase critical chance
