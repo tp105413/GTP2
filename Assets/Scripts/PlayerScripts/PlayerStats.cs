@@ -42,6 +42,9 @@ public class PlayerStats : MonoBehaviour
     public event Action<int> OnGoldChanged;
     public event Action<int> OnSoulsChanged;
 
+    // Invoke when player stats value change
+    public event Action OnStatsValueChanged;
+
 
     // Add gold and souls from calculated rewards
     public void TransferCalculatedReward (int goldAmount, int soulsAmount)
@@ -69,6 +72,7 @@ public class PlayerStats : MonoBehaviour
     {
         attackDamage = amount;
         attackDamageLevel++;
+        OnStatsValueChanged?.Invoke();
     }
 
     // Increase attack speed
@@ -77,6 +81,7 @@ public class PlayerStats : MonoBehaviour
         attackSpeed += amount;
         attackSpeedLevel++;
         playerUI.SetAttackSpeed(attackSpeed);
+        OnStatsValueChanged?.Invoke();
     }
 
     // Reduce attack interval
@@ -84,6 +89,7 @@ public class PlayerStats : MonoBehaviour
     {
         attackInterval -= amount;
         attackIntervalLevel++;
+        OnStatsValueChanged?.Invoke();
     }
 
     // Increase critical chance
@@ -91,6 +97,7 @@ public class PlayerStats : MonoBehaviour
     {
         criticalChance += amount;
         criticalChanceLevel++;
+        OnStatsValueChanged?.Invoke();
     }
 
     // Increase critical damage
@@ -98,5 +105,46 @@ public class PlayerStats : MonoBehaviour
     {
         criticalDamage += amount;
         criticalDamageLevel++;
+        OnStatsValueChanged?.Invoke();
+    }
+
+    // Return current level of specified skill
+    public int GetSkillLevel(SkillType skillType)
+    {
+        switch (skillType)
+        {
+            case SkillType.AttackDamage: return AttackDamageLevel;
+            case SkillType.AttackSpeed: return AttackSpeedLevel;
+            case SkillType.AttackInterval: return AttackIntervalLevel;
+            case SkillType.CriticalChance: return CriticalChanceLevel;
+            case SkillType.CriticalDamage: return CriticalDamageLevel;
+
+            default: return 0;
+        }
+    }
+
+    // Return int value for the specified skill
+    public int GetSkillIntValue(SkillType skillType)
+    {
+        switch (skillType)
+        {
+            case SkillType.AttackDamage: return AttackDamage;
+            case SkillType.CriticalChance: return CriticalChance;
+            case SkillType.CriticalDamage: return CriticalDamage;
+
+            default: return 0;
+        }
+    }
+
+    // Return float value for the specified skill
+    public float GetSkillFloatValue(SkillType skillType)
+    {
+        switch (skillType)
+        {
+            case SkillType.AttackSpeed: return AttackSpeed;
+            case SkillType.AttackInterval: return AttackInterval;
+
+            default: return 0;
+        }
     }
 }
