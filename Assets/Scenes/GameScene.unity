@@ -6954,7 +6954,7 @@ MonoBehaviour:
   playerCombat: {fileID: 866018545}
   countdownTimer: {fileID: 1316339995}
   containerParent: {fileID: 1691400741}
-  spawnPosition: {x: 677, y: -120}
+  spawnPosition: {x: 677, y: -130}
 --- !u!4 &1228558512
 Transform:
   m_ObjectHideFlags: 0

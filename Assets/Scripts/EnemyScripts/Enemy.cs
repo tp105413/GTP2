@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -110,6 +111,15 @@ public class Enemy : MonoBehaviour
     public void RunAway()
     {
         GameManager.Instance.EndAttack();
+        enemyUI.RunAway();
+        playerCombat.SetTarget(null);
+        StartCoroutine(WaitForEnemyExitScreen());
+    }
+
+    // Destroy enemy object after it leaves the game view
+    IEnumerator WaitForEnemyExitScreen()
+    {
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 
