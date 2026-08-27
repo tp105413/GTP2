@@ -6,6 +6,8 @@ public class StatsUpgrade : MonoBehaviour
 
     private int baseLevelStatsGoldCost = 100;
 
+    public int BaseLevelStatsGoldCost => baseLevelStatsGoldCost;
+
 
     public void UpgradeAttackDamage()
     {
@@ -14,7 +16,7 @@ public class StatsUpgrade : MonoBehaviour
         int upgradeCost = level * baseLevelStatsGoldCost;
 
         // Check if player has enough gold
-        if (playerStats.PlayerGold >= upgradeCost)
+        if (playerStats.PlayerGold >= upgradeCost && playerStats.AttackDamageLevel < 10)
         {
             playerStats.SpendPlayerGold(upgradeCost);
 
@@ -24,33 +26,33 @@ public class StatsUpgrade : MonoBehaviour
         }
     }
 
-    public void UpgradeAttackInterval()
-    {
-        int level = playerStats.AttackIntervalLevel;
-        int upgradeCost = level * baseLevelStatsGoldCost;
-
-        // Check if player has enough gold
-        if (playerStats.PlayerGold >= upgradeCost)
-        {
-            playerStats.SpendPlayerGold(upgradeCost);
-
-            // Reduce attack cooldown by 0.1 seconds per level
-            playerStats.UpgradeAttackInterval(0.1f);
-        }
-    }
-
     public void UpgradeAttackSpeed()
     {
         int level = playerStats.AttackSpeedLevel;
         int upgradeCost = level * baseLevelStatsGoldCost;
 
         // Check if player has enough gold
-        if (playerStats.PlayerGold >= upgradeCost)
+        if (playerStats.PlayerGold >= upgradeCost && playerStats.AttackSpeedLevel < 10)
         {
             playerStats.SpendPlayerGold(upgradeCost);
 
             // Increase attack speed by 0.05 seconds per level
             playerStats.UpgradeAttackSpeed(0.05f);
+        }
+    }
+
+    public void UpgradeAttackInterval()
+    {
+        int level = playerStats.AttackIntervalLevel;
+        int upgradeCost = level * baseLevelStatsGoldCost;
+
+        // Check if player has enough gold
+        if (playerStats.PlayerGold >= upgradeCost && playerStats.AttackIntervalLevel < 10)
+        {
+            playerStats.SpendPlayerGold(upgradeCost);
+
+            // Reduce attack cooldown by 0.1 seconds per level
+            playerStats.UpgradeAttackInterval(0.1f);
         }
     }
 
@@ -60,7 +62,7 @@ public class StatsUpgrade : MonoBehaviour
         int upgradeCost = level * baseLevelStatsGoldCost;
 
         // Check if player has enough gold
-        if (playerStats.PlayerGold >= upgradeCost)
+        if (playerStats.PlayerGold >= upgradeCost && playerStats.CriticalChanceLevel < 10)
         {
             playerStats.SpendPlayerGold(upgradeCost);
 
@@ -75,7 +77,7 @@ public class StatsUpgrade : MonoBehaviour
         int upgradeCost = level * baseLevelStatsGoldCost;
 
         // Check if player has enough gold
-        if (playerStats.PlayerGold >= upgradeCost)
+        if (playerStats.PlayerGold >= upgradeCost && playerStats.CriticalDamageLevel < 10)
         {
             playerStats.SpendPlayerGold(upgradeCost);
 

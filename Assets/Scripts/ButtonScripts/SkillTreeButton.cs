@@ -23,7 +23,14 @@ public class SkillTreeButton : MonoBehaviour
     // Select the skill button
     public void OnClick()
     {
-        skillTree.SelectButton(this);
+        if(skillTree.ButtonSelected != this)
+        {
+            skillTree.SelectButton(this);
+        }
+        else
+        {
+            skillTree.UpgradeSkill(skillType);
+        }
     }
 
     // Show and hide the selected button frame

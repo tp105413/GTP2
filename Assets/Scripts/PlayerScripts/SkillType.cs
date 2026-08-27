@@ -7,5 +7,6 @@ public enum SkillType
     AttackSpeed,
     AttackInterval,
     CriticalChance,
-    CriticalDamage
+    CriticalDamage,
+    LockSkill
 }

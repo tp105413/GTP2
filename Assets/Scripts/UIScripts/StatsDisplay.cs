@@ -7,6 +7,7 @@ public class StatsDisplay : MonoBehaviour
 
     [SerializeField] private TMP_Text skillNameText;
     [SerializeField] private TMP_Text skillDescriptionText;
+    [SerializeField] private TMP_Text upgradeCostText;
 
     public TextMeshProUGUI attackDamageValue;
     public TextMeshProUGUI attackSpeedValue;
@@ -36,8 +37,8 @@ public class StatsDisplay : MonoBehaviour
         }
     }
 
-    // Display the skill name, description and level
-    public void ShowSkill(string skillName, string skillDescription, int level, int dmg, float spd, float interval, int crit)
+    // Display the skill name, description, level and upgrade cost
+    public void ShowSkill(string skillName, string skillDescription, int level, int cost, int dmg, float spd, float interval, int crit)
     {
         skillNameText.text = $"{skillName} Lv.{level}";
         skillDescriptionText.text = skillDescription
@@ -45,6 +46,7 @@ public class StatsDisplay : MonoBehaviour
             .Replace("{spd}", spd.ToString("F2"))
             .Replace("{interval}", interval.ToString("F2"))
             .Replace("{crit}", crit.ToString());
+        upgradeCostText.text = cost.ToString();
     }
 
     // Update player stats UI display
