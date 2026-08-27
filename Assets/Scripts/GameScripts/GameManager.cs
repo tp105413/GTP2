@@ -105,10 +105,7 @@ public class GameManager : MonoBehaviour
         RemainingEnemyCountReset();
         playerUI.StopRunningAnimation();
 
-        // =====Temporary===== should be at reward view
-        //ResourceManager.Instance.CalculateReward();
-        //ResourceManager.Instance.ResetTempGoldAndSouls();
-
+        ResourceManager.Instance.CalculateReward();
     }
 
     // Pause the game and preserve its current state

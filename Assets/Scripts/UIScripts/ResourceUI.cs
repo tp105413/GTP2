@@ -10,6 +10,8 @@ public class ResourceUI : MonoBehaviour
     public TextMeshProUGUI tempSoulText;
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI soulText;
+    public TextMeshProUGUI RewardGoldText;
+    public TextMeshProUGUI RewardSoulText;
 
 
     private void OnEnable()
@@ -60,6 +62,7 @@ public class ResourceUI : MonoBehaviour
         if (tempGoldText != null)
         {
             tempGoldText.text = amount.ToString();
+            RewardGoldText.text = amount.ToString();
         }
     }
 
@@ -69,6 +72,7 @@ public class ResourceUI : MonoBehaviour
         if (tempSoulText != null)
         {
             tempSoulText.text = amount.ToString();
+            RewardSoulText.text = amount.ToString();
         }
     }
 

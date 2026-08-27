@@ -1,13 +1,17 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyUI : MonoBehaviour
 {
     [SerializeField] private float stopAtPositionX = 0f;
     [SerializeField] private float runAwaySpeed = 0f;
+    [SerializeField] Slider healthBarSlider;
 
     private RectTransform rectTransform;
     private Animator animator;
+    private float currentHealth = 0f;
+    private float maxHealth = 0f;
 
     private bool hasReachedPlayer = false;
     private bool isRunningAway = false;
@@ -26,6 +30,8 @@ public class EnemyUI : MonoBehaviour
 
     void Update()
     {
+        healthBarSlider.value = currentHealth / maxHealth;
+
         // Stop updating once player is reached
         if (hasReachedPlayer) return;
 
@@ -63,5 +69,18 @@ public class EnemyUI : MonoBehaviour
         hasReachedPlayer = false;
         isRunningAway = true;
         animator.SetBool("RunAway", true);
+    }
+
+    // Set health for health bar UI
+    public void SetHealthUI(int amount)
+    {
+        currentHealth = amount;
+        maxHealth = amount;
+    }
+
+    // Update enemy health UI after taking dmg
+    public void UpdateHealthUI(int amount)
+    {
+        currentHealth -= amount;
     }
 }

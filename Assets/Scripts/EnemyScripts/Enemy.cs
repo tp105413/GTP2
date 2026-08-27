@@ -60,6 +60,8 @@ public class Enemy : MonoBehaviour
             maxHealth = Mathf.RoundToInt(1000 * Mathf.Pow(1.08f, level - 1));
             currentHealth = maxHealth;
         }
+
+        enemyUI.SetHealthUI(maxHealth);
     }
 
     // Calculate enemy/boss gold drop based on level
@@ -99,6 +101,8 @@ public class Enemy : MonoBehaviour
             currentHealth = 0;
             Die();
         }
+
+        enemyUI.UpdateHealthUI(damage);
     }
 
     // Give rewards, end attack and destroy the object
