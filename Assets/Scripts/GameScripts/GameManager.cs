@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,13 +11,14 @@ public class GameManager : MonoBehaviour
     public bool isAttacking = false;
     public float worldMoveSpeed = 0f;
 
-    private int gameLevel = 1;
-    private int remainingEnemyCount = 5;
-    private bool bossSpawned = false;
+    public int gameLevel = 1;
+    public int remainingEnemyCount = 5;
+    public bool bossSpawned = false;
 
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private CountdownTimer countdownTimer;
     [SerializeField] private PlayerUI playerUI;
+    [SerializeField] private UIManager uiManager;
 
 
     private void Awake()
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
     public void GameLevelUp()
     {
         gameLevel++;
+        uiManager.UpdateLevelUI();
     }
 
     // Handle enemy defeat and spawn the next enemy, boss or level
