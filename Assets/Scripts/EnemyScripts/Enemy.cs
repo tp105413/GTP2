@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Enemy : MonoBehaviour
     private int currentHealth;
     private int goldDrop = 0;
     private int soulsDrop = 0;
-
+    public GameObject DamagePrefab;
 
     void Awake()
     {
@@ -90,6 +91,8 @@ public class Enemy : MonoBehaviour
         playerStats = stats;
 
         currentHealth -= damage;
+        GameObject popUp = Instantiate(DamagePrefab, transform.position, Quaternion.identity);
+        popUp.GetComponentInChildren<TMP_Text>().text = damage.ToString();
 
         if (currentHealth <= 0)
         {

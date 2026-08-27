@@ -22,6 +22,9 @@ public class RewardViewButton : MonoBehaviour
         {
             RewardView.SetActive(isRewardViewOpen);
             Debug.Log("RewardView");
+            ResourceManager.Instance.CalculateReward();
+            ResourceManager.Instance.ResetTempGoldAndSouls();
+
         }
     }
 }

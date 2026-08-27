@@ -55,6 +55,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   playerCombat: {fileID: 0}
   enemyUI: {fileID: 0}
+  DamagePrefab: {fileID: 6441987502916840523, guid: 11b6c8b0293aaee4bb8328a3c0208011, type: 3}
 --- !u!114 &6843666053488868530
 MonoBehaviour:
   m_ObjectHideFlags: 0

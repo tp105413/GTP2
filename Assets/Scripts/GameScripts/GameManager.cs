@@ -106,8 +106,8 @@ public class GameManager : MonoBehaviour
         playerUI.StopRunningAnimation();
 
         // =====Temporary===== should be at reward view
-        ResourceManager.Instance.CalculateReward();
-        ResourceManager.Instance.ResetTempGoldAndSouls();
+        //ResourceManager.Instance.CalculateReward();
+        //ResourceManager.Instance.ResetTempGoldAndSouls();
 
     }
 
