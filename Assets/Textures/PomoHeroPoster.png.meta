@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 48120e3ba267d9d41a7ec74770272aec
+guid: fb292e1124b5d9847af75615e58da0cb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4883367219310322642
-    second: pixelGold_0
+      213: 2214062545547996447
+    second: PomoHeroPoster_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pixelGold_0
+      name: PomoHeroPoster_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 980
-        height: 980
+        width: 2688
+        height: 4032
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e2c9831236bca3cb0800000000000000
-      internalID: -4883367219310322642
+      spriteID: f1da2e1972ee9be10800000000000000
+      internalID: 2214062545547996447
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 081c57dac9714c34aa6d58ee136055d2
+    spriteID: 544dfeb659687c0478f0165971fd3ae8
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pixelGold_0: -4883367219310322642
+      PomoHeroPoster_0: 2214062545547996447
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

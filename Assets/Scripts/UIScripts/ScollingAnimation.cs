@@ -1,19 +1,20 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class ScrollingAnimation : MonoBehaviour
-{ 
+{
     [SerializeField] private CountdownTimer countdownTimer;
 
     private Animation scrollAnimation;
-
     private bool isTimerStarted = false;
 
 
     void Start()
     {
-        // Get the Animation component attached to the same GameObject
+        // Get the Anim ation component attached to the same GameObject
         scrollAnimation = GetComponent<Animation>();
+        PlayLogoAnimation();
     }
 
     public void ToggleScrollPosition()
@@ -37,4 +38,47 @@ public class ScrollingAnimation : MonoBehaviour
             isTimerStarted = false;
         }
     }
+    public void MainMenuAnimation()
+    {
+        {
+            // Play MainMenu animation to NavigationView
+            scrollAnimation.Play("MainMenu(Test)");
+            isTimerStarted = false;
+        }
+    }
+
+    public void PlayLogoAnimation()
+    {
+        if (scrollAnimation != null)
+        {
+            if (scrollAnimation["LogoAnimation"] != null)
+            {
+                scrollAnimation["LogoAnimation"].wrapMode = WrapMode.Loop;
+            }
+            scrollAnimation.Play("LogoAnimation");
+        }
+    }
+    private IEnumerator BackThenLoopLogoRoutine()
+    {
+        scrollAnimation.Play("BackToMainMenu");
+
+        if (scrollAnimation["BackToMainMenu"] != null)
+        {
+            yield return new WaitForSeconds(scrollAnimation["BackToMainMenu"].length);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        PlayLogoAnimation();
+    }
+
+    public void BackToMainMenu()
+    {
+        if (scrollAnimation == null) return;
+
+        StopAllCoroutines();
+        StartCoroutine(BackThenLoopLogoRoutine());
+    }
+
 }
