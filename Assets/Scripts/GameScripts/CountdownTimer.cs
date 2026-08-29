@@ -1,20 +1,26 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CountdownTimer : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] public float sliderTicks;
     [SerializeField] private float totalDurationInSeconds;
+    [SerializeField] private Button stopButton;
 
     private TimeSpan timeRemaining;
     private bool isTimerRunning = false;
     private bool isTimerPaused = false;
+    private TimeSpan totalTimeRun;
+    private float totalMultiplier;
 
     // Read-only from other classes
     public TimeSpan TimeRemaining => timeRemaining;
     public bool IsTimerRunning => isTimerRunning;
     public bool IsTimerPaused => isTimerPaused;
+    public TimeSpan TotalTimeRun => totalTimeRun;
+    public float TotalMultiplier => totalMultiplier;
 
     // Invoked when timer stops
     public event Action OnTimerStop;
@@ -29,6 +35,7 @@ public class CountdownTimer : MonoBehaviour
         if(timeRemaining > TimeSpan.Zero)
         {
             timeRemaining -= TimeSpan.FromSeconds(Time.deltaTime);
+            totalTimeRun += TimeSpan.FromSeconds(Time.deltaTime);
         }
         else
         {
@@ -46,7 +53,7 @@ public class CountdownTimer : MonoBehaviour
     // Stop the timer when the countdown reaches 0
     public void TimerFinished()
     {
-        isTimerRunning = false;
+        stopButton.onClick.Invoke();
     }
 
     // Stop and reset the timer
@@ -80,6 +87,7 @@ public class CountdownTimer : MonoBehaviour
 
         sliderTicks = ticks;
         totalDurationInSeconds = 10f * ticks;
+        totalMultiplier = 1f + 0.25f * (totalDurationInSeconds / 10f);
         timeRemaining = TimeSpan.FromSeconds(totalDurationInSeconds);
     }
 }

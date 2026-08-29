@@ -8,14 +8,16 @@ public class CountdownTimerUI : MonoBehaviour
     [Header("UI Reference")]
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI timerText2;
+    [SerializeField] private TextMeshProUGUI multiplierText;
 
 
     void Update()
     {
-        // Update the timer display
+        // Update the timer and reward multiplier display
         if (timerText == null) return;
         timerText.text = countdownTimer.TimeRemaining.ToString(@"hh\:mm\:ss");
         timerText2.text = countdownTimer.TimeRemaining.ToString(@"hh\:mm\:ss");
+        multiplierText.text = "x" + countdownTimer.TotalMultiplier.ToString();
     }
 
     // Update the timer duration when slider value changes

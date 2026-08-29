@@ -11,7 +11,6 @@ public class RewardViewButton : MonoBehaviour
         if (RewardView != null)
         {
             isRewardViewOpen = RewardView.activeSelf;
-            Debug.Log("Hide");
         }
     }
 
@@ -21,7 +20,6 @@ public class RewardViewButton : MonoBehaviour
         if (RewardView != null)
         {
             RewardView.SetActive(isRewardViewOpen);
-            Debug.Log("RewardView");
 
             if (!isRewardViewOpen)
             {

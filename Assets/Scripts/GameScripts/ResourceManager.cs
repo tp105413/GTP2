@@ -7,6 +7,7 @@ public class ResourceManager : MonoBehaviour
 
     [SerializeField] private ResourceUI resourceUI;
     [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private CountdownTimer countdownTimer;
 
     private int tempGold = 0;
     private int tempSouls = 0;
@@ -50,13 +51,15 @@ public class ResourceManager : MonoBehaviour
         OnTempSoulsChanged?.Invoke(tempSouls);
     }
 
-    // Calculate final reward then transfer to PlayerStats
+    // Calculate final reward then update reward UI and transfer to PlayerStats
     public void CalculateReward()
     {
-        // ======calculate here=====
-        int finalGold = tempGold;
-        int finalSouls = tempSouls;
+        float multiplier = 1f + 0.25f * Mathf.Floor((float)countdownTimer.TotalTimeRun.TotalSeconds / 10f);
 
+        int finalGold = Mathf.RoundToInt(tempGold * multiplier);
+        int finalSouls = Mathf.RoundToInt(tempSouls * multiplier);
+
+        resourceUI.UpdateRewardsUI(finalGold, finalSouls, multiplier);
         playerStats.TransferCalculatedReward(finalGold, finalSouls);
     }
 }

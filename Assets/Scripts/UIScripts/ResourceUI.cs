@@ -10,8 +10,9 @@ public class ResourceUI : MonoBehaviour
     public TextMeshProUGUI tempSoulText;
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI soulText;
-    public TextMeshProUGUI RewardGoldText;
-    public TextMeshProUGUI RewardSoulText;
+    public TextMeshProUGUI rewardGoldText;
+    public TextMeshProUGUI rewardSoulText;
+    public TextMeshProUGUI rewardMultiplier;
 
 
     private void OnEnable()
@@ -62,7 +63,6 @@ public class ResourceUI : MonoBehaviour
         if (tempGoldText != null)
         {
             tempGoldText.text = amount.ToString();
-            RewardGoldText.text = amount.ToString();
         }
     }
 
@@ -72,8 +72,15 @@ public class ResourceUI : MonoBehaviour
         if (tempSoulText != null)
         {
             tempSoulText.text = amount.ToString();
-            RewardSoulText.text = amount.ToString();
         }
+    }
+
+    // Update the reward UI with calculated resources
+    public void UpdateRewardsUI(int gold, int souls, float multiplier)
+    {
+        rewardGoldText.text = gold.ToString();
+        rewardSoulText.text = souls.ToString();
+        rewardMultiplier.text = multiplier.ToString();
     }
 
     // Update player gold UI
