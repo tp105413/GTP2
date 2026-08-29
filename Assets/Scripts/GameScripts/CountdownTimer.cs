@@ -46,6 +46,9 @@ public class CountdownTimer : MonoBehaviour
 
     public void StartTimer()
     {
+        // Reset total time before every run
+        totalTimeRun = TimeSpan.Zero;
+
         isTimerRunning = true;
         isTimerPaused = false;
     }

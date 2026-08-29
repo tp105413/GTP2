@@ -10671,6 +10671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPrefab: {fileID: 7397214195988532175, guid: 4721a4cf560c6004cb2a80f244838a99, type: 3}
+  bossPrefab: {fileID: 7397214195988532175, guid: 45513a56505627746b38543c8089788a, type: 3}
   playerCombat: {fileID: 866018545}
   countdownTimer: {fileID: 1316339995}
   containerParent: {fileID: 1691400741}
@@ -13841,6 +13842,7 @@ MonoBehaviour:
   gameLevel: 1
   remainingEnemyCount: 5
   bossSpawned: 0
+  isLevelFailed: 0
   enemySpawner: {fileID: 1228558511}
   countdownTimer: {fileID: 1316339995}
   playerUI: {fileID: 866018552}

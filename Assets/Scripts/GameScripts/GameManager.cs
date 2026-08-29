@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,11 +13,16 @@ public class GameManager : MonoBehaviour
     public int gameLevel = 1;
     public int remainingEnemyCount = 5;
     public bool bossSpawned = false;
+    public bool isLevelFailed = false;
+
+    private Coroutine bossTimerCoroutine;
 
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private CountdownTimer countdownTimer;
     [SerializeField] private PlayerUI playerUI;
     [SerializeField] private UIManager uiManager;
+
+    public event Action OnLevelFailed;
 
 
     private void Awake()
@@ -80,6 +84,8 @@ public class GameManager : MonoBehaviour
         {
             enemySpawner.SpawnBoss(gameLevel);
             bossSpawned = true;
+            StartBossTimer();
+
         }
         // Level up and start the next wave after boss is defeated
         else if(bossSpawned)
@@ -88,6 +94,52 @@ public class GameManager : MonoBehaviour
             RemainingEnemyCountReset();
             bossSpawned = false;
             enemySpawner.SpawnEnemy(gameLevel);
+        }
+    }
+
+    // Start the boss level timer
+    public void StartBossTimer()
+    {
+        bossTimerCoroutine = StartCoroutine(BossTimer());
+    }
+
+    // Stop the boss level timer
+    public void StopBossTimer()
+    {
+        if(bossTimerCoroutine != null)
+        {
+            StopCoroutine(bossTimerCoroutine);
+            bossTimerCoroutine = null;
+        }
+    }
+
+    // Start boss timer and trigger level failure when time runs out
+    public IEnumerator BossTimer()
+    {
+        float remainingTime = 5f;
+
+        while(remainingTime > 0)
+        {
+            remainingTime -= Time.deltaTime;
+            yield return null;
+        }
+
+        LevelFailed();
+    }
+
+    // Handle level failure and spawn next enemy
+    public void LevelFailed()
+    {
+        isLevelFailed = true;
+        OnLevelFailed?.Invoke();
+        RemainingEnemyCountReset();
+        bossSpawned = false;
+
+        // Prevent spawning when timer stopped or paused and boss is defeated
+        if (isGameRunning && isLevelFailed)
+        {
+            enemySpawner.SpawnEnemy(gameLevel);
+            isLevelFailed = false;
         }
     }
 

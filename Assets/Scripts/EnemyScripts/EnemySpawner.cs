@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private Enemy bossPrefab;
     [SerializeField] private PlayerCombat playerCombat;
     [SerializeField] private CountdownTimer countdownTimer;
     [SerializeField] private RectTransform containerParent;
@@ -16,9 +17,19 @@ public class EnemySpawner : MonoBehaviour
     // Spawn and initialize the enemy
     private void Spawn(int level, string type)
     {
-        Enemy enemy = Instantiate(enemyPrefab, containerParent);
-        EnemyUI ui = enemy.GetComponent<EnemyUI>();
-        ui.SetSpawnPosition(spawnPosition);
-        enemy.Initialize(playerCombat, countdownTimer, level, type);
+        if(type == "Enemy")
+        {
+            Enemy enemy = Instantiate(enemyPrefab, containerParent);
+            EnemyUI ui = enemy.GetComponent<EnemyUI>();
+            ui.SetSpawnPosition(spawnPosition);
+            enemy.Initialize(playerCombat, countdownTimer, level, type);
+        }
+        else if(type == "Boss")
+        {
+            Enemy enemy = Instantiate(bossPrefab, containerParent);
+            EnemyUI ui = enemy.GetComponent<EnemyUI>();
+            ui.SetSpawnPosition(spawnPosition);
+            enemy.Initialize(playerCombat, countdownTimer, level, type);
+        }
     }
 }

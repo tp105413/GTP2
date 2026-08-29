@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     {
         if (enemyUI != null) enemyUI.OnReachedPlayer -= HandleReachedPlayer;
         if (countdownTimer != null) countdownTimer.OnTimerStop -= HandleTimerStop;
+        if(GameManager.Instance != null) GameManager.Instance.OnLevelFailed -= RunAway;
     }
 
     // Initialize the enemy prefab and calculates its stats and rewards
@@ -43,6 +44,11 @@ public class Enemy : MonoBehaviour
         CalculateHealth(level, type);
         CalculateGoldDrop();
         CalcualateSoulsDrop(level, type);
+
+        if(type == "Boss")
+        {
+            GameManager.Instance.OnLevelFailed += RunAway;
+        }
     }
 
     // Calculate enemy/boss health based on level
@@ -108,6 +114,9 @@ public class Enemy : MonoBehaviour
     // Give rewards, end attack and destroy the object
     public void Die()
     {
+        // Stop boss timer coroutine when is boss is dead
+        GameManager.Instance.StopBossTimer();
+
         DropReward();
         GameManager.Instance.EndAttack();
         Destroy(gameObject);
