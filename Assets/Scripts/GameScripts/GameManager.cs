@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
     // Start boss timer and trigger level failure when time runs out
     public IEnumerator BossTimer()
     {
-        float remainingTime = 5f;
+        float remainingTime = 30f;
 
         while(remainingTime > 0)
         {
