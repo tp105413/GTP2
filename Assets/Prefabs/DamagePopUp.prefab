@@ -290,7 +290,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 8
+  m_GravityScale: 30
   m_Material: {fileID: 6200000, guid: 6c14fa1430ec1f24486193348d0f12c7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -360,6 +360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf721628ab73ff4e85b13c67a8c8c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamagePopUp
-  InitialVelocity: {x: 10, y: 3}
+  InitialVelocity: {x: 100, y: 300}
   rb: {fileID: 1187685469452454036}
   lifetime: 1.5

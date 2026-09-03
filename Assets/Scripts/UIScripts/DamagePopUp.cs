@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DamagePopUp : MonoBehaviour
@@ -8,8 +6,10 @@ public class DamagePopUp : MonoBehaviour
     public Rigidbody2D rb;
     public float lifetime = 1.5f;
 
+
     void Start()
     {
+        // Set the pop up starting velocity
         rb.linearVelocity = InitialVelocity;
         Destroy(gameObject, lifetime);
     }

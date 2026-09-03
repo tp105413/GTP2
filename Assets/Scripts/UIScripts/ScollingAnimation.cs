@@ -38,6 +38,7 @@ public class ScrollingAnimation : MonoBehaviour
             isTimerStarted = false;
         }
     }
+
     public void MainMenuAnimation()
     {
         {
@@ -47,6 +48,7 @@ public class ScrollingAnimation : MonoBehaviour
         }
     }
 
+    // Play logo animation loop
     public void PlayLogoAnimation()
     {
         if (scrollAnimation != null)
@@ -58,6 +60,8 @@ public class ScrollingAnimation : MonoBehaviour
             scrollAnimation.Play("LogoAnimation");
         }
     }
+
+    // Wait for the scroll animation to complete then start the logo animation
     private IEnumerator BackThenLoopLogoRoutine()
     {
         scrollAnimation.Play("BackToMainMenu");
@@ -73,6 +77,7 @@ public class ScrollingAnimation : MonoBehaviour
         PlayLogoAnimation();
     }
 
+    // Return to the MainMenu
     public void BackToMainMenu()
     {
         if (scrollAnimation == null) return;
@@ -80,5 +85,4 @@ public class ScrollingAnimation : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(BackThenLoopLogoRoutine());
     }
-
 }
