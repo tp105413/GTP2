@@ -15,6 +15,9 @@ public class CountdownTimer : MonoBehaviour
     private TimeSpan totalTimeRun;
     private float totalMultiplier;
 
+    //[SerializeField] private int breakInterval;
+    //[SerializeField] private int breakDuration;
+
     // Read-only from other classes
     public TimeSpan TimeRemaining => timeRemaining;
     public bool IsTimerRunning => isTimerRunning;

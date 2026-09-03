@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System;
 
 public class ResourceUI : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ResourceUI : MonoBehaviour
     public TextMeshProUGUI rewardGoldText;
     public TextMeshProUGUI rewardSoulText;
     public TextMeshProUGUI rewardMultiplier;
+    public TextMeshProUGUI totalRunTime;
 
 
     private void OnEnable()
@@ -76,11 +78,36 @@ public class ResourceUI : MonoBehaviour
     }
 
     // Update the reward UI with calculated resources
-    public void UpdateRewardsUI(int gold, int souls, float multiplier)
+    public void UpdateRewardsUI(int gold, int souls, float multiplier, int runTime)
     {
         rewardGoldText.text = gold.ToString();
         rewardSoulText.text = souls.ToString();
         rewardMultiplier.text = multiplier.ToString();
+        totalRunTime.text = FormatTime(runTime).ToString();
+    }
+
+    // Change total time run into time format
+    public string FormatTime(int runTime)
+    {
+        if (runTime < 60)
+        {
+            return runTime + "Sec";
+        }
+        else if(runTime < 3600)
+        {
+            int minutes = runTime / 60;
+            int remaningSeconds = runTime % 60;
+
+            return minutes + "Min " + remaningSeconds + "Sec";
+        }
+        else
+        {
+            int hours = runTime / 3600;
+            int minutes = (runTime % 3600 / 60);
+            int remaningSeconds = runTime % 60;
+
+            return hours + "Hr " + minutes + "Min " + remaningSeconds + "Sec";
+        }
     }
 
     // Update player gold UI
