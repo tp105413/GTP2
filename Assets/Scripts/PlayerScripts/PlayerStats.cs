@@ -47,24 +47,42 @@ public class PlayerStats : MonoBehaviour
 
 
     // Add gold and souls from calculated rewards
-    public void TransferCalculatedReward (int goldAmount, int soulsAmount)
+    public void TransferCalculatedReward(int goldAmount, int soulsAmount)
     {
         playerGold += goldAmount;
         OnGoldChanged?.Invoke(playerGold);
         playerSouls += soulsAmount;
         OnSoulsChanged?.Invoke(playerSouls);
+
+
+        //Record gold and soul that player earned from the battle  (but this one save the value to disk)
+        int totalGold = PlayerPrefs.GetInt("TotalGoldEarned", 0);
+        totalGold += goldAmount;
+        PlayerPrefs.SetInt("TotalGoldEarned", totalGold);
+
+        int totalSouls = PlayerPrefs.GetInt("TotalSoulEarned", 0);
+        totalSouls += soulsAmount;
+        PlayerPrefs.SetInt("TotalSoulEarned", totalSouls);
+
+        //PlayerPrefs.Save();
     }
 
     public void SpendPlayerGold(int amount)
     {
         playerGold -= amount;
         OnGoldChanged?.Invoke(playerGold);
+        int goldSpent = PlayerPrefs.GetInt("TotalGoldSpent", 0);
+        goldSpent += amount;
+        PlayerPrefs.SetInt("TotalGoldSpent", goldSpent);
     }
 
     public void SpendPlayerSouls(int amount)
     {
         playerSouls -= amount;
         OnSoulsChanged?.Invoke(playerSouls);
+        int soulSpent = PlayerPrefs.GetInt("TotalSoulSpent", 0);
+        soulSpent += amount;
+        PlayerPrefs.SetInt("TotalSoulSpent", soulSpent);
     }
 
     // Increase attack damage

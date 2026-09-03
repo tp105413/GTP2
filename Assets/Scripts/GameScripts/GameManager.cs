@@ -67,15 +67,20 @@ public class GameManager : MonoBehaviour
     {
         gameLevel++;
         uiManager.UpdateLevelUI();
+        int highestLevel = PlayerPrefs.GetInt("HighestLevel", 0);
+        PlayerPrefs.SetInt("HighestLevel", gameLevel);
     }
 
     // Handle enemy defeat and spawn the next enemy, boss or level
     public void EnemyDefeated()
     {
         remainingEnemyCount--;
+        int monsterKill = PlayerPrefs.GetInt("MonsterKill", 0);
+        monsterKill++;
+        PlayerPrefs.SetInt("MonsterKill", monsterKill);
 
         // Spawn the next enemy if enemies remain
-        if(remainingEnemyCount > 0)
+        if (remainingEnemyCount > 0)
         {
             enemySpawner.SpawnEnemy(gameLevel);
         }
@@ -94,6 +99,9 @@ public class GameManager : MonoBehaviour
             RemainingEnemyCountReset();
             bossSpawned = false;
             enemySpawner.SpawnEnemy(gameLevel);
+            int bossKill = PlayerPrefs.GetInt("BossKill", 0);
+            bossKill++;
+            PlayerPrefs.SetInt("BossKill", bossKill);
         }
     }
 

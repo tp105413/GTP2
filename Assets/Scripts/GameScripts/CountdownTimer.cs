@@ -57,6 +57,9 @@ public class CountdownTimer : MonoBehaviour
     public void TimerFinished()
     {
         stopButton.onClick.Invoke();
+        int timerDone = PlayerPrefs.GetInt("TimerSessionDone", 0);
+        timerDone++;
+        PlayerPrefs.SetInt("TimerSessionDone", timerDone);
     }
 
     // Stop and reset the timer
