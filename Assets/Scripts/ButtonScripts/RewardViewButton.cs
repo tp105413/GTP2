@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RewardViewButton : MonoBehaviour
 {
     public bool isRewardViewOpen = false;
     public GameObject RewardView;
+
 
     void Start()
     {
@@ -16,11 +16,13 @@ public class RewardViewButton : MonoBehaviour
 
     public void RewardViewShow()
     {
+        // Toggle the Reward View state
         isRewardViewOpen = !isRewardViewOpen;
         if (RewardView != null)
         {
             RewardView.SetActive(isRewardViewOpen);
 
+            // Reset the temporary resources after Reward View is closed
             if (!isRewardViewOpen)
             {
                 ResourceManager.Instance.ResetTempGoldAndSouls();

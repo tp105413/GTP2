@@ -59,7 +59,7 @@ public class ResourceManager : MonoBehaviour
         int finalGold = Mathf.RoundToInt(tempGold * multiplier);
         int finalSouls = Mathf.RoundToInt(tempSouls * multiplier);
 
-        resourceUI.UpdateRewardsUI(finalGold, finalSouls, multiplier);
+        resourceUI.UpdateRewardsUI(finalGold, finalSouls, multiplier, (int)countdownTimer.TotalTimeRun.TotalSeconds);
         playerStats.TransferCalculatedReward(finalGold, finalSouls);
     }
 }

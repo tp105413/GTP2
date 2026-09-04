@@ -4,6 +4,7 @@ public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private PlayerUI playerUI;
+    [SerializeField] private UIManager uIManager;
 
     private Enemy attackTarget;
     private float attackTimer = 0f;
@@ -35,7 +36,14 @@ public class PlayerCombat : MonoBehaviour
         attackTarget.TakeDamage(damage, playerStats);
         playerUI.PlayAttackTrigger();
 
-        // ======critical damage ui apply here======
+        if (isCritical)
+        {
+            uIManager.SpawnDamagePopUpUI(damage, true, attackTarget);
+        }
+        else
+        {
+            uIManager.SpawnDamagePopUpUI(damage, false, attackTarget);
+        }
     }
 
     // Calculate final damage dealt by the player
