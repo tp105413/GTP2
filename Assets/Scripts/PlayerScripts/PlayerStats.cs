@@ -63,26 +63,18 @@ public class PlayerStats : MonoBehaviour
         int totalSouls = PlayerPrefs.GetInt("TotalSoulEarned", 0);
         totalSouls += soulsAmount;
         PlayerPrefs.SetInt("TotalSoulEarned", totalSouls);
-
-        //PlayerPrefs.Save();
     }
 
     public void SpendPlayerGold(int amount)
     {
         playerGold -= amount;
         OnGoldChanged?.Invoke(playerGold);
-        int goldSpent = PlayerPrefs.GetInt("TotalGoldSpent", 0);
-        goldSpent += amount;
-        PlayerPrefs.SetInt("TotalGoldSpent", goldSpent);
     }
 
     public void SpendPlayerSouls(int amount)
     {
         playerSouls -= amount;
         OnSoulsChanged?.Invoke(playerSouls);
-        int soulSpent = PlayerPrefs.GetInt("TotalSoulSpent", 0);
-        soulSpent += amount;
-        PlayerPrefs.SetInt("TotalSoulSpent", soulSpent);
     }
 
     // Increase attack damage

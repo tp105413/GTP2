@@ -29,9 +29,7 @@ public class AchievementUI : MonoBehaviour
         int bossKill = PlayerPrefs.GetInt("BossKill", 0);
         int highestDamage = PlayerPrefs.GetInt("HighestAttackDamage", 0);
         int goldEarned = PlayerPrefs.GetInt("TotalGoldEarned", 0);
-        int goldSpent = PlayerPrefs.GetInt("TotalGoldSpent", 0);
         int soulEarned = PlayerPrefs.GetInt("TotalSoulEarned", 0);
-        int soulSpent = PlayerPrefs.GetInt("TotalSoulSpent", 0);
 
         highestLevelText.text = $"Player Highest Level : {highestLevel}";
         timerSessionDoneText.text = $"Timer Session Done : {timerDone}";
@@ -40,9 +38,7 @@ public class AchievementUI : MonoBehaviour
         bossKillText.text = $"Boss Kill : {bossKill}";
         highestDamageText.text = $"Highest Attack Damage : {highestDamage}";
         totalGoldEarnedText.text = $"Total Gold Earned : {goldEarned}";
-        totalGoldSpentText.text = $"Total Gold Spent : {goldSpent}";
         totalSoulEarnedText.text = $"Total Soul Earned : {soulEarned}";
-        totalSoulSpentText.text = $"Total Soul Spent : {soulSpent}";
 
     }
 }
