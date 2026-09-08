@@ -14,9 +14,8 @@ public class CountdownTimer : MonoBehaviour
     private bool isTimerPaused = false;
     private TimeSpan totalTimeRun;
     private float totalMultiplier;
-
-    //[SerializeField] private int breakInterval;
-    //[SerializeField] private int breakDuration;
+    private int breakInterval;
+    private int breakDuration;
 
     // Read-only from other classes
     public TimeSpan TimeRemaining => timeRemaining;
@@ -24,6 +23,12 @@ public class CountdownTimer : MonoBehaviour
     public bool IsTimerPaused => isTimerPaused;
     public TimeSpan TotalTimeRun => totalTimeRun;
     public float TotalMultiplier => totalMultiplier;
+    public int BreakInterval => breakInterval;
+    public int BreakDuration => breakDuration;
+
+    private bool isOnBreak = false;
+    private float breakTimeRemaining;
+    private TimeSpan breakTimer;
 
     // Invoked when timer stops
     public event Action OnTimerStop;
@@ -31,14 +36,33 @@ public class CountdownTimer : MonoBehaviour
 
     void Update()
     {
+        // If break timer start, pause the game timer
+        if (isOnBreak)
+        {
+            breakTimeRemaining -= Time.deltaTime;
+
+            if (breakTimeRemaining <= 0)
+            {
+                breakTimeRemaining = 0f;
+                EndBreak();
+            }
+            return;
+        }
+
         // Stop update while the timer is stopped or paused
         if (!isTimerRunning || isTimerPaused) return;
-        
+
         // Decrease the remaining time until the timer reaches 0
         if(timeRemaining > TimeSpan.Zero)
         {
             timeRemaining -= TimeSpan.FromSeconds(Time.deltaTime);
             totalTimeRun += TimeSpan.FromSeconds(Time.deltaTime);
+            breakTimer += TimeSpan.FromSeconds(Time.deltaTime);
+
+            if(breakTimer.TotalSeconds >= breakInterval)
+            {
+                StartBreak();
+            }
         }
         else
         {
@@ -49,7 +73,7 @@ public class CountdownTimer : MonoBehaviour
 
     public void StartTimer()
     {
-        // Reset total time before every run
+        // Reset total time and before every run
         totalTimeRun = TimeSpan.Zero;
 
         isTimerRunning = true;
@@ -98,5 +122,35 @@ public class CountdownTimer : MonoBehaviour
         totalDurationInSeconds = 10f * ticks;
         totalMultiplier = 1f + 0.25f * (totalDurationInSeconds / 10f);
         timeRemaining = TimeSpan.FromSeconds(totalDurationInSeconds);
+    }
+
+    // Set the break interval value
+    public void SetBreakInterval(int value)
+    {
+        breakInterval = value;
+    }
+
+    // Set the break duration value
+    public void SetBreakDuration(int value)
+    {
+        breakDuration = value;
+    }
+
+    // Pause the game and start the break countdown
+    public void StartBreak()
+    {
+        GameManager.Instance.OnPauseButtonClick();
+        isOnBreak = true;
+        breakTimeRemaining = breakDuration;
+    }
+
+    // Resume the game and reset the break countdown
+    public void EndBreak()
+    {
+        GameManager.Instance.OnPauseButtonClick();
+        isOnBreak = false;
+
+        // Reset break timer
+        breakTimer = TimeSpan.Zero;
     }
 }
