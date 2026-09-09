@@ -5,6 +5,7 @@ public class SkillTree : MonoBehaviour
     [SerializeField] private StatsDisplay statsDisplay;
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private StatsUpgrade statsUpgrade;
+    [SerializeField] private SkillUpgrade skillUpgrade;
 
     private SkillTreeButton buttonSelected;
 
@@ -28,6 +29,7 @@ public class SkillTree : MonoBehaviour
     // Refresh the selected skills values
     public void RefreshSkillValue(SkillTreeButton button)
     {
+        // Base stats value 
         int level = playerStats.GetSkillLevel(button.SkillType);
         int dmg = playerStats.GetSkillIntValue(button.SkillType);
         float spd = playerStats.GetSkillFloatValue(button.SkillType);
@@ -35,7 +37,11 @@ public class SkillTree : MonoBehaviour
         int crit = playerStats.GetSkillIntValue(button.SkillType);
         int cost = statsUpgrade.BaseLevelStatsGoldCost * level;
 
-        statsDisplay.ShowSkill(button.SkillName, button.SkillDescription, level, cost, dmg, spd, interval, crit);
+        // Skills stats value
+        int sLevel = skillUpgrade.GetSkillLevel(button.SkillType);
+        (int sDmg, int dmgMul) = skillUpgrade.GetSkillDamage(button.SkillType);
+
+        statsDisplay.ShowSkill(button.SkillName, button.SkillDescription, level, cost, dmg, spd, interval, crit, sLevel, sDmg, dmgMul);
     }
 
     // Upgrades the selected skill
@@ -57,6 +63,9 @@ public class SkillTree : MonoBehaviour
                 break;
             case SkillType.CriticalDamage:
                 statsUpgrade.UpgradeCriticalDamage();
+                break;
+            case SkillType.PowerStrike:
+                skillUpgrade.UpgradeSkill(SkillType.PowerStrike);
                 break;
         }
 

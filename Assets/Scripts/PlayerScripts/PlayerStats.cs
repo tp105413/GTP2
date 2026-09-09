@@ -141,6 +141,7 @@ public class PlayerStats : MonoBehaviour
             case SkillType.AttackDamage: return AttackDamage;
             case SkillType.CriticalChance: return CriticalChance;
             case SkillType.CriticalDamage: return CriticalDamage;
+            case SkillType.PowerStrike: return Mathf.RoundToInt(AttackDamage * 1.5f);
 
             default: return 0;
         }

@@ -38,14 +38,19 @@ public class StatsDisplay : MonoBehaviour
     }
 
     // Display the skill name, description, level and upgrade cost
-    public void ShowSkill(string skillName, string skillDescription, int level, int cost, int dmg, float spd, float interval, int crit)
+    public void ShowSkill(string skillName, string skillDescription, int level, int cost, int dmg, float spd, float interval,
+        int crit,int sLevel, int sDmg, int dmgMul)
     {
-        skillNameText.text = $"{skillName} Lv.{level}";
+        skillNameText.text = ($"{skillName}")
+            .Replace("{lv}", level.ToString())
+            .Replace("{slv}", sLevel.ToString());
         skillDescriptionText.text = skillDescription
             .Replace("{dmg}", dmg.ToString())
             .Replace("{spd}", spd.ToString("F2"))
             .Replace("{interval}", interval.ToString("F2"))
-            .Replace("{crit}", crit.ToString());
+            .Replace("{crit}", crit.ToString())
+            .Replace("{skillDmg}", sDmg.ToString())
+            .Replace("{dmgMul}", dmgMul.ToString());
         upgradeCostText.text = cost.ToString();
     }
 
