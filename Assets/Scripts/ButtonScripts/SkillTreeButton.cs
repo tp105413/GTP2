@@ -5,12 +5,15 @@ public class SkillTreeButton : MonoBehaviour
     [SerializeField] private SkillType skillType;
     [SerializeField] private string skillName;
     [TextArea(3, 10)] [SerializeField] private string skillDescription;
+    [SerializeField] private bool isSkill;
 
     public SkillType SkillType => skillType;
     public string SkillName => skillName;
     public string SkillDescription => skillDescription;
+    public bool IsSkill => isSkill;
 
     public GameObject selectedFrame;
+    public GameObject lockedOverlay;
 
     private SkillTree skillTree;
 
@@ -37,5 +40,11 @@ public class SkillTreeButton : MonoBehaviour
     public void SetSelected(bool selected)
     {
         selectedFrame.SetActive(selected);
+    }
+
+    // Hide the locked overlay when the skill is unlocked
+    public void UnlockButton()
+    {
+        lockedOverlay.SetActive(false);
     }
 }

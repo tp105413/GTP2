@@ -29,6 +29,8 @@ public class SkillTree : MonoBehaviour
     // Refresh the selected skills values
     public void RefreshSkillValue(SkillTreeButton button)
     {
+        bool isSkill = button.IsSkill;
+
         // Base stats value 
         int level = playerStats.GetSkillLevel(button.SkillType);
         int dmg = playerStats.GetSkillIntValue(button.SkillType);
@@ -39,9 +41,10 @@ public class SkillTree : MonoBehaviour
 
         // Skills stats value
         int sLevel = skillUpgrade.GetSkillLevel(button.SkillType);
+        int scost = skillUpgrade.GetSkillCost(button.SkillType);
         (int sDmg, int dmgMul) = skillUpgrade.GetSkillDamage(button.SkillType);
 
-        statsDisplay.ShowSkill(button.SkillName, button.SkillDescription, level, cost, dmg, spd, interval, crit, sLevel, sDmg, dmgMul);
+        statsDisplay.ShowSkill(button.SkillName, button.SkillDescription, isSkill, level, cost, dmg, spd, interval, crit, sLevel, scost, sDmg, dmgMul);
     }
 
     // Upgrades the selected skill
@@ -71,5 +74,12 @@ public class SkillTree : MonoBehaviour
 
         // After update refresh display UI
         RefreshSkillValue(ButtonSelected);
+
+        // If skill is unlocked, update the button UI
+        SkillData skill = skillUpgrade.GetSkill(skillType);
+        if(skill != null && skill.isUnlocked)
+        {
+            ButtonSelected.UnlockButton();
+        }
     }
 }

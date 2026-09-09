@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class Enemy : MonoBehaviour
     private int goldDrop = 0;
     private int soulsDrop = 0;
 
+    public bool isDead = false;
 
     void Awake()
     {
@@ -96,6 +96,9 @@ public class Enemy : MonoBehaviour
     // Reduce health and if health reaches 0, it dies
     public void TakeDamage(int damage, PlayerStats stats)
     {
+        // If enemy is dead stop getting damage
+        if (isDead) return;
+
         playerStats = stats;
 
         currentHealth -= damage;
@@ -112,6 +115,10 @@ public class Enemy : MonoBehaviour
     // Give rewards, end attack and destroy the object
     public void Die()
     {
+        // Make sure Die() is ever called directly for extra safety
+        if (isDead) return;
+        isDead = true;
+
         // Stop boss timer coroutine when is boss is dead
         GameManager.Instance.StopBossTimer();
 

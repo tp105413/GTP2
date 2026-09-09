@@ -30,7 +30,6 @@ public class SkillUpgrade : MonoBehaviour
 
         playerStats.SpendPlayerSouls(skill.unlockCost);
 
-        Debug.Log("Power Strike Unlocked!");
         skill.isUnlocked = true;
         skill.level = 1;
     }
@@ -57,8 +56,6 @@ public class SkillUpgrade : MonoBehaviour
 
         playerStats.SpendPlayerSouls(upgradeCost);
         skill.level++;
-
-        Debug.Log("Power Strike upgraded to Level " + skill.level);
     }
 
     // Get skill level
@@ -71,6 +68,20 @@ public class SkillUpgrade : MonoBehaviour
         return skill.level;
     }
 
+    public int GetSkillCost(SkillType skilltype)
+    {
+        SkillData skill = GetSkill(skilltype);
+
+        if (skill == null) return 0;
+
+        // If skill is not unlocked show unlock cost
+        if (!skill.isUnlocked) return skill.unlockCost;
+
+        if (skill.level >= skill.maxLevel) return 0;
+
+        return skill.upgradeCosts[skill.level - 1];
+    }
+
     // Get the skill damage
     public (int damage, int multiplier) GetSkillDamage(SkillType skilltype)
     {
@@ -78,7 +89,10 @@ public class SkillUpgrade : MonoBehaviour
 
         if (skill == null) return (0, 0);
 
-        float multiplier = skill.damageMultiplier[skill.level - 1];
+        // Prevent skill level become -1
+        int index = Mathf.Max(skill.level - 1, 0);
+
+        float multiplier = skill.damageMultiplier[index];
         int damage = Mathf.RoundToInt(playerStats.AttackDamage * multiplier);
 
         // Format multiplier to percentage for display

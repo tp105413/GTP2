@@ -865,7 +865,9 @@ MonoBehaviour:
   skillName: Beast Heart Lv.{lv}
   skillDescription: 'Primal instincts that strike true. Critical basic attacks deal
     extra <color=#FF6E00>{crit}%</color> damage. '
+  isSkill: 0
   selectedFrame: {fileID: 271703953}
+  lockedOverlay: {fileID: 0}
 --- !u!114 &93579282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6115,7 +6117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 496.6, y: -279.65}
+  m_AnchoredPosition: {x: 495, y: -279.65}
   m_SizeDelta: {x: 30, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &499814901
@@ -8710,7 +8712,9 @@ MonoBehaviour:
   skillName: Swordsmanship Lv.{lv}
   skillDescription: Hone your blade to the limits. Basic attacks deal <color=#3BB143>{dmg}</color> 
     damage.
+  isSkill: 0
   selectedFrame: {fileID: 15054252}
+  lockedOverlay: {fileID: 0}
 --- !u!114 &709995357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10008,6 +10012,7 @@ GameObject:
   - component: {fileID: 866018551}
   - component: {fileID: 866018550}
   - component: {fileID: 866018552}
+  - component: {fileID: 866018553}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10028,8 +10033,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   playerStats: {fileID: 866018546}
+  playerSkillManager: {fileID: 866018553}
   playerUI: {fileID: 866018552}
   uIManager: {fileID: 444700040}
+  containerParent: {fileID: 1691400741}
+  powerStrikePrefab: {fileID: 7011572364435724502, guid: 0ffc8a45cf914f84cb91d508fc6d47e2, type: 3}
 --- !u!114 &866018546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10142,6 +10150,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUI
   playerAnimator: {fileID: 866018550}
+--- !u!114 &866018553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866018544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9615aec959dac47448caa08862294b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSkillManager
+  skillUpgrade: {fileID: 1622765292}
 --- !u!1 &878187779
 GameObject:
   m_ObjectHideFlags: 0
@@ -12448,7 +12469,9 @@ MonoBehaviour:
   skillName: Crescendo Lv.{lv}
   skillDescription: Relentless pacing. <color=#FFD203>{interval}</color> seconds
     cooldown between basic attacks.
+  isSkill: 0
   selectedFrame: {fileID: 587965807}
+  lockedOverlay: {fileID: 0}
 --- !u!114 &1029192651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19093,6 +19116,9 @@ MonoBehaviour:
   skillNameText: {fileID: 516393669}
   skillDescriptionText: {fileID: 969420100}
   upgradeCostText: {fileID: 117275799}
+  costIcon: {fileID: 1059407784}
+  goldIcon: {fileID: -2667843197657679101, guid: 4f4bd2ba397cfa14d85378d9b0bcbad8, type: 3}
+  soulIcon: {fileID: 8859095066045602109, guid: 0b0d2002632f6854195e162fe314f0af, type: 3}
   attackDamageValue: {fileID: 943166093}
   attackSpeedValue: {fileID: 1993846905}
   attackIntervalValue: {fileID: 1415883180}
@@ -19258,7 +19284,9 @@ MonoBehaviour:
   skillName: Flash Strikes Lv.{lv}
   skillDescription: 'Such swift strikes that onlooker''s sight could not follow.
     Increases basic attack speed by <color=#FFD203>x{spd}</color>. '
+  isSkill: 0
   selectedFrame: {fileID: 813269722}
+  lockedOverlay: {fileID: 0}
 --- !u!114 &1596625891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19568,7 +19596,7 @@ MonoBehaviour:
     requiredStats: 0
     requiredLevel: 5
     isUnlocked: 0
-    level: 1
+    level: 0
     maxLevel: 3
     unlockCost: 1
     upgradeCosts: 0200000004000000
@@ -19746,7 +19774,9 @@ MonoBehaviour:
   skillName: Keen Eyesight Lv.{lv}
   skillDescription: Grasp opportunities which others could not detect. <color=#FF6E00>{crit}%</color>
     chance to deal a critical basic attack.
+  isSkill: 0
   selectedFrame: {fileID: 469273860}
+  lockedOverlay: {fileID: 0}
 --- !u!114 &1679409405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21045,7 +21075,9 @@ MonoBehaviour:
     Every
     3 basic attacks will extra power strike. Deals <color=#3BB143>{skillDmg}</color>
     damage. (Attack Damage {dmgMul}%)'
+  isSkill: 1
   selectedFrame: {fileID: 1101181657}
+  lockedOverlay: {fileID: 1931100374}
 --- !u!114 &1835031457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22323,7 +22355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1931100375}
   m_Layer: 5
-  m_Name: Lock
+  m_Name: Locked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

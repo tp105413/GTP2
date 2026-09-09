@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StatsDisplay : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class StatsDisplay : MonoBehaviour
     [SerializeField] private TMP_Text skillNameText;
     [SerializeField] private TMP_Text skillDescriptionText;
     [SerializeField] private TMP_Text upgradeCostText;
+    [SerializeField] private Image costIcon;
+    [SerializeField] private Sprite goldIcon;
+    [SerializeField] private Sprite soulIcon;
 
     public TextMeshProUGUI attackDamageValue;
     public TextMeshProUGUI attackSpeedValue;
@@ -38,8 +42,8 @@ public class StatsDisplay : MonoBehaviour
     }
 
     // Display the skill name, description, level and upgrade cost
-    public void ShowSkill(string skillName, string skillDescription, int level, int cost, int dmg, float spd, float interval,
-        int crit,int sLevel, int sDmg, int dmgMul)
+    public void ShowSkill(string skillName, string skillDescription, bool isSkill, int level, int cost, int dmg, float spd, float interval,
+        int crit,int sLevel, int scost, int sDmg, int dmgMul)
     {
         skillNameText.text = ($"{skillName}")
             .Replace("{lv}", level.ToString())
@@ -51,7 +55,17 @@ public class StatsDisplay : MonoBehaviour
             .Replace("{crit}", crit.ToString())
             .Replace("{skillDmg}", sDmg.ToString())
             .Replace("{dmgMul}", dmgMul.ToString());
-        upgradeCostText.text = cost.ToString();
+
+        if (!isSkill)
+        {
+            upgradeCostText.text = cost.ToString();
+            costIcon.sprite = goldIcon;
+        }
+        else
+        {
+            upgradeCostText.text = scost.ToString();
+            costIcon.sprite = soulIcon;
+        }
     }
 
     // Update player stats UI display
