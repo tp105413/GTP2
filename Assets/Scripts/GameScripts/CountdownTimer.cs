@@ -16,6 +16,7 @@ public class CountdownTimer : MonoBehaviour
     private float totalMultiplier;
     private int breakInterval;
     private int breakDuration;
+    public static CountdownTimer Instance { get; private set; }
 
     // Read-only from other classes
     public TimeSpan TimeRemaining => timeRemaining;

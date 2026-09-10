@@ -167,7 +167,6 @@ public class GameManager : MonoBehaviour
         countdownTimer.StopTimer();
         RemainingEnemyCountReset();
         playerUI.StopRunningAnimation();
-
         ResourceManager.Instance.CalculateReward();
     }
 

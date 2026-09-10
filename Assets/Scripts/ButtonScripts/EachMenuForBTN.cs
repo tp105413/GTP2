@@ -1,10 +1,15 @@
+using System;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class EachMenuForBTN : MonoBehaviour
 {
-    public GameObject [] PopMenu;
+    public GameObject[] PopMenu;
 
     public int MenuNumber;
+    private bool isSettingOpen = false;
+    public GameObject Setting;
+
 
 
     // Close all menus and open the selected menu
@@ -22,7 +27,23 @@ public class EachMenuForBTN : MonoBehaviour
         {
             if (PopMenu[MenuNumber] != null)
             {
-            PopMenu[MenuNumber].SetActive(true);
+                PopMenu[MenuNumber].SetActive(true);
+            }
+        }
+    }
+
+    public void SettingButton()
+    {
+        if (Setting != null)
+        {
+            isSettingOpen = Setting.activeSelf;
+        }
+
+        { 
+            isSettingOpen = !isSettingOpen;
+            if (Setting != null)
+            {
+                Setting.SetActive(isSettingOpen);
             }
         }
     }

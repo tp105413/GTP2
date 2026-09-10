@@ -1,3 +1,5 @@
+using System.Reflection.Metadata.Ecma335;
+using System.Threading;
 using UnityEngine;
 
 public class ButtonRunning : MonoBehaviour
@@ -5,11 +7,10 @@ public class ButtonRunning : MonoBehaviour
     public float moveSpeed = 30f;
     [SerializeField] private float leftx;
     [SerializeField] private float rightx;
-    //[SerializeField] private float rightx; 
+    [SerializeField] private float stopx;
     private RectTransform rectTransform;
     private Vector2 startPosition;
     public bool isMovingLeft = true;
-
 
     // Initialize the RectTransform and store its starting position
     void Start()
@@ -21,6 +22,18 @@ public class ButtonRunning : MonoBehaviour
     // Move the background to the left while game is running
     void Update()
     {
+        ButtonGoLeftAndHide();
+    }
+
+    public void CallButtonAgain()
+    {
+        gameObject.SetActive(true);
+        rectTransform.anchoredPosition = new Vector2(rightx, rectTransform.anchoredPosition.y);
+        isMovingLeft = true;
+    }
+
+    public void ButtonGoLeftAndHide()
+    {
         if (!isMovingLeft) return;
         if (GameManager.Instance.isAttacking || !(GameManager.Instance.isGameRunning)) return;
 
@@ -30,14 +43,8 @@ public class ButtonRunning : MonoBehaviour
         if (rectTransform.anchoredPosition.x < leftx)
         {
             isMovingLeft = false;
+            rectTransform.anchoredPosition = new Vector2(rightx, rectTransform.anchoredPosition.y);
             rectTransform.gameObject.SetActive(false);
-            rectTransform.anchoredPosition = new Vector2(rightx,rectTransform.anchoredPosition.y);
         }
     }
-
-    public void ChangetoRightSide()
-    {
-        //rectTransform.
-    }
 }
-
