@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPauseButtonClick()
     {
-        PauseGame();
+        PauseGame(true);
     }
 
     public void GameLevelUp()
@@ -171,15 +171,15 @@ public class GameManager : MonoBehaviour
     }
 
     // Pause the game and preserve its current state
-    public void PauseGame()
+    public void PauseGame(bool paused)
     {
-        if (isGameRunning)
+        if (paused && isGameRunning)
         {
             isGameRunning = false;
             countdownTimer.PauseTimer(); // Pause the timer
             playerUI.StopRunningAnimation();
         }
-        else
+        else if(!paused && !isGameRunning)
         {
             isGameRunning = true;
             countdownTimer.PauseTimer(); // Resume the timer

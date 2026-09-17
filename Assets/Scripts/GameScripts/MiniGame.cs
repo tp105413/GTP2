@@ -1,132 +1,131 @@
-using System.Collections;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
+using System.Collections;
 
 public class MiniGame : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public AudioClip beatSound;
+    [SerializeField] private Button butterflyPrefab;
+    [SerializeField] private RectTransform spawnArea1;
+    [SerializeField] private RectTransform spawnArea2;
+    [SerializeField] private RectTransform flyArea;
+    [SerializeField] private float flyingSpeed = 500f;
 
-    public float beatTime = 0.25f;
-    public TMP_Text correctCountText;
-    public GameObject beatPrefab;
-    public RectTransform targetCircle;
-    public Canvas canvas;
-    public float moveSpeed;
-    public float hitRange;
-    public float missDistance;
+    private bool isButterflyAlive = false;
+    private bool isMiniGameRunning = false;
 
-    int[] rhythm = new int[4];
-    int correctCount = 0;
+    public static MiniGame Instance { get; private set; }
 
-    void Start()
+
+    private void Awake()
     {
-        StartCoroutine(PlayRhythm());
+        Instance = this;
     }
 
-    void Update()
+    public void StartMiniGame()
     {
-        // Find all Beat objects
-        GameObject[] beats = GameObject.FindGameObjectsWithTag("Beat");
+        // Prevent start mini game twice
+        if (isMiniGameRunning) return;
 
-        foreach(GameObject beat in beats)
+        isMiniGameRunning = true;
+        StartCoroutine(SpawnLoop());
+    }
+
+    public void StopMiniGame()
+    {
+        isMiniGameRunning = false;
+    }
+
+    private void SpawnButterfly()
+    {
+        isButterflyAlive = true;
+
+        bool spawnLeftArea = Random.Range(0, 2) == 0;
+
+        RectTransform spawnArea;
+
+        if (spawnLeftArea)
         {
-            RectTransform beatTransform = beat.GetComponent<RectTransform>();
-            beatTransform.anchoredPosition += Vector2.left * moveSpeed * Time.deltaTime;
+            spawnArea = spawnArea1;
+        }
+        else
+        {
+            spawnArea = spawnArea2;
+        }
 
-            if(beatTransform.anchoredPosition.x<targetCircle.anchoredPosition.x - missDistance)
+        Button butterfly = Instantiate(butterflyPrefab, flyArea);
+
+        RectTransform butterflyPosition = butterfly.GetComponent<RectTransform>();
+        butterflyPosition.anchoredPosition = spawnArea.anchoredPosition;
+
+        StartCoroutine(ButterflyMovement(butterflyPosition, spawnLeftArea));
+
+        butterfly.onClick.AddListener(() => { ButterflyClicked(butterfly); });
+    }
+
+    IEnumerator ButterflyMovement(RectTransform butterflyRect, bool startedLeft)
+    {
+        RectTransform targetArea;
+
+        if (startedLeft)
+        {
+            targetArea = spawnArea2;
+        }
+        else
+        {
+            targetArea = spawnArea1;
+        }
+
+        float totalFlyArea = 0f;
+        float changeDirectionTimer = 0f;
+
+        while(butterflyRect != null && Vector2.Distance(butterflyRect.anchoredPosition, targetArea.anchoredPosition) > 1f)
+        {
+            changeDirectionTimer -= Time.deltaTime;
+
+            if (changeDirectionTimer <= 0f)
             {
-                Destroy(beat);
-                MissBeat();
+                totalFlyArea = Random.Range(-300f, 300f);
+                changeDirectionTimer = Random.Range(1f, 5f);
             }
+
+            Vector2 targetPosition = targetArea.anchoredPosition;
+
+            targetPosition.y += totalFlyArea;
+
+            Vector2 currentPosition = butterflyRect.anchoredPosition;
+
+            float speedX = Mathf.MoveTowards(currentPosition.x, targetArea.anchoredPosition.x, flyingSpeed * Time.deltaTime);
+            float speedY = Mathf.MoveTowards(currentPosition.y, targetPosition.y, (flyingSpeed * 1.5f) * Time.deltaTime);
+
+            butterflyRect.anchoredPosition = new Vector2(speedX, speedY);
+
+            yield return null;
+        }
+
+        if (butterflyRect != null)
+        {
+            isButterflyAlive = false;
+            Destroy(butterflyRect.gameObject);
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
-    // Generate random types of 4 beats
-    public void GenerateRhythm()
+    IEnumerator SpawnLoop()
     {
-        for(int i = 0; i < 4; i++)
+        while (isMiniGameRunning)
         {
-            rhythm[i] = Random.Range(0, 2);
+            if (!isButterflyAlive)
+            {
+                SpawnButterfly();
+            }
+            yield return null;
         }
     }
 
-    IEnumerator PlayRhythm()
+    private void ButterflyClicked(Button butterfly)
     {
-        while (true)
-        {
-            GenerateRhythm();
-
-            // Play beats rhythm audio
-            for (int i = 0; i < 4; i++)
-            {
-                if (rhythm[i] == 1)
-                {
-                    audioSource.PlayOneShot(beatSound);
-                }
-
-                yield return new WaitForSeconds(beatTime);
-            }
-
-            // After the beats rhythm audio finish, spawn the beat visual
-            for (int j = 0; j < 4; j++)
-            {
-                if (rhythm[j] == 1)
-                {
-                    SpawnBeat(j);
-                }
-            }
-
-            // Wait for 3 seconds and spawn next round of beats
-            yield return new WaitForSeconds(3f);
-        }
-    }
-
-    // Spawn a beat at a position based on its index
-    public void SpawnBeat(int index)
-    {
-        GameObject beat = Instantiate(beatPrefab, canvas.transform);
-        RectTransform beatTransform = beat.GetComponent<RectTransform>();
-
-        float spacing = moveSpeed * beatTime;
-        float SpawnX = 1000 + (index * spacing);
-
-        beatTransform.anchoredPosition = new Vector2(SpawnX, 0);
-    }
-
-    public void ClickBeat()
-    {
-        correctCount++;
-        correctCountText.text = "x" + correctCount;
-    }
-
-    public void MissBeat()
-    {
-        correctCount--;
-        if (correctCount <= 0) correctCount = 0;
-        correctCountText.text = "x" + correctCount;
-    }
-
-    // Check if clicked a beat within the hit range
-    public void PlayerClick()
-    {
-        GameObject[] beats = GameObject.FindGameObjectsWithTag("Beat");
-
-        foreach(GameObject beat in beats)
-        {
-            RectTransform beatTransform = beat.GetComponent<RectTransform>();
-
-            float distance = Mathf.Abs(beatTransform.anchoredPosition.x - targetCircle.anchoredPosition.x);
-
-            if (distance <= hitRange)
-            {
-                ClickBeat();
-                Destroy(beat);
-                return;
-            }
-        }
-
-        // If click without beat will miss also
-        MissBeat();
+        isButterflyAlive = false;
+        Destroy(butterfly.gameObject);
     }
 }

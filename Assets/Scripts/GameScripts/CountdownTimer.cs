@@ -94,6 +94,15 @@ public class CountdownTimer : MonoBehaviour
     public void StopTimer()
     {
         isTimerRunning = false;
+
+        // Reset break timer while stopping the timer during break
+        if (isOnBreak)
+        {
+            EndBreak();
+        }
+
+        breakTimeRemaining = 0f;
+
         SetDuration(sliderTicks);
         OnTimerStop?.Invoke();
     }
@@ -101,6 +110,9 @@ public class CountdownTimer : MonoBehaviour
     // Toggle the timer between paused and running states
     public void PauseTimer()
     {
+        // Prevent manual pause stop the break state
+        if (isOnBreak) return;
+
         if (!isTimerPaused) 
         {
             isTimerPaused = true;
@@ -140,18 +152,24 @@ public class CountdownTimer : MonoBehaviour
     // Pause the game and start the break countdown
     public void StartBreak()
     {
-        GameManager.Instance.OnPauseButtonClick();
+        GameManager.Instance.PauseGame(true);
         isOnBreak = true;
         breakTimeRemaining = breakDuration;
+
+        // Start mini game
+        MiniGame.Instance.StartMiniGame();
     }
 
     // Resume the game and reset the break countdown
     public void EndBreak()
     {
-        GameManager.Instance.OnPauseButtonClick();
+        GameManager.Instance.PauseGame(true);
         isOnBreak = false;
 
         // Reset break timer
         breakTimer = TimeSpan.Zero;
+
+        // Stop mini game
+        MiniGame.Instance.StopMiniGame();
     }
 }
