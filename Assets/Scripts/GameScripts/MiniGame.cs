@@ -21,6 +21,7 @@ public class MiniGame : MonoBehaviour
         Instance = this;
     }
 
+    // Start the mini game and start spawning butterfly
     public void StartMiniGame()
     {
         // Prevent start mini game twice
@@ -30,6 +31,7 @@ public class MiniGame : MonoBehaviour
         StartCoroutine(SpawnLoop());
     }
 
+    // Stop the mini game
     public void StopMiniGame()
     {
         isMiniGameRunning = false;
@@ -43,6 +45,7 @@ public class MiniGame : MonoBehaviour
 
         RectTransform spawnArea;
 
+        // Spawn butterfly from left or right side
         if (spawnLeftArea)
         {
             spawnArea = spawnArea1;
@@ -53,7 +56,6 @@ public class MiniGame : MonoBehaviour
         }
 
         Button butterfly = Instantiate(butterflyPrefab, flyArea);
-
         RectTransform butterflyPosition = butterfly.GetComponent<RectTransform>();
 
         // Randomly spawn within the spawn area
@@ -67,6 +69,7 @@ public class MiniGame : MonoBehaviour
         butterfly.onClick.AddListener(() => { ButterflyClicked(butterfly); });
     }
 
+    // Butterfly moves from spawn area to opposite side with random movement
     IEnumerator ButterflyMovement(RectTransform butterflyRect, bool startedLeft)
     {
         RectTransform targetArea;
@@ -116,6 +119,7 @@ public class MiniGame : MonoBehaviour
         }
     }
 
+    // Check if butterfly needs to be spawned
     IEnumerator SpawnLoop()
     {
         while (isMiniGameRunning)
@@ -128,6 +132,7 @@ public class MiniGame : MonoBehaviour
         }
     }
 
+    // Add achievement here (Easter egg)
     private void ButterflyClicked(Button butterfly)
     {
         isButterflyAlive = false;

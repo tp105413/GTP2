@@ -31,6 +31,10 @@ public class CountdownTimer : MonoBehaviour
     private float breakTimeRemaining;
     private TimeSpan breakTimer;
 
+    public bool IsOnBreak => isOnBreak;
+    public float BreakTimeRemaining => breakTimeRemaining;
+    public TimeSpan BreakTimer => breakTimer;
+
     // Invoked when timer stops
     public event Action OnTimerStop;
 
@@ -98,7 +102,9 @@ public class CountdownTimer : MonoBehaviour
         // Reset break timer while stopping the timer during break
         if (isOnBreak)
         {
-            EndBreak();
+            isOnBreak = false;
+            breakTimer = TimeSpan.Zero;
+            MiniGame.Instance.StopMiniGame();
         }
 
         breakTimeRemaining = 0f;
@@ -156,20 +162,18 @@ public class CountdownTimer : MonoBehaviour
         isOnBreak = true;
         breakTimeRemaining = breakDuration;
 
-        // Start mini game
         MiniGame.Instance.StartMiniGame();
     }
 
     // Resume the game and reset the break countdown
     public void EndBreak()
     {
-        GameManager.Instance.PauseGame(true);
         isOnBreak = false;
 
         // Reset break timer
         breakTimer = TimeSpan.Zero;
 
-        // Stop mini game
+        GameManager.Instance.PauseGame(false);
         MiniGame.Instance.StopMiniGame();
     }
 }
