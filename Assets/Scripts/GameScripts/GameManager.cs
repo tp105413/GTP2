@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
         // Exit when Timer is set to 0
         if (countdownTimer.TimeRemaining == TimeSpan.Zero) return;
 
+        uiManager.ToggleObjectUI();
+
         StartCoroutine(WaitForScrollCompleted());
     }
 

@@ -55,7 +55,12 @@ public class MiniGame : MonoBehaviour
         Button butterfly = Instantiate(butterflyPrefab, flyArea);
 
         RectTransform butterflyPosition = butterfly.GetComponent<RectTransform>();
-        butterflyPosition.anchoredPosition = spawnArea.anchoredPosition;
+
+        // Randomly spawn within the spawn area
+        float randomX = Random.Range(spawnArea.rect.xMin, spawnArea.rect.xMax);
+        float randomY = Random.Range(spawnArea.rect.yMin, spawnArea.rect.yMax);
+
+        butterflyPosition.anchoredPosition = spawnArea.anchoredPosition + new Vector2(randomX, randomY);
 
         StartCoroutine(ButterflyMovement(butterflyPosition, spawnLeftArea));
 

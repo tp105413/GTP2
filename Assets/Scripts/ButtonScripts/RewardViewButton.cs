@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class RewardViewButton : MonoBehaviour
 {
+    [SerializeField] private UIManager uiManager;
+
     public bool isRewardViewOpen = false;
     public GameObject RewardView;
 
@@ -26,6 +28,8 @@ public class RewardViewButton : MonoBehaviour
             if (!isRewardViewOpen)
             {
                 ResourceManager.Instance.ResetTempGoldAndSouls();
+
+                uiManager.ToggleObjectUI();
             }
         }
     }

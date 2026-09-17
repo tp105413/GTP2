@@ -4,7 +4,8 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI levelText;
-    public GameObject DamagePrefab;
+    public GameObject damagePrefab;
+    public GameObject uiObject;
 
 
     void Start()
@@ -21,7 +22,7 @@ public class UIManager : MonoBehaviour
     // Spawn damage pop up UI
     public void SpawnDamagePopUpUI(int damage, bool isCrit, bool isSkill, Enemy enemy)
     {
-        GameObject popUp = Instantiate(DamagePrefab, enemy.transform.position, Quaternion.identity);
+        GameObject popUp = Instantiate(damagePrefab, enemy.transform.position, Quaternion.identity);
 
         TMP_Text damageText = popUp.GetComponentInChildren<TMP_Text>();
         damageText.text = damage.ToString();
@@ -36,5 +37,11 @@ public class UIManager : MonoBehaviour
             // Change damage text color to orange if is critical hit
             damageText.color = isCrit ? Color.orange : Color.white;
         }
+    }
+
+    // When timer start or stop, hide or show the object UI
+    public void ToggleObjectUI()
+    {
+        uiObject.SetActive(!uiObject.activeSelf);
     }
 }

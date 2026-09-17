@@ -1,16 +1,17 @@
-using System.Reflection.Metadata.Ecma335;
-using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonRunning : MonoBehaviour
 {
-    public float moveSpeed = 30f;
     [SerializeField] private float leftx;
     [SerializeField] private float rightx;
     [SerializeField] private float stopx;
+
+    public float moveSpeed = 300f;
     private RectTransform rectTransform;
     private Vector2 startPosition;
     public bool isMovingLeft = true;
+
 
     // Initialize the RectTransform and store its starting position
     void Start()
