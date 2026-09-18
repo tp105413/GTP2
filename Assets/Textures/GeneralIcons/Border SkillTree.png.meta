@@ -129,10 +129,10 @@ TextureImporter:
       name: Border_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 22
-        width: 10
-        height: 10
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
         serializedVersion: 2
         x: 22
         y: 22
-        width: 10
-        height: 10
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,10 +173,10 @@ TextureImporter:
       name: Border_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 10
-        height: 10
+        x: 2
+        y: 2
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,9 +196,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 22
-        y: 0
-        width: 10
-        height: 10
+        y: 2
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,9 +217,9 @@ TextureImporter:
       name: Border_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 10
-        width: 4
+        width: 2
         height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -241,7 +241,7 @@ TextureImporter:
         serializedVersion: 2
         x: 28
         y: 10
-        width: 4
+        width: 2
         height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -264,7 +264,7 @@ TextureImporter:
         x: 10
         y: 28
         width: 12
-        height: 4
+        height: 2
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,9 +284,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10
-        y: 0
+        y: 2
         width: 12
-        height: 4
+        height: 2
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,6 +315,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      Border SkillTree_0: -704775438
       Border_0: 4507162162781784842
       Border_1: -622061233
       Border_2: 1636405522

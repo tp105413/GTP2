@@ -116,12 +116,12 @@ TextureImporter:
       name: tent_blue_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 9
-        width: 26
-        height: 14
+        x: 2
+        y: 10
+        width: 24
+        height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 87941f3e40484fc4bb4f457c9f95ba19
     internalID: 0
     vertices: []
     indices: 
