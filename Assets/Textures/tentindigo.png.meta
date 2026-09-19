@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 809c226972d300045a08abf8f3c9980e
+guid: 752155a6dbd26a64081325c35d3c263f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2699977007304674864
-    second: tent 1_0
+      213: -6982100869274050167
+    second: tentindigo test_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tent 1_0
+      name: tentindigo test_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3
-        width: 32
-        height: 23
+        x: 1
+        y: 10
+        width: 45
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d1f1e98731c78ad0800000000000000
-      internalID: -2699977007304674864
+      spriteID: 98169fc80489a1f90800000000000000
+      internalID: -6982100869274050167
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 414a9af12798590499c6bb98697820bf
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tent 1_0: -2699977007304674864
+      tentindigo test_0: -6982100869274050167
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

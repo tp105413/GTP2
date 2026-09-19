@@ -39,7 +39,7 @@ public class PlayerCombat : MonoBehaviour
     public void Attack()
     {
         int damage = CalculateDamage();
-        attackTarget.TakeDamage(damage, playerStats);
+    attackTarget.TakeDamage(damage, playerStats);
         playerUI.PlayAttackTrigger();
 
         if (isCritical)
@@ -55,6 +55,15 @@ public class PlayerCombat : MonoBehaviour
         {
             CheckSkills();
         }
+
+
+        int highestDamage = PlayerPrefs.GetInt("HighestAttackDamage", 0);
+        // For Achievement Record ( CritDMG is The highest ForNow)
+        if (damage > highestDamage)
+        {
+            PlayerPrefs.SetInt("HighestAttackDamage", damage);
+        }
+
     }
 
     // Calculate final damage dealt by the player

@@ -83,6 +83,12 @@ public class PlayerStats : MonoBehaviour
         attackDamage = amount;
         attackDamageLevel++;
         OnStatsValueChanged?.Invoke();
+        int highestDamage = PlayerPrefs.GetInt("HighestAttackDamage", 0);
+        // For Achievement Record
+        if (attackDamage > highestDamage)
+        {
+            PlayerPrefs.SetInt("HighestAttackDamage", attackDamage);
+        }
     }
 
     // Increase attack speed
@@ -116,6 +122,13 @@ public class PlayerStats : MonoBehaviour
         criticalDamage += amount;
         criticalDamageLevel++;
         OnStatsValueChanged?.Invoke();
+
+        int highestDamage = PlayerPrefs.GetInt("HighestAttackDamage", 0);
+        if (attackDamage > highestDamage)
+        {
+            PlayerPrefs.SetInt("HighestAttackDamage", attackDamage);
+        }
+
     }
 
     // Return current level of specified skill

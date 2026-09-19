@@ -10,9 +10,9 @@ public class AchievementUI : MonoBehaviour
     [SerializeField] private TMP_Text bossKillText;
     [SerializeField] private TMP_Text highestDamageText;
     [SerializeField] private TMP_Text totalGoldEarnedText;
-    [SerializeField] private TMP_Text totalGoldSpentText;
     [SerializeField] private TMP_Text totalSoulEarnedText;
-    [SerializeField] private TMP_Text totalSoulSpentText;
+    [SerializeField] private TMP_Text ButterflyClickText;
+
 
 
     private void OnEnable()
@@ -30,6 +30,7 @@ public class AchievementUI : MonoBehaviour
         int highestDamage = PlayerPrefs.GetInt("HighestAttackDamage", 0);
         int goldEarned = PlayerPrefs.GetInt("TotalGoldEarned", 0);
         int soulEarned = PlayerPrefs.GetInt("TotalSoulEarned", 0);
+        int ButterflyClick = PlayerPrefs.GetInt("Butterfly Click", 0);
 
         highestLevelText.text = $"Player Highest Level : {highestLevel}";
         timerSessionDoneText.text = $"Timer Session Done : {timerDone}";
@@ -39,6 +40,7 @@ public class AchievementUI : MonoBehaviour
         highestDamageText.text = $"Highest Attack Damage : {highestDamage}";
         totalGoldEarnedText.text = $"Total Gold Earned : {goldEarned}";
         totalSoulEarnedText.text = $"Total Soul Earned : {soulEarned}";
+        ButterflyClickText.text = $"Butterfly Click : {ButterflyClick}";
 
     }
 }

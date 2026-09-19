@@ -137,5 +137,7 @@ public class MiniGame : MonoBehaviour
     {
         isButterflyAlive = false;
         Destroy(butterfly.gameObject);
+        int ButterflyClick = PlayerPrefs.GetInt("Butterfly Click", 0);
+        PlayerPrefs.SetInt("Butterfly Click", ButterflyClick + 1);
     }
 }

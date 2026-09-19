@@ -78,8 +78,7 @@ public class GameManager : MonoBehaviour
     {
         remainingEnemyCount--;
         int monsterKill = PlayerPrefs.GetInt("MonsterKill", 0);
-        monsterKill++;
-        PlayerPrefs.SetInt("MonsterKill", monsterKill);
+        PlayerPrefs.SetInt("MonsterKill", monsterKill +1);
 
         // Spawn the next enemy if enemies remain
         if (remainingEnemyCount > 0)
@@ -102,8 +101,7 @@ public class GameManager : MonoBehaviour
             bossSpawned = false;
             enemySpawner.SpawnEnemy(gameLevel);
             int bossKill = PlayerPrefs.GetInt("BossKill", 0);
-            bossKill++;
-            PlayerPrefs.SetInt("BossKill", bossKill);
+            PlayerPrefs.SetInt("BossKill", bossKill +1);
         }
     }
 
