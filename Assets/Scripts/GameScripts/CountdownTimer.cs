@@ -14,8 +14,8 @@ public class CountdownTimer : MonoBehaviour
     private bool isTimerPaused = false;
     private TimeSpan totalTimeRun;
     private float totalMultiplier;
-    private int breakInterval;
-    private int breakDuration;
+    private int breakInterval = 1;
+    private int breakDuration = 1;
     public static CountdownTimer Instance { get; private set; }
 
     // Read-only from other classes

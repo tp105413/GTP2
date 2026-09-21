@@ -17,15 +17,22 @@ public class SettingManager : MonoBehaviour
     public Sprite onImage;
     public Sprite offImage;
 
+
+    void Awake()
+    {
+        OnBreakIntervalChanged(breakInterval.text);
+        OnBreakDurationChanged(breakDuration.text);
+    }
+
     // Update the break interval based on the input and selected time unit
     public void OnBreakIntervalChanged(string value)
     {
         int interval = 0;
 
-        // Check whether value is empty
-        if (!string.IsNullOrEmpty(value))
+        // Check whether value is empty or not number, default value is 1
+        if(!int.TryParse(value, out interval)||interval <= 0)
         {
-            interval = int.Parse(value);
+            interval = 1;
         }
 
         int dropDownOption = breakIntervalDropDown.value;
@@ -49,10 +56,10 @@ public class SettingManager : MonoBehaviour
     {
         int duration = 0;
 
-        // Check whether value is empty
-        if (!string.IsNullOrEmpty(value))
+        // Check whether value is empty or not number, default value is 1
+        if (!int.TryParse(value, out duration) || duration <= 0)
         {
-            duration = int.Parse(value);
+            duration = 1;
         }
 
         int dropDownOption = breakDurationDropDown.value;

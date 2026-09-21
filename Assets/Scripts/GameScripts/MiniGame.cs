@@ -10,6 +10,7 @@ public class MiniGame : MonoBehaviour
     [SerializeField] private RectTransform flyArea;
     [SerializeField] private float flyingSpeed = 500f;
 
+
     private bool isButterflyAlive = false;
     private bool isMiniGameRunning = false;
 
@@ -58,29 +59,41 @@ public class MiniGame : MonoBehaviour
         Button butterfly = Instantiate(butterflyPrefab, flyArea);
         RectTransform butterflyPosition = butterfly.GetComponent<RectTransform>();
 
+        // Get animator from prefab itself
+        Animator butterflyAnim = butterfly.GetComponentInChildren<Animator>();
+
+        // Random assign butterfly color
+        Image butterflyImage = butterfly.GetComponent<Image>();
+        if( butterflyImage != null)
+        {
+            butterflyImage.color = Random.ColorHSV(0f, 1f, 0.6f, 1f, 0.8f, 1f);
+        }
+
         // Randomly spawn within the spawn area
         float randomX = Random.Range(spawnArea.rect.xMin, spawnArea.rect.xMax);
         float randomY = Random.Range(spawnArea.rect.yMin, spawnArea.rect.yMax);
 
         butterflyPosition.anchoredPosition = spawnArea.anchoredPosition + new Vector2(randomX, randomY);
 
-        StartCoroutine(ButterflyMovement(butterflyPosition, spawnLeftArea));
+        StartCoroutine(ButterflyMovement(butterflyPosition, spawnLeftArea, butterflyAnim));
 
         butterfly.onClick.AddListener(() => { ButterflyClicked(butterfly); });
     }
 
     // Butterfly moves from spawn area to opposite side with random movement
-    IEnumerator ButterflyMovement(RectTransform butterflyRect, bool startedLeft)
+    IEnumerator ButterflyMovement(RectTransform butterflyRect, bool startedLeft, Animator anim)
     {
         RectTransform targetArea;
 
         if (startedLeft)
         {
             targetArea = spawnArea2;
+            anim.Play("ButterflyLeft");
         }
         else
         {
             targetArea = spawnArea1;
+            anim.Play("ButterflyRight");
         }
 
         float totalFlyArea = 0f;
@@ -124,11 +137,17 @@ public class MiniGame : MonoBehaviour
     {
         while (isMiniGameRunning)
         {
-            if (!isButterflyAlive)
-            {
-                SpawnButterfly();
-            }
-            yield return null;
+            // Random assign delay time spawning butterfly 5 - 30 secs
+            float delay = Random.Range(5f, 30f);
+            yield return new WaitForSeconds(delay);
+
+            // If mini game is stopped while waiting
+            if (!isMiniGameRunning) yield break;
+
+            SpawnButterfly();
+
+            // Wait until the butterfly is clicked or destroyed
+            yield return new WaitUntil(() => !isButterflyAlive);
         }
     }
 
