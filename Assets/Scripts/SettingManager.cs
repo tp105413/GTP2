@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingManager : MonoBehaviour
 {
@@ -10,7 +11,11 @@ public class SettingManager : MonoBehaviour
     [SerializeField] private TMP_InputField breakDuration;
     [SerializeField] private TMP_Dropdown breakIntervalDropDown;
     [SerializeField] private TMP_Dropdown breakDurationDropDown;
+    [SerializeField] private Button OnOffButton;
 
+    public Image toggleImage;
+    public Sprite onImage;
+    public Sprite offImage;
 
     // Update the break interval based on the input and selected time unit
     public void OnBreakIntervalChanged(string value)
@@ -77,5 +82,20 @@ public class SettingManager : MonoBehaviour
     public void OnBreakDurationDropdownChanged(int value)
     {
         OnBreakDurationChanged(breakDuration.text);
+    }
+
+    // Toggle break mode button function
+    public void BreakModeOnClicked()
+    {
+        if (countdownTimer.breakMode)
+        {
+            countdownTimer.breakMode = false;
+            toggleImage.sprite = offImage;
+        }
+        else
+        {
+            countdownTimer.breakMode = true;
+            toggleImage.sprite = onImage;
+        }
     }
 }

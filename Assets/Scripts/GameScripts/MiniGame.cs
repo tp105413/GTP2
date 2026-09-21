@@ -132,7 +132,7 @@ public class MiniGame : MonoBehaviour
         }
     }
 
-    // Add achievement here (Easter egg)
+    // Called when butterfly is clicked
     private void ButterflyClicked(Button butterfly)
     {
         isButterflyAlive = false;

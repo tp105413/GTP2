@@ -35,6 +35,8 @@ public class CountdownTimer : MonoBehaviour
     public float BreakTimeRemaining => breakTimeRemaining;
     public TimeSpan BreakTimer => breakTimer;
 
+    public bool breakMode = false;
+
     // Invoked when timer stops
     public event Action OnTimerStop;
 
@@ -64,9 +66,13 @@ public class CountdownTimer : MonoBehaviour
             totalTimeRun += TimeSpan.FromSeconds(Time.deltaTime);
             breakTimer += TimeSpan.FromSeconds(Time.deltaTime);
 
-            if(breakTimer.TotalSeconds >= breakInterval)
+            // Run when break mode is on
+            if (breakMode)
             {
-                StartBreak();
+                if (breakTimer.TotalSeconds >= breakInterval)
+                {
+                    StartBreak();
+                }
             }
         }
         else
