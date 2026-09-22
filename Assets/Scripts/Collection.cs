@@ -5,6 +5,8 @@ public class Collection : MonoBehaviour
 {
 	[SerializeField] private Image objectImage;
 
+    public GuideBook guideBook;
+
 	private Image buttonImage;
 
 
@@ -16,5 +18,6 @@ public class Collection : MonoBehaviour
     public void ChangeImage()
 	{
 		objectImage.sprite = buttonImage.sprite;
-	}
+        guideBook.ChangeTentImage(buttonImage.sprite);
+    }
 }
