@@ -25,8 +25,7 @@ public class QuestTimerUI : MonoBehaviour
         questTimer.SetDuration(value);
 
         if (questManager.EditingQuest1 == true) {
-            questManager.QuestTime1inTicks = value;
-            
+            questManager.QuestTime1inTicks = value;   
         }
         if (questManager.EditingQuest2 == true) {
             questManager.QuestTime2inTicks = value;

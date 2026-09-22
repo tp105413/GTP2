@@ -16,18 +16,21 @@ public class QuestSystemMenu : MonoBehaviour
     public string Quest1Name = "Quest 1";
     public TextMeshProUGUI QuestDuration1;
     public float QuestTime1inTicks;
+    private int QuestTime1inSeconds;
     public bool EditingQuest1 = false;
 
     [Header("Quest 2")]
     public string Quest2Name = "Quest 2";
     public TextMeshProUGUI QuestDuration2;
     public float QuestTime2inTicks;
+    private int QuestTime2inSeconds;
     public bool EditingQuest2 = false;
 
     [Header("Quest 3")]
     public string Quest3Name = "Quest 3";
     public TextMeshProUGUI QuestDuration3;
     public float QuestTime3inTicks;
+    private int QuestTime3inSeconds;
     public bool EditingQuest3 = false;
 
     [Header("Quest Name References")]
@@ -46,9 +49,12 @@ public class QuestSystemMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        QuestDuration1.text = TimeSpan.FromSeconds(10f * QuestTime1inTicks).ToString(@"hh\:mm\:ss");
-        QuestDuration2.text = TimeSpan.FromSeconds(10f * QuestTime2inTicks).ToString(@"hh\:mm\:ss");
-        QuestDuration3.text = TimeSpan.FromSeconds(10f * QuestTime3inTicks).ToString(@"hh\:mm\:ss");
+        QuestTime1inSeconds = Mathf.RoundToInt(600f * QuestTime1inTicks);
+        QuestTime2inSeconds = Mathf.RoundToInt(600f * QuestTime2inTicks);
+        QuestTime3inSeconds = Mathf.RoundToInt(600f * QuestTime3inTicks);
+        QuestDuration1.text = TimeSpan.FromSeconds(QuestTime1inSeconds).ToString(@"hh\:mm\:ss");
+        QuestDuration2.text = TimeSpan.FromSeconds(QuestTime2inSeconds).ToString(@"hh\:mm\:ss");
+        QuestDuration3.text = TimeSpan.FromSeconds(QuestTime3inSeconds).ToString(@"hh\:mm\:ss");
         Quest1NameRef.text = Quest1Name;
         Quest2NameRef.text = Quest2Name;
         Quest3NameRef.text = Quest3Name;
@@ -89,16 +95,22 @@ public class QuestSystemMenu : MonoBehaviour
 
     public void OnStartButton1Press() {
         countdownTimer.SetDuration(QuestTime1inTicks);
+        gameManager.isQuestRunning = true;
+        gameManager.CurrentRunningQuest = 1;
         gameManager.OnStartButtonClick();
     }
 
     public void OnStartButton2Press() {
         countdownTimer.SetDuration(QuestTime2inTicks);
+        gameManager.isQuestRunning = true;
+        gameManager.CurrentRunningQuest = 2;
         gameManager.OnStartButtonClick();
     }
 
     public void OnStartButton3Press() {
         countdownTimer.SetDuration(QuestTime3inTicks);
+        gameManager.isQuestRunning = true;
+        gameManager.CurrentRunningQuest = 3;
         gameManager.OnStartButtonClick();
     }
 
@@ -115,7 +127,13 @@ public class QuestSystemMenu : MonoBehaviour
         }
         EditBoard.SetActive(false);
     }
-
+    public void UpdateRemainingTimer(int quest) {
+        double exactSeconds = countdownTimer.TotalTimeRun.TotalSeconds;
+        int TotalTimeRunSecondsRounded = Mathf.RoundToInt((float)exactSeconds);
+        if (quest == 1) {
+            QuestTime1inTicks = QuestTime1inTicks - (TotalTimeRunSecondsRounded / 600f);
+        }
+    }
     public void UpdateQuestName(int quest) {
         if (quest == 1) {
             Quest1Name = EditQuestName.text;

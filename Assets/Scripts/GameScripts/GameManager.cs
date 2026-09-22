@@ -15,12 +15,16 @@ public class GameManager : MonoBehaviour
     public bool bossSpawned = false;
     public bool isLevelFailed = false;
 
+    public bool isQuestRunning = false;
+    public int CurrentRunningQuest;
+
     private Coroutine bossTimerCoroutine;
 
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private CountdownTimer countdownTimer;
     [SerializeField] private PlayerUI playerUI;
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private QuestSystemMenu questManager;
 
     public event Action OnLevelFailed;
 
@@ -76,7 +80,9 @@ public class GameManager : MonoBehaviour
     // Handle enemy defeat and spawn the next enemy, boss or level
     public void EnemyDefeated()
     {
-        remainingEnemyCount--;
+        if (!isQuestRunning) {
+            remainingEnemyCount--;
+        }
         int monsterKill = PlayerPrefs.GetInt("MonsterKill", 0);
         PlayerPrefs.SetInt("MonsterKill", monsterKill +1);
 
@@ -165,6 +171,11 @@ public class GameManager : MonoBehaviour
     {
         isGameRunning = false;
         countdownTimer.StopTimer();
+        if (isQuestRunning) {
+            isQuestRunning = false;
+            Debug.Log(countdownTimer.TotalTimeRun + " logged");
+            questManager.UpdateRemainingTimer(CurrentRunningQuest);
+        }
         RemainingEnemyCountReset();
         playerUI.StopRunningAnimation();
         ResourceManager.Instance.CalculateReward();
