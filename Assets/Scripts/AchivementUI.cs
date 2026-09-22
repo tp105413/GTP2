@@ -24,7 +24,13 @@ public class AchievementUI : MonoBehaviour
     {
         int highestLevel = PlayerPrefs.GetInt("HighestLevel", 0);
         int timerDone = PlayerPrefs.GetInt("TimerSessionDone", 0);
-        int totalTime = PlayerPrefs.GetInt("TotalTime", 0);
+
+        float totalTime = PlayerPrefs.GetFloat("TotalTime", 0f);
+        System.TimeSpan timeSpan = System.TimeSpan.FromSeconds(totalTime);
+        string formattedTime = timeSpan.TotalDays >= 1
+            ? string.Format("{0}d {1:D2}:{2:D2}:{3:D2}", (int)timeSpan.TotalDays, timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds)
+            : timeSpan.ToString(@"hh\:mm\:ss");
+
         int monsterKill = PlayerPrefs.GetInt("MonsterKill", 0);
         int bossKill = PlayerPrefs.GetInt("BossKill", 0);
         int highestDamage = PlayerPrefs.GetInt("HighestAttackDamage", 0);
@@ -34,7 +40,7 @@ public class AchievementUI : MonoBehaviour
 
         highestLevelText.text = $"Player Highest Level : {highestLevel}";
         timerSessionDoneText.text = $"Timer Session Done : {timerDone}";
-        totalTimeText.text = $"Total Time : {totalTime}";
+        totalTimeText.text = $"Total Time : {formattedTime}";
         monsterKillText.text = $"Monster Kill : {monsterKill}";
         bossKillText.text = $"Boss Kill : {bossKill}";
         highestDamageText.text = $"Highest Attack Damage : {highestDamage}";

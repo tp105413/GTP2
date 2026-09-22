@@ -3,16 +3,21 @@ using UnityEngine;
 public class SpeedUpTool : MonoBehaviour
 {
 
-    public float SPDUP;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private bool IsSpeedUpActive = false;
+    //public float SPDMulti;
+    public void ActivateSpeedUp()
     {
-        
-    }
+        //x4 progress speed
+        if (!IsSpeedUpActive)
+        {
+            Time.timeScale = 4f;
+            IsSpeedUpActive = true;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Time.timeScale = SPDUP;
+        else
+        {
+            Time.timeScale = 1f;
+            IsSpeedUpActive = false;
+        }
     }
 }

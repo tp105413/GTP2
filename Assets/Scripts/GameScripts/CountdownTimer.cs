@@ -101,6 +101,8 @@ public class CountdownTimer : MonoBehaviour
     // Stop the timer when the countdown reaches 0
     public void TimerFinished()
     {
+        AchievementRecord();
+
         stopButton.onClick.Invoke();
         int timerDone = PlayerPrefs.GetInt("TimerSessionDone", 0);
         timerDone++;
@@ -110,6 +112,11 @@ public class CountdownTimer : MonoBehaviour
     // Stop and reset the timer
     public void StopTimer()
     {
+        if (isTimerRunning)
+        {
+            AchievementRecord();
+        }
+
         isTimerRunning = false;
 
         // Reset break timer while stopping the timer during break
@@ -150,6 +157,7 @@ public class CountdownTimer : MonoBehaviour
             isTimerPaused = true;
             isTimerRunning = false;
             OnTimerStop?.Invoke();
+            AchievementRecord();
         }
         else if (isTimerPaused)
         {
@@ -164,7 +172,7 @@ public class CountdownTimer : MonoBehaviour
         if (isTimerRunning) return;
 
         sliderTicks = ticks;
-        totalDurationInSeconds = 10f * ticks;
+        totalDurationInSeconds = 600f * ticks;
         totalMultiplier = 1f + 0.25f * (totalDurationInSeconds / 10f);
         timeRemaining = TimeSpan.FromSeconds(totalDurationInSeconds);
     }
@@ -201,5 +209,16 @@ public class CountdownTimer : MonoBehaviour
 
         GameManager.Instance.PauseGame();
         MiniGame.Instance.StopMiniGame();
+    }
+
+    private void AchievementRecord()
+    {
+        float currentRunSeconds = (float)totalTimeRun.TotalSeconds;
+
+        if (currentRunSeconds <= 0f) return;
+
+        float totalSavedSeconds = PlayerPrefs.GetFloat("TotalTime", 0f);
+        totalSavedSeconds += currentRunSeconds;
+        PlayerPrefs.SetFloat("TotalTime", totalSavedSeconds);
     }
 }
