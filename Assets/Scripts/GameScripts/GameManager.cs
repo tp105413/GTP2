@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPauseButtonClick()
     {
-        PauseGame(true);
+        PauseGame();
     }
 
     public void GameLevelUp()
@@ -171,23 +171,27 @@ public class GameManager : MonoBehaviour
     }
 
     // Pause the game and preserve its current state
-    public void PauseGame(bool paused)
+    public void PauseGame()
     {
-        if (paused && isGameRunning)
+        if (!countdownTimer.IsOnBreak)
         {
-            isGameRunning = false;
-            countdownTimer.PauseTimer(); // Pause the timer
-            playerUI.StopRunningAnimation();
+            if (isGameRunning)
+            {
+                isGameRunning = false;
+                countdownTimer.PauseTimer(); // Pause the timer
+                playerUI.StopRunningAnimation();
+            }
+            else if (!isGameRunning)
+            {
+                isGameRunning = true;
+                countdownTimer.PauseTimer(); // Resume the timer
+                enemySpawner.SpawnEnemy(gameLevel);
+                playerUI.StartRunningAnimation();
+            }
         }
-        else if(!paused && !isGameRunning)
-        {
-            isGameRunning = true;
-            countdownTimer.PauseTimer(); // Resume the timer
-            enemySpawner.SpawnEnemy(gameLevel);
-            playerUI.StartRunningAnimation();
-        }
+        else countdownTimer.PauseTimer();
     }
-
+    
     // Reset and increase enemy count by 1 every 3 levels
     public void RemainingEnemyCountReset()
     {

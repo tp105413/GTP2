@@ -10,6 +10,9 @@ public class EachMenuForBTN : MonoBehaviour
     private bool isSettingOpen = false;
     public GameObject Setting;
 
+    public bool isGuideBookOpen = false;
+    public GameObject GuideBookBTN;
+
 
 
     // Close all menus and open the selected menu
@@ -44,6 +47,22 @@ public class EachMenuForBTN : MonoBehaviour
             if (Setting != null)
             {
                 Setting.SetActive(isSettingOpen);
+            }
+        }
+    }
+
+    public void GuideBook()
+    {
+        if (GuideBookBTN != null)
+        {
+            isGuideBookOpen = GuideBookBTN.activeSelf;
+        }
+
+        {
+            isGuideBookOpen = !isGuideBookOpen;
+            if (GuideBookBTN != null)
+            {
+                GuideBookBTN.SetActive(isGuideBookOpen);
             }
         }
     }

@@ -37,6 +37,8 @@ public class CountdownTimer : MonoBehaviour
 
     public bool breakMode = false;
 
+    public bool breakPaused = false;
+
     // Invoked when timer stops
     public event Action OnTimerStop;
 
@@ -46,14 +48,19 @@ public class CountdownTimer : MonoBehaviour
         // If break timer start, pause the game timer
         if (isOnBreak)
         {
-            breakTimeRemaining -= Time.deltaTime;
-
-            if (breakTimeRemaining <= 0)
+            if(breakPaused) return;
+            else
             {
-                breakTimeRemaining = 0f;
-                EndBreak();
+                breakTimeRemaining -= Time.deltaTime;
+
+                if (breakTimeRemaining <= 0)
+                {
+                    breakTimeRemaining = 0f;
+                    EndBreak();
+                }
+                return;
             }
-            return;
+
         }
 
         // Stop update while the timer is stopped or paused
@@ -123,7 +130,20 @@ public class CountdownTimer : MonoBehaviour
     public void PauseTimer()
     {
         // Prevent manual pause stop the break state
-        if (isOnBreak) return;
+        if (isOnBreak)
+        {
+            if (!breakPaused)
+            {
+                breakPaused = true;
+                return;
+            }
+
+            else 
+            {
+                breakPaused = false;
+                return;
+            }
+        }
 
         if (!isTimerPaused) 
         {
@@ -164,7 +184,7 @@ public class CountdownTimer : MonoBehaviour
     // Pause the game and start the break countdown
     public void StartBreak()
     {
-        GameManager.Instance.PauseGame(true);
+        GameManager.Instance.PauseGame();
         isOnBreak = true;
         breakTimeRemaining = breakDuration;
 
@@ -179,7 +199,7 @@ public class CountdownTimer : MonoBehaviour
         // Reset break timer
         breakTimer = TimeSpan.Zero;
 
-        GameManager.Instance.PauseGame(false);
+        GameManager.Instance.PauseGame();
         MiniGame.Instance.StopMiniGame();
     }
 }
