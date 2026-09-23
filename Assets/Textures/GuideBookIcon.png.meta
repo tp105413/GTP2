@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 205726d9cc2197a4da56c8c867d47167
+guid: 7ebce32a6af885f43a37c9a8630b6596
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6829858724382834966
-    second: settingbutton_0
+      213: -1949191893001131949
+    second: GuideBookIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WindowsStoreApps
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -109,40 +109,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: settingbutton_0
+      name: GuideBookIcon_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 4
-        width: 24
-        height: 24
+        x: 3
+        y: 2
+        width: 27
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 61101fcd25888ce50800000000000000
-      internalID: 6829858724382834966
+      spriteID: 358a892fc4413f4e0800000000000000
+      internalID: -1949191893001131949
       vertices: []
       indices: 
       edges: []
@@ -151,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e2ff6313b462b26478527f2e89559a01
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      settingbutton_0: 6829858724382834966
+      GuideBookIcon_0: -1949191893001131949
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

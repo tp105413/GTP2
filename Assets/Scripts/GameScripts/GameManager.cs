@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public bool isQuestRunning = false;
     public int CurrentRunningQuest;
 
+    public bool firstTimePlay = false;
+
     private Coroutine bossTimerCoroutine;
 
     [SerializeField] private EnemySpawner enemySpawner;

@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScrollingAnimation : MonoBehaviour
 {
     [SerializeField] private CountdownTimer countdownTimer;
+    [SerializeField] private EachMenuForBTN eachMenuForBTN;
 
     private Animation scrollAnimation;
     private bool isTimerStarted = false;
@@ -45,7 +47,22 @@ public class ScrollingAnimation : MonoBehaviour
             // Play MainMenu animation to NavigationView
             scrollAnimation.Play("MainMenu(Test)");
             isTimerStarted = false;
+
+            // If player first time play show guide book on start
+            if (!GameManager.Instance.firstTimePlay)
+            {
+                GameManager.Instance.firstTimePlay = true;
+                StartCoroutine(WaitForScrollingCompleted());
+            }
+            else return;
         }
+    }
+
+    // Wait for scrolling animation completed then show guide book
+    IEnumerator WaitForScrollingCompleted()
+    {
+        yield return new WaitForSeconds(1f);
+        eachMenuForBTN.GuideBook();
     }
 
     // Play logo animation loop

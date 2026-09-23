@@ -60,4 +60,10 @@ public class GuideBook : MonoBehaviour
         tentImage.sprite = sprite;
         tutorialImages[1].GetComponent<Image>().sprite = sprite;
     }
+
+    // If skip button is clicked, reset page
+    public void OnClickedSkip()
+    {
+        currentPage = 0;
+    }
 }
