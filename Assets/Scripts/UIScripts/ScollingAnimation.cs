@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,6 +48,7 @@ public class ScrollingAnimation : MonoBehaviour
             // Play MainMenu animation to NavigationView
             scrollAnimation.Play("MainMenu(Test)");
             isTimerStarted = false;
+            //SFXManager.Instance.Play("Button Click");
 
             // If player first time play show guide book on start
             if (!GameManager.Instance.firstTimePlay)

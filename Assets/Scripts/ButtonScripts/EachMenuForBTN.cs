@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class EachMenuForBTN : MonoBehaviour
@@ -12,8 +11,12 @@ public class EachMenuForBTN : MonoBehaviour
 
     public bool isGuideBookOpen = false;
     public GameObject GuideBookBTN;
+    AudioManager audiomanager;
 
-
+    private void Awake()
+    {
+        audiomanager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     // Close all menus and open the selected menu
     public void OpenMenu()
@@ -65,5 +68,24 @@ public class EachMenuForBTN : MonoBehaviour
                 GuideBookBTN.SetActive(isGuideBookOpen);
             }
         }
+    }
+
+    public void OnMyButtonClick()
+    {
+        audiomanager.PlaySFX(audiomanager.ButtonClick);
+    }
+
+    public void OnClickUpgradeButton()
+    {
+        audiomanager.PlaySFX(audiomanager.Upgrade);
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
