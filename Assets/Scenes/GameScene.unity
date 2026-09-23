@@ -3029,7 +3029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &195612260
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9965,7 +9965,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.75
+  m_fontSize: 48.45
   m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13340,7 +13340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 465.4, y: -128.7}
+  m_AnchoredPosition: {x: 480, y: -23}
   m_SizeDelta: {x: 264.1092, y: 39.0015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906544799
@@ -14855,10 +14855,13 @@ MonoBehaviour:
   remainingEnemyCount: 5
   bossSpawned: 0
   isLevelFailed: 0
+  isQuestRunning: 0
+  CurrentRunningQuest: 0
   enemySpawner: {fileID: 253766375}
   countdownTimer: {fileID: 1593745215}
   playerUI: {fileID: 1522914381}
   uiManager: {fileID: 759771515}
+  questManager: {fileID: 436530593}
 --- !u!4 &978890595
 Transform:
   m_ObjectHideFlags: 0
@@ -19905,7 +19908,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 766, y: -130.6477}
+  m_AnchoredPosition: {x: 772.6, y: -24.947754}
   m_SizeDelta: {x: 106.1687, y: 38.7114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1354932507
@@ -25516,16 +25519,16 @@ RectTransform:
   m_GameObject: {fileID: 1694315250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 694893163}
   m_Father: {fileID: 166105134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 898, y: -500}
-  m_SizeDelta: {x: 200, y: 80}
+  m_AnchoredPosition: {x: 457, y: -658}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1694315252
 MonoBehaviour:
@@ -25618,15 +25621,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8980392, g: 0.6627451, b: 0.1882353, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -2458955301882746151, guid: b117fb37940ecfb408a849a1c5ca1020, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
