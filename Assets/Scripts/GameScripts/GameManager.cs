@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public int CurrentRunningQuest;
 
     public bool firstTimePlay = false;
+    public float bossRemainingTime = 30f;
 
     private Coroutine bossTimerCoroutine;
 
@@ -82,8 +83,10 @@ public class GameManager : MonoBehaviour
     // Handle enemy defeat and spawn the next enemy, boss or level
     public void EnemyDefeated()
     {
-        if (!isQuestRunning) {
+        if (!isQuestRunning)
+        {
             remainingEnemyCount--;
+            uiManager.UpdateRemainingEnemyText();
         }
         int monsterKill = PlayerPrefs.GetInt("MonsterKill", 0);
         PlayerPrefs.SetInt("MonsterKill", monsterKill +1);
@@ -116,6 +119,8 @@ public class GameManager : MonoBehaviour
     // Start the boss level timer
     public void StartBossTimer()
     {
+        // Reset boss timer before it starts
+        bossRemainingTime = 30f;
         bossTimerCoroutine = StartCoroutine(BossTimer());
     }
 
@@ -132,11 +137,9 @@ public class GameManager : MonoBehaviour
     // Start boss timer and trigger level failure when time runs out
     public IEnumerator BossTimer()
     {
-        float remainingTime = 30f;
-
-        while(remainingTime > 0)
+        while(bossRemainingTime > 0)
         {
-            remainingTime -= Time.deltaTime;
+            bossRemainingTime -= Time.deltaTime;
             yield return null;
         }
 
@@ -209,6 +212,7 @@ public class GameManager : MonoBehaviour
     public void RemainingEnemyCountReset()
     {
         remainingEnemyCount = 5 + (gameLevel - 1) / 3;
+        uiManager.UpdateRemainingEnemyText();
     }
 
     // Set the player attack state to active

@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,8 @@ public class EnemyUI : MonoBehaviour
     [SerializeField] private float stopAtPositionX = 0f;
     [SerializeField] private float runAwaySpeed = 0f;
     [SerializeField] Slider healthBarSlider;
+    [SerializeField] Slider bossTimerSlider;
+    [SerializeField] TMP_Text timerText;
 
     private RectTransform rectTransform;
     private Animator animator;
@@ -31,6 +34,11 @@ public class EnemyUI : MonoBehaviour
     void Update()
     {
         healthBarSlider.value = currentHealth / maxHealth;
+
+        if(bossTimerSlider != null)
+        {
+            UpdateBossTimerUI();
+        }
 
         // Stop updating once player is reached
         if (hasReachedPlayer) return;
@@ -82,5 +90,14 @@ public class EnemyUI : MonoBehaviour
     public void UpdateHealthUI(int amount)
     {
         currentHealth -= amount;
+    }
+
+    // Update boss timer UI
+    public void UpdateBossTimerUI()
+    {
+        float remaining = GameManager.Instance.bossRemainingTime;
+
+        bossTimerSlider.value = remaining / 30f;
+        timerText.text = Mathf.CeilToInt(remaining).ToString();
     }
 }

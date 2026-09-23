@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -6,11 +7,13 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI levelText;
     public GameObject damagePrefab;
     public GameObject uiObject;
+    public TMP_Text remainingEnemyText;
 
 
     void Start()
     {
         UpdateLevelUI();
+        UpdateRemainingEnemyText();
     }
 
     // Update level text UI
@@ -43,5 +46,11 @@ public class UIManager : MonoBehaviour
     public void ToggleObjectUI()
     {
         uiObject.SetActive(!uiObject.activeSelf);
+    }
+
+    // Display remaining enemy count UI
+    public void UpdateRemainingEnemyText()
+    {
+        remainingEnemyText.text = "x" + GameManager.Instance.remainingEnemyCount.ToString();
     }
 }
