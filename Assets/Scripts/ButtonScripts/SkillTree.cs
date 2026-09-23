@@ -75,6 +75,13 @@ public class SkillTree : MonoBehaviour
         // After update refresh display UI
         RefreshSkillValue(ButtonSelected);
 
+        // Update skill level image
+        if (ButtonSelected.IsSkill)
+        {
+            int newLevel = skillUpgrade.GetSkillLevel(skillType);
+            ButtonSelected.UpdateButtonLevelImage(newLevel);
+        }
+
         // If skill is unlocked, update the button UI
         SkillData skill = skillUpgrade.GetSkill(skillType);
         if(skill != null && skill.isUnlocked)

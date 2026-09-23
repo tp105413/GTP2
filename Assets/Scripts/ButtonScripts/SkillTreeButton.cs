@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillTreeButton : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class SkillTreeButton : MonoBehaviour
 
     public GameObject selectedFrame;
     public GameObject lockedOverlay;
+    public Image SkillImage;
+    public Sprite lv2SkillSprite;
+    public Sprite lv3SkillSprite;
 
     private SkillTree skillTree;
 
@@ -46,5 +50,21 @@ public class SkillTreeButton : MonoBehaviour
     public void UnlockButton()
     {
         lockedOverlay.SetActive(false);
+    }
+
+    public void UpdateButtonLevelImage(int level)
+    {
+        if(level == 2)
+        {
+            SkillImage.sprite = lv2SkillSprite;
+        }
+        else if(level == 3)
+        {
+            SkillImage.sprite = lv3SkillSprite;
+        }
+        else
+        {
+            return;
+        }
     }
 }
