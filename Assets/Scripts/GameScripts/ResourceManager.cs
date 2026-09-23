@@ -54,7 +54,7 @@ public class ResourceManager : MonoBehaviour
     // Calculate final reward then update reward UI and transfer to PlayerStats
     public void CalculateReward()
     {
-        float multiplier = 1f + 0.25f * Mathf.Floor((float)countdownTimer.TotalTimeRun.TotalSeconds / 10f);
+        float multiplier = 1f + 0.25f * Mathf.Floor((float)countdownTimer.TotalTimeRun.TotalSeconds / 1800f);
 
         int finalGold = Mathf.RoundToInt(tempGold * multiplier);
         int finalSouls = Mathf.RoundToInt(tempSouls * multiplier);

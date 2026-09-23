@@ -107,8 +107,8 @@ public class PlayerCombat : MonoBehaviour
         if(target != null && !target.isDead)
         {
             int damage = playerSkillManager.GetPowerStrikeDamage();
-            attackTarget.TakeDamage(damage, playerStats);
-            uIManager.SpawnDamagePopUpUI(damage, false, true, attackTarget);
+            target.TakeDamage(damage, playerStats);
+            uIManager.SpawnDamagePopUpUI(damage, false, true, target);
         }
     }
 }

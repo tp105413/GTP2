@@ -10,7 +10,7 @@ public class SpeedUpTool : MonoBehaviour
         //x4 progress speed
         if (!IsSpeedUpActive)
         {
-            Time.timeScale = 4f;
+            Time.timeScale = 100f;
             IsSpeedUpActive = true;
         }
 

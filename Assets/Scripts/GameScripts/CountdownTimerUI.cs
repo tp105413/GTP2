@@ -21,7 +21,7 @@ public class CountdownTimerUI : MonoBehaviour
             if (timerText == null) return;
             timerText.text = countdownTimer.TimeRemaining.ToString(@"hh\:mm\:ss");
             timerText2.text = countdownTimer.TimeRemaining.ToString(@"hh\:mm\:ss");
-            multiplierText.text = "x" + countdownTimer.TotalMultiplier.ToString();
+            multiplierText.text = "x" + countdownTimer.TotalMultiplier.ToString("0.##");
 
             breakTimeLabel.gameObject.SetActive(false);
         }

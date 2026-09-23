@@ -82,7 +82,7 @@ public class ResourceUI : MonoBehaviour
     {
         rewardGoldText.text = gold.ToString();
         rewardSoulText.text = souls.ToString();
-        rewardMultiplier.text = multiplier.ToString();
+        rewardMultiplier.text = "x" + multiplier.ToString();
         totalRunTime.text = FormatTime(runTime).ToString();
     }
 

@@ -173,7 +173,7 @@ public class CountdownTimer : MonoBehaviour
 
         sliderTicks = ticks;
         totalDurationInSeconds = 600f * ticks;
-        totalMultiplier = 1f + 0.25f * (totalDurationInSeconds / 10f);
+        totalMultiplier = 1f + 0.25f * (int)(totalDurationInSeconds / 1800f);
         timeRemaining = TimeSpan.FromSeconds(totalDurationInSeconds);
     }
 
